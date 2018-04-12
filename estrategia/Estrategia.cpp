@@ -1,4 +1,5 @@
 #include "Estrategia.h"
+#include "robo_hardware.h"
 #define CINZA 50
 
 void Estrategia::executa(){
@@ -6,27 +7,27 @@ void Estrategia::executa(){
 }
 void Estrategia::seguirLinha(){
 
-if(refletancia_mais_dir<=CINZA && refletancia_dir<=CINZA && refletancia_esq<=CINZA && refletancia_mais_esq<=CINZA){
+if(lerSensorLinhaMaisDir()<=CINZA && lerSensorLinhaDir()<=CINZA && lerSensorLinhaEsq()<=CINZA && lerSensorLinhaMaisEsq()<=CINZA){
 
 robo.acionarMotores(-50,50);
 
-}else if(refletancia_mais_dir<=CINZA && refletancia_dir<=CINZA && refletancia_esq<=CINZA && refletancia_mais_esq>=CINZA){
+}else if(lerSensorLinhaMaisDir()<=CINZA && lerSensorLinhaDir()<=CINZA && lerSensorLinhaEsq()<=CINZA && lerSensorLinhaMaisEsq()>=CINZA){
 
 robo.acionarMotores(-50,-50);
 
-}else if(refletancia_mais_dir<=CINZA && refletancia_dir<=CINZA && refletancia_esq>=CINZA && refletancia_mais_esq<=CINZA){
+}else if(lerSensorLinhaMaisDir()<=CINZA && lerSensorLinhaDir()<=CINZA && lerSensorLinhaEsq()>=CINZA && lerSensorLinhaMaisEsq()<=CINZA){
 
 robo.acionarMotores(-50,50);
 
-}else if(refletancia_mais_dir<=CINZA && refletancia_dir<=CINZA && refletancia_esq>=CINZA && refletancia_mais_esq>=CINZA){
+}else if(lerSensorLinhaMaisDir()<=CINZA && lerSensorLinhaDir()<=CINZA && lerSensorLinhaEsq()>=CINZA && lerSensorLinhaMaisEsq()>=CINZA){
 
 robo.acionarMotores(-50,-50);
 
-}else if(refletancia_mais_dir<=CINZA && refletancia_dir>=CINZA && refletancia_esq<=CINZA && refletancia_mais_esq<=CINZA){
+}else if(lerSensorLinhaMaisDir()<=CINZA && lerSensorLinhaDir()>=CINZA && lerSensorLinhaEsq()<=CINZA && lerSensorLinhaMaisEsq()<=CINZA){
 
 robo.acionarMotores(50,50);
 
-}else if(refletancia_mais_dir<=CINZA && refletancia_dir>=CINZA && refletancia_esq>=CINZA && refletancia_mais_esq<=CINZA){
+}else if(lerSensorLinhaMaisDir()<=CINZA && lerSensorLinhaDir()>=CINZA && lerSensorLinhaEsq()>=CINZA && lerSensorLinhaMaisEsq()<=CINZA){
 
 robo.acionarMotores(50,50);
 
