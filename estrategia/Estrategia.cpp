@@ -7,27 +7,27 @@ void Estrategia::executa(){
 }
 void Estrategia::seguirLinha(){
 
-if(robo.lerSensorLinhaMaisDir()<=CINZA && robo.lerSensorLinhaDir()<=CINZA && robo.lerSensorLinhaEsq()<=CINZA && robo.lerSensorLinhaMaisEsq()<=CINZA){
+if(robo.lerSensorLinhaMaisDir()>=CINZA && robo.lerSensorLinhaDir()>=CINZA && robo.lerSensorLinhaEsq()>=CINZA && robo.lerSensorLinhaMaisEsq()>=CINZA){
 
 robo.acionarMotores(-50,50);
 
-}else if(robo.lerSensorLinhaMaisDir()<=CINZA && robo.lerSensorLinhaDir()<=CINZA && robo.lerSensorLinhaEsq()<=CINZA && robo.lerSensorLinhaMaisEsq()>=CINZA){
+}else if(robo.lerSensorLinhaMaisDir()>=CINZA && robo.lerSensorLinhaDir()>=CINZA && robo.lerSensorLinhaEsq()>=CINZA && robo.lerSensorLinhaMaisEsq()<=CINZA){
 
 robo.acionarMotores(-50,-50);
 
-}else if(robo.lerSensorLinhaMaisDir()<=CINZA && robo.lerSensorLinhaDir()<=CINZA && robo.lerSensorLinhaEsq()>=CINZA && robo.lerSensorLinhaMaisEsq()<=CINZA){
+}else if(robo.lerSensorLinhaMaisDir()>=CINZA && robo.lerSensorLinhaDir()>=CINZA && robo.lerSensorLinhaEsq()<=CINZA && robo.lerSensorLinhaMaisEsq()>=CINZA){
 
 robo.acionarMotores(-50,50);
 
-}else if(robo.lerSensorLinhaMaisDir()<=CINZA && robo.lerSensorLinhaDir()<=CINZA && robo.lerSensorLinhaEsq()>=CINZA && robo.lerSensorLinhaMaisEsq()>=CINZA){
+}else if(robo.lerSensorLinhaMaisDir()>=CINZA && robo.lerSensorLinhaDir()>=CINZA && robo.lerSensorLinhaEsq()<=CINZA && robo.lerSensorLinhaMaisEsq()<=CINZA){
 
 robo.acionarMotores(-50,-50);
 
-}else if(robo.lerSensorLinhaMaisDir()<=CINZA && robo.lerSensorLinhaDir()>=CINZA && robo.lerSensorLinhaEsq()<=CINZA && robo.lerSensorLinhaMaisEsq()<=CINZA){
+}else if(robo.lerSensorLinhaMaisDir()>=CINZA && robo.lerSensorLinhaDir()<=CINZA && robo.lerSensorLinhaEsq()>=CINZA && robo.lerSensorLinhaMaisEsq()>=CINZA){
 
 robo.acionarMotores(50,50);
 
-}else if(robo.lerSensorLinhaMaisDir()<=CINZA && robo.lerSensorLinhaDir()>=CINZA && robo.lerSensorLinhaEsq()>=CINZA && robo.lerSensorLinhaMaisEsq()<=CINZA){
+}else if(robo.lerSensorLinhaMaisDir()>=CINZA && robo.lerSensorLinhaDir()<=CINZA && robo.lerSensorLinhaEsq()<=CINZA && robo.lerSensorLinhaMaisEsq()>=CINZA){
 
 robo.acionarMotores(50,50);
 
