@@ -1,5 +1,10 @@
 class Sensores{
 
+double valorMaisEsq;
+double valorEsq;
+double valorDir;
+double valorMaisDir;
+
 public:
 
 bool brancoBrancoBrancoBranco();
