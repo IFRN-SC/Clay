@@ -2,21 +2,21 @@ class Sensores{
 
 public:
 
-void brancoBrancoBrancoBranco();
+bool brancoBrancoBrancoBranco();
 
-void brancoBrancoBrancoPreto();
+bool brancoBrancoBrancoPreto();
 
-void brancoBrancoPretoBranco();
+bool brancoBrancoPretoBranco();
 
-void brancoBrancoPretoPreto();
+bool brancoBrancoPretoPreto();
 
-void brancoPretoBrancoBranco();
+bool brancoPretoBrancoBranco();
 
-void brancoPretoPretoBranco();
+bool brancoPretoPretoBranco();
 
-void pretoPretoPretoPreto();
+bool pretoBrancoBrancoBranco();
 
-void senao();
+bool senao();
 
 
 };
