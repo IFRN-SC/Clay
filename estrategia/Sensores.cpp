@@ -9,170 +9,44 @@ double valorMaisDir = lerSensorLinhaMaisDir();
 
 
 bool Sensores:: brancoBrancoBrancoBranco(){
- int contValor;
- if(valorMaisEsq > CINZA){
-   contValor++;
-}
- else if(valorEsq > CINZA){
-  contValor++;
-}
- else if(valorDir > CINZA){
-   contValor++;
-}
- else if(valorMaisDir > CINZA){
-  contValor++;
-}
 
-  if(contValor==4){
-    return true;
-}
-  else{
-   return false;
-}
+return (valorMaisEsq > CINZA && valorEsq > CINZA && valorDir > CINZA && valorMaisDir > CINZA);
 
 }
 
 bool Sensores:: brancoBrancoBrancoPreto(){
- int contValor;
- if(valorMaisEsq > CINZA){
-   contValor++;
-}
- else if(valorEsq > CINZA){
-  contValor++;
-}
- else if(valorDir > CINZA){
-   contValor++;
-}
- else if(valorMaisDir <= CINZA){
-  contValor++;
-}
 
-  if(contValor==4){
-    return true;
-}
-  else{
-   return false;
-}
+return (valorMaisEsq > CINZA && valorEsq > CINZA && valorDir > CINZA && valorMaisDir <= CINZA);
 
 }
 
 bool Sensores:: brancoBrancoPretoBranco(){
- int contValor;
- if(valorMaisEsq > CINZA){
-   contValor++;
-}
- else if(valorEsq > CINZA){
-  contValor++;
-}
- else if(valorDir <= CINZA){
-   contValor++;
-}
- else if(valorMaisDir > CINZA){
-  contValor++;
-}
 
-  if(contValor==4){
-    return true;
-}
-  else{
-   return false;
-}
+return (valorMaisEsq > CINZA && valorEsq > CINZA && valorDir <= CINZA && valorMaisDir > CINZA);
 
 }
 
 bool Sensores:: brancoBrancoPretoPreto(){
- int contValor;
- if(valorMaisEsq > CINZA){
-   contValor++;
-}
- else if(valorEsq > CINZA){
-  contValor++;
-}
- else if(valorDir <= CINZA){
-   contValor++;
-}
- else if(valorMaisDir <= CINZA){
-  contValor++;
-}
 
-  if(contValor==4){
-    return true;
-}
-  else{
-   return false;
-}
+return (valorMaisEsq > CINZA && valorEsq > CINZA && valorDir <= CINZA && valorMaisDir <= CINZA);
 
 }
 
 bool Sensores:: brancoPretoBrancoBranco(){
- int contValor;
- if(valorMaisEsq > CINZA){
-   contValor++;
-}
- else if(valorEsq <= CINZA){
-  contValor++;
-}
- else if(valorDir > CINZA){
-   contValor++;
-}
- else if(valorMaisDir > CINZA){
-  contValor++;
-}
 
-  if(contValor==4){
-    return true;
-}
-  else{
-   return false;
-}
+return (valorMaisEsq > CINZA && valorEsq <= CINZA && valorDir > CINZA && valorMaisDir > CINZA);
 
 }
 
 bool Sensores:: brancoPretoPretoBranco(){
- int contValor;
- if(valorMaisEsq > CINZA){
-   contValor++;
-}
- else if(valorEsq <= CINZA){
-  contValor++;
-}
- else if(valorDir <= CINZA){
-   contValor++;
-}
- else if(valorMaisDir > CINZA){
-  contValor++;
-}
 
-  if(contValor==4){
-    return true;
-}
-  else{
-   return false;
-}
+return (valorMaisEsq > CINZA && valorEsq <= CINZA && valorDir <= CINZA && valorMaisDir > CINZA);
 
 }
 
 bool Sensores:: pretoBrancoBrancoBranco(){
- int contValor;
- if(valorMaisEsq <= CINZA){
-   contValor++;
-}
- else if(valorEsq > CINZA){
-  contValor++;
-}
- else if(valorDir > CINZA){
-   contValor++;
-}
- else if(valorMaisDir > CINZA){
-  contValor++;
-}
-
-  if(contValor==4){
-    return true;
-}
-  else{
-   return false;
-}
+ 
+return (valorMaisEsq <= CINZA && valorEsq > CINZA && valorDir > CINZA && valorMaisDir > CINZA);
 
 }
 
