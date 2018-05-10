@@ -2,10 +2,10 @@
 #include "Sensores.h"
 #define CINZA 50
 
-double valorMaisEsq = lerSensorLinhaMaisEsq();
-double valorEsq = lerSensorLinhaEsq();
-double valorDir = lerSensorLinhaDir();
-double valorMaisDir = lerSensorLinhaMaisDir();
+valorMaisEsq = robo.lerSensorLinhaMaisEsq();
+double valorEsq = robo.lerSensorLinhaEsq();
+double valorDir = robo.lerSensorLinhaDir();
+double valorMaisDir = robo.lerSensorLinhaMaisDir();
 
 
 bool Sensores:: brancoBrancoBrancoBranco(){
