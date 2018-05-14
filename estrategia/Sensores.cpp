@@ -3,73 +3,66 @@
 #define CINZA 50
 
 void Sensores:: atualizar(){
-double valorMaisEsq = robo.lerSensorLinhaMaisEsq();
-double valorEsq = robo.lerSensorLinhaEsq();
-double valorDir = robo.lerSensorLinhaDir();
-double valorMaisDir = robo.lerSensorLinhaMaisDir();
+	double valorMaisEsq = robo.lerSensorLinhaMaisEsq();
+	double valorEsq = robo.lerSensorLinhaEsq();
+	double valorDir = robo.lerSensorLinhaDir();
+	double valorMaisDir = robo.lerSensorLinhaMaisDir();
 
 }
 
 bool Sensores:: brancoBrancoBrancoBranco(){
 
-atualizar();
+	atualizar();
 
-return (valorMaisEsq > CINZA && valorEsq > CINZA && valorDir > CINZA && valorMaisDir > CINZA);
+	return (valorMaisEsq > CINZA && valorEsq > CINZA && valorDir > CINZA && valorMaisDir > CINZA);
 
 }
 
 bool Sensores:: brancoBrancoBrancoPreto(){
 
-atualizar();
+	atualizar();
 
-return (valorMaisEsq > CINZA && valorEsq > CINZA && valorDir > CINZA && valorMaisDir <= CINZA);
+	return (valorMaisEsq > CINZA && valorEsq > CINZA && valorDir > CINZA && valorMaisDir <= CINZA);
 
 }
 
 bool Sensores:: brancoBrancoPretoBranco(){
 
-atualizar();
+	atualizar();
 
-return (valorMaisEsq > CINZA && valorEsq > CINZA && valorDir <= CINZA && valorMaisDir > CINZA);
+	return (valorMaisEsq > CINZA && valorEsq > CINZA && valorDir <= CINZA && valorMaisDir > CINZA);
 
 }
 
 bool Sensores:: brancoBrancoPretoPreto(){
 
-atualizar();
+	atualizar();
 
-return (valorMaisEsq > CINZA && valorEsq > CINZA && valorDir <= CINZA && valorMaisDir <= CINZA);
+	return (valorMaisEsq > CINZA && valorEsq > CINZA && valorDir <= CINZA && valorMaisDir <= CINZA);
 
 }
 
 bool Sensores:: brancoPretoBrancoBranco(){
 
-atualizar();
+	atualizar();
 
-return (valorMaisEsq > CINZA && valorEsq <= CINZA && valorDir > CINZA && valorMaisDir > CINZA);
+	return (valorMaisEsq > CINZA && valorEsq <= CINZA && valorDir > CINZA && valorMaisDir > CINZA);
 
 }
 
 bool Sensores:: brancoPretoPretoBranco(){
 
-atualizar();
+	atualizar();
 
-return (valorMaisEsq > CINZA && valorEsq <= CINZA && valorDir <= CINZA && valorMaisDir > CINZA);
+	return (valorMaisEsq > CINZA && valorEsq <= CINZA && valorDir <= CINZA && valorMaisDir > CINZA);
 
 }
 
 bool Sensores:: pretoBrancoBrancoBranco(){
 
-atualizar();
+	atualizar();
 
-return (valorMaisEsq <= CINZA && valorEsq > CINZA && valorDir > CINZA && valorMaisDir > CINZA);
-
-}
-
-
-bool Sensores:: senao(){
-
-atualizar();
+	return (valorMaisEsq <= CINZA && valorEsq > CINZA && valorDir > CINZA && valorMaisDir > CINZA);
 
 }
 
