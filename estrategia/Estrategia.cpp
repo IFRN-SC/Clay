@@ -1,33 +1,37 @@
 #include "Estrategia.h"
 #include "robo_hardware2.h"
-#define CINZA 50
+#include "Sensores.cpp"
 
 void Estrategia::executa(){
 
 }
 void Estrategia::seguirLinha(){
 
-if(robo.lerSensorLinhaMaisDir()>=CINZA && robo.lerSensorLinhaDir()>=CINZA && robo.lerSensorLinhaEsq()>=CINZA && robo.lerSensorLinhaMaisEsq()>=CINZA){
+if(Sensores::brancoBrancoBrancoBranco()){
 
 robo.acionarMotores(-50,50);
 
-}else if(robo.lerSensorLinhaMaisDir()>=CINZA && robo.lerSensorLinhaDir()>=CINZA && robo.lerSensorLinhaEsq()>=CINZA && robo.lerSensorLinhaMaisEsq()<=CINZA){
+}else if(Sensores:: brancoBrancoBrancoPreto()){
 
 robo.acionarMotores(-50,-50);
 
-}else if(robo.lerSensorLinhaMaisDir()>=CINZA && robo.lerSensorLinhaDir()>=CINZA && robo.lerSensorLinhaEsq()<=CINZA && robo.lerSensorLinhaMaisEsq()>=CINZA){
+}else if(Sensores:: brancoBrancoPretoBranco()){
 
 robo.acionarMotores(-50,50);
 
-}else if(robo.lerSensorLinhaMaisDir()>=CINZA && robo.lerSensorLinhaDir()>=CINZA && robo.lerSensorLinhaEsq()<=CINZA && robo.lerSensorLinhaMaisEsq()<=CINZA){
+}else if(Sensores:: brancoBrancoPretoPreto()){
 
 robo.acionarMotores(-50,-50);
 
-}else if(robo.lerSensorLinhaMaisDir()>=CINZA && robo.lerSensorLinhaDir()<=CINZA && robo.lerSensorLinhaEsq()>=CINZA && robo.lerSensorLinhaMaisEsq()>=CINZA){
+}else if(Sensores:: brancoPretoBrancoBranco()){
 
 robo.acionarMotores(50,50);
 
-}else if(robo.lerSensorLinhaMaisDir()>=CINZA && robo.lerSensorLinhaDir()<=CINZA && robo.lerSensorLinhaEsq()<=CINZA && robo.lerSensorLinhaMaisEsq()>=CINZA){
+}else if(Sensores:: brancoPretoPretoBranco(){
+
+robo.acionarMotores(50,50);
+
+}else if(Sensores:: pretoBrancoBrancoBranco()){
 
 robo.acionarMotores(50,50);
 
