@@ -23,5 +23,5 @@ bool pretoBrancoBrancoBranco();
 
 bool senao();
 
-
+void atualizar();
 };
