@@ -1,45 +1,44 @@
 #include "Estrategia.h"
 #include "robo_hardware2.h"
-#include "Sensores.cpp"
 
 void Estrategia::executa(){
-
+	seguirLinha();
 }
 void Estrategia::seguirLinha(){
 
-if(Sensores::brancoBrancoBrancoBranco()){
+	if(sensores.brancoBrancoBrancoBranco()){
 
-robo.acionarMotores(-50,50);
+		robo.acionarMotores(-50,50);
 
-}else if(Sensores:: brancoBrancoBrancoPreto()){
+	}else if(sensores.brancoBrancoBrancoPreto()){
 
-robo.acionarMotores(-50,-50);
+		robo.acionarMotores(-50,-50);
 
-}else if(Sensores:: brancoBrancoPretoBranco()){
+	}else if(sensores.brancoBrancoPretoBranco()){
 
-robo.acionarMotores(-50,50);
+		robo.acionarMotores(-50,50);
 
-}else if(Sensores:: brancoBrancoPretoPreto()){
+	}else if(sensores.brancoBrancoPretoPreto()){
 
-robo.acionarMotores(-50,-50);
+		robo.acionarMotores(-50,-50);
 
-}else if(Sensores:: brancoPretoBrancoBranco()){
+	}else if(sensores.brancoPretoBrancoBranco()){
 
-robo.acionarMotores(50,50);
+		robo.acionarMotores(50,50);
 
-}else if(Sensores:: brancoPretoPretoBranco(){
+	}else if(sensores.brancoPretoPretoBranco()){
 
-robo.acionarMotores(50,50);
+		robo.acionarMotores(50,50);
 
-}else if(Sensores:: pretoBrancoBrancoBranco()){
+	}else if(sensores.pretoBrancoBrancoBranco()){
 
-robo.acionarMotores(50,50);
+		robo.acionarMotores(50,50);
 
-}else{
+	}else{
 
-robo.acionarMotores(-50,50);
+		robo.acionarMotores(-50,50);
 
-}
+	}
 
 }
 void Estrategia::verde(){}
