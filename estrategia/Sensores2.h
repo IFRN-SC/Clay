@@ -1,6 +1,5 @@
 class Sensores2{
 
-
 double valorEsq;
 double valorDir;
 

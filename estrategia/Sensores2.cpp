@@ -37,5 +37,4 @@ bool Sensores2:: pretoPreto(){
 	atualizar();
 
 	return (valorEsq <= CINZA && valorDir <= CINZA);
-
 }
