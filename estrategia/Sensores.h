@@ -21,5 +21,7 @@ bool brancoPretoPretoBranco();
 
 bool pretoBrancoBrancoBranco();
 
+bool pretoPretoPretoPreto();
+
 void atualizar();
 };

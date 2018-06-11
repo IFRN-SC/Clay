@@ -66,3 +66,11 @@ bool Sensores:: pretoBrancoBrancoBranco(){
 
 }
 
+bool Sensores:: pretoPretoPretoPreto(){
+
+  atualizar();
+
+  return(valorMaisEsq <= CINZA && valorEsq <= CINZA && valorDir <= CINZA && valorMaisDir <= CINZA);
+  
+  }
+
