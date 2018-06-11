@@ -1,43 +1,26 @@
 #include "Estrategia.h"
 #include "robo_hardware2.h"
-#define CINZA 50
 
-void Estrategia::executa(){
+void Estrategia::executa() {
+  seguirLinha();
+}
+void Estrategia::seguirLinha() {
+
+  if (sensores.brancoBrancoBrancoBranco()) {
+    robo.acionarMotores(45, 45);
+  } else if (sensores.brancoPretoBrancoBranco()) {
+    robo.acionarMotores(-50, 50);
+  } else if (sensores.brancoBrancoPretoBranco()) {
+    robo.acionarMotores(50, -50);
+  } else if (sensores.brancoBrancoBrancoPreto()) {
+    robo.acionarMotores(50, -60);
+  } else if (sensores.pretoBrancoBrancoBranco()) {
+    robo.acionarMotores(-60, 50);
+  } else if (sensores.pretoPretoPretoPreto()) {
+    robo.acionarMotores(50, 50);
+  }
 
 }
-void Estrategia::seguirLinha(){
-
-if(robo.lerSensorLinhaMaisDir()>=CINZA && robo.lerSensorLinhaDir()>=CINZA && robo.lerSensorLinhaEsq()>=CINZA && robo.lerSensorLinhaMaisEsq()>=CINZA){
-
-robo.acionarMotores(-50,50);
-
-}else if(robo.lerSensorLinhaMaisDir()>=CINZA && robo.lerSensorLinhaDir()>=CINZA && robo.lerSensorLinhaEsq()>=CINZA && robo.lerSensorLinhaMaisEsq()<=CINZA){
-
-robo.acionarMotores(-50,-50);
-
-}else if(robo.lerSensorLinhaMaisDir()>=CINZA && robo.lerSensorLinhaDir()>=CINZA && robo.lerSensorLinhaEsq()<=CINZA && robo.lerSensorLinhaMaisEsq()>=CINZA){
-
-robo.acionarMotores(-50,50);
-
-}else if(robo.lerSensorLinhaMaisDir()>=CINZA && robo.lerSensorLinhaDir()>=CINZA && robo.lerSensorLinhaEsq()<=CINZA && robo.lerSensorLinhaMaisEsq()<=CINZA){
-
-robo.acionarMotores(-50,-50);
-
-}else if(robo.lerSensorLinhaMaisDir()>=CINZA && robo.lerSensorLinhaDir()<=CINZA && robo.lerSensorLinhaEsq()>=CINZA && robo.lerSensorLinhaMaisEsq()>=CINZA){
-
-robo.acionarMotores(50,50);
-
-}else if(robo.lerSensorLinhaMaisDir()>=CINZA && robo.lerSensorLinhaDir()<=CINZA && robo.lerSensorLinhaEsq()<=CINZA && robo.lerSensorLinhaMaisEsq()>=CINZA){
-
-robo.acionarMotores(50,50);
-
-}else{
-
-robo.acionarMotores(-50,50);
-
-}
-
-}
-void Estrategia::verde(){}
-void Estrategia::sala3(){}
-void Estrategia::desviarObstaculo(){}
+void Estrategia::verde() {}
+void Estrategia::sala3() {}
+void Estrategia::desviarObstaculo() {}

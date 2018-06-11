@@ -1,4 +1,7 @@
+#include"Sensores.h"
 class Estrategia{
+
+Sensores sensores;
 
 public:
 
