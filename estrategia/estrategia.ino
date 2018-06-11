@@ -5,11 +5,11 @@
 Estrategia estrategia;
 
 void setup() {
-robo.configurar(false);
+  robo.configurar(false);
 
 }
 void loop() {
-estrategia.executa();
+  estrategia.executa();
 
 
 }
