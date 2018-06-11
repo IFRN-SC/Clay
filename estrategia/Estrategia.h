@@ -1,8 +1,7 @@
-//#include"Sensores.h"
-#include"Sensores2.h"
+#include"Sensores.h"
 class Estrategia{
 
-Sensores2 sensores2;
+Sensores sensores;
 
 public:
 
