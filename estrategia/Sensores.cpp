@@ -3,10 +3,10 @@
 #define CINZA 50
 
 void Sensores:: atualizar(){
-	double valorMaisEsq = robo.lerSensorLinhaMaisEsq();
-	double valorEsq = robo.lerSensorLinhaEsq();
-	double valorDir = robo.lerSensorLinhaDir();
-	double valorMaisDir = robo.lerSensorLinhaMaisDir();
+	valorMaisEsq = robo.lerSensorLinhaMaisEsq();
+	valorEsq = robo.lerSensorLinhaEsq();
+	valorDir = robo.lerSensorLinhaDir();
+	valorMaisDir = robo.lerSensorLinhaMaisDir();
 
 }
 
