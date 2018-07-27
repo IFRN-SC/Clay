@@ -1,5 +1,6 @@
 #include "Sensores.h"
 #include "Movimento.h"
+#include "Calibracao.h"
 
 class Estrategia{
 

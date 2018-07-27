@@ -8,7 +8,7 @@
 
 //Funções para atualizar os valores de cada sensor
 void Calibracao:: atualizarVME(){
-   valorMaisEsq=robo.lerSensorLinhaMaisEsq();
+   	valorMaisEsq=robo.lerSensorLinhaMaisEsq();
 }
 void Calibracao:: atualizarVE(){
 	valorEsq=robo.lerSensorLinhaEsq();
@@ -23,7 +23,7 @@ void Calibracao:: atualizarVMD(){
 //Calibracao Sensor Mais Esquerdo
 bool Calibracao:: bValorMaisEsq(){
 	atualizarVME();
-  return (valorMaisEsq > CINMESQ);
+  	return (valorMaisEsq > CINMESQ);
 }
 
 bool Calibracao:: pValorMaisEsq(){
