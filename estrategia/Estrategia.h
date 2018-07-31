@@ -1,7 +1,10 @@
-#include"Sensores.h"
+#include "Sensores.h"
+#include "Movimento.h"
+
 class Estrategia{
 
 Sensores sensores;
+Movimento movimento;
 
 public:
 

@@ -7,18 +7,26 @@ void Estrategia::executa() {
 void Estrategia::seguirLinha() {
 
   if (sensores.brancoBrancoBrancoBranco()) {
-    robo.acionarMotores(45, 45);
+    movimento.fren();
   } else if (sensores.brancoPretoBrancoBranco()) {
-    robo.acionarMotores(-50, 50);
+    movimento.dir();
   } else if (sensores.brancoBrancoPretoBranco()) {
-    robo.acionarMotores(50, -50);
+    movimento.esq();
   } else if (sensores.brancoBrancoBrancoPreto()) {
-    robo.acionarMotores(50, -60);
+    movimento.exesq();
   } else if (sensores.pretoBrancoBrancoBranco()) {
-    robo.acionarMotores(-60, 50);
+    movimento.exdir();
   } else if (sensores.pretoPretoPretoPreto()) {
-    robo.acionarMotores(50, 50);
+    movimento.fren();
+  } else if(sensores.brancoPretoPretoBranco()) {
+    movimento.exdir();
+  } else if(sensores.brancoBrancoPretoBranco()) {
+    movimento.exdir();
+  } else if(sensores.pretoPretoPretoBranco())  {
+    movimento.fren();
   }
+  
+  
 
 }
 void Estrategia::verde() {}
