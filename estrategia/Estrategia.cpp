@@ -2,7 +2,20 @@
 #include "robo_hardware2.h"
 
 void Estrategia::executa() {
-  seguirLinha();
+  float sensorFrontal;
+
+  sensorFrontal = robo.lerSensorSonarFrontal();
+
+  if(sensorFrontal < 10){
+    desviarObstaculo();  
+  }
+  else{
+    seguirLinha();
+  }
+   
+  
+  
+  
 }
 void Estrategia::seguirLinha() {
 
@@ -26,9 +39,12 @@ void Estrategia::seguirLinha() {
     movimento.fren();
   }
   
-  
-
 }
 void Estrategia::verde() {}
 void Estrategia::sala3() {}
-void Estrategia::desviarObstaculo() {}
+void Estrategia::desviarObstaculo() {
+    while(true){
+     robo.acionarMotores(0,0);
+    }
+   
+  }
