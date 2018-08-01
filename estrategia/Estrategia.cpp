@@ -5,15 +5,14 @@ void Estrategia::executa() {
   float sensorFrontal;
 
   sensorFrontal = robo.lerSensorSonarFrontal();
-
   if(sensorFrontal < 10){
     desviarObstaculo();  
   }
   else{
-    seguirLinha();
+    seguirLinha();  
   }
+   verde();
    
-  
   
   
 }
@@ -38,13 +37,54 @@ void Estrategia::seguirLinha() {
   } else if(sensores.pretoPretoPretoBranco())  {
     movimento.fren();
   }
-  
 }
-void Estrategia::verde() {}
+void Estrategia::verde() {
+  
+   if(sensores.brancoPretoPretoBranco())  {
+    movimento.frenlen();
+    
+  }else if(sensores.pretoPretoPretoBranco())  {
+    movimento.frenlen();
+    
+  }else if(sensores.pretoPretoPretoBranco())  {
+    movimento.fren();
+  }
+ 
+  
+  }
 void Estrategia::sala3() {}
 void Estrategia::desviarObstaculo() {
-    while(true){
-     robo.acionarMotores(0,0);
-    }
-   
+  
+     movimento.parar();
+     delay(500);
+     movimento.dir();
+     delay(500);
+     movimento.parar();
+     delay(500);
+     movimento.fren();
+     delay(500);
+     movimento.parar();
+     delay(500);
+     movimento.esq();
+     delay(500);
+     movimento.parar();
+     delay(500);
+     movimento.fren();
+     delay(1000);
+     movimento.parar();
+     delay(500);
+     movimento.esq();
+     delay(500);
+     movimento.parar();
+     delay(500);
+     movimento.frenlen();
+     delay(550);
+
+     while(sensores.brancoBrancoBrancoBranco()){
+     movimento.frenlen();
+     
+     }
+     
+     
+     
   }

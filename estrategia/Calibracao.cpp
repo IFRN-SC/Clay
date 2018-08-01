@@ -1,10 +1,10 @@
 #include "robo_hardware2.h"
 #include "Calibracao.h"
 
-#define CINMESQ 62
-#define CINESQ 72
-#define CINDIR 68
-#define CINMDIR 60 
+#define CINMESQ 60
+#define CINESQ 70
+#define CINDIR 66
+#define CINMDIR 63 
 
 //Funções para atualizar os valores de cada sensor
 void Calibracao:: atualizarVME(){

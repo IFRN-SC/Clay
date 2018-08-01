@@ -16,3 +16,10 @@ void Movimento:: exdir(){
 void Movimento:: exesq(){
 	robo.acionarMotores(50,-60);
 }
+void Movimento:: parar(){
+  robo.acionarMotores(0, 0);
+}
+void Movimento:: frenlen(){
+  robo.acionarMotores(30, 30);
+}
+
