@@ -1,9 +1,12 @@
+#include "Calibracao.h"
 class Sensores{
 
-double valorMaisEsq;
+/*double valorMaisEsq;
 double valorEsq;
 double valorDir;
 double valorMaisDir;
+*/
+Calibracao calibracao;
 
 public:
 
@@ -23,5 +26,13 @@ bool pretoBrancoBrancoBranco();
 
 bool pretoPretoPretoPreto();
 
-void atualizar();
+bool pretoPretoPretoBranco();
+
+bool brancoPretoPretoPreto();
+
+bool pretoPretoBrancoBranco();
+
+bool brancoPretoBrancoPreto();
+
+//void atualizar();
 };
