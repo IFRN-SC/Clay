@@ -24,4 +24,6 @@ void atualizarVE();
 void atualizarVD();
 void atualizarVMD();
 
+void menu();
+
 };

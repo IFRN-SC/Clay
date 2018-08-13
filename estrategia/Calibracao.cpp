@@ -66,7 +66,9 @@ bool Calibracao:: pValorMaisDir(){
 	return(valorMaisDir <= CINDIR);
 }
 
-
+void Calibracao:: menu(){
+  
+}
 
 
 
