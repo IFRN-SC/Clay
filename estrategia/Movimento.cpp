@@ -23,6 +23,6 @@ void Movimento:: frenlen(){
   robo.acionarMotores(30, 30);
 }
 void Movimento:: girando(){
-  robo.acionarMotores(-50, -40);
+  robo.acionarMotores(-40, -40);
 }
 
