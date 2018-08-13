@@ -2,25 +2,92 @@
 #include "robo_hardware2.h"
 
 void Estrategia::executa() {
-  seguirLinha();
+  float sensorFrontal;
+
+  sensorFrontal = robo.lerSensorSonarFrontal();
+  if(sensorFrontal < 10){
+    desviarObstaculo();  
+  }
+  else{
+    seguirLinha();  
+  }
+   verde();
+  
 }
 void Estrategia::seguirLinha() {
 
   if (sensores.brancoBrancoBrancoBranco()) {
-    robo.acionarMotores(45, 45);
+    movimento.fren();
   } else if (sensores.brancoPretoBrancoBranco()) {
-    robo.acionarMotores(-50, 50);
+    movimento.dir();
   } else if (sensores.brancoBrancoPretoBranco()) {
-    robo.acionarMotores(50, -50);
+    movimento.esq();
   } else if (sensores.brancoBrancoBrancoPreto()) {
-    robo.acionarMotores(50, -60);
+    movimento.exesq();
   } else if (sensores.pretoBrancoBrancoBranco()) {
-    robo.acionarMotores(-60, 50);
+    movimento.exdir();
   } else if (sensores.pretoPretoPretoPreto()) {
-    robo.acionarMotores(50, 50);
+    movimento.fren();
+  } else if(sensores.brancoPretoPretoBranco()) {
+    movimento.exdir();
+  } else if(sensores.brancoBrancoPretoBranco()) {
+    movimento.exdir();
+  } else if(sensores.pretoPretoPretoBranco())  {
+    movimento.fren();
+  }
+}
+void Estrategia::verde() {
+  
+   if(sensores.brancoPretoPretoBranco())  {
+    movimento.frenlen();
+    
+  }else if(sensores.pretoPretoPretoBranco())  {
+    movimento.esq();
+    
+  }else if(sensores.pretoPretoPretoBranco())  {
+    movimento.esq();
   }
 
-}
-void Estrategia::verde() {}
+  
+  }
+ 
+  
+  
 void Estrategia::sala3() {}
-void Estrategia::desviarObstaculo() {}
+void Estrategia::desviarObstaculo() {
+  
+     movimento.parar();
+     delay(500);
+     movimento.dir();
+     delay(500);
+     movimento.parar();
+     delay(500);
+     movimento.fren();
+     delay(800);
+     movimento.parar();
+     delay(500);
+     movimento.esq();
+     delay(500);
+     movimento.parar();
+     delay(500);
+     movimento.fren();
+     delay(1100);
+     movimento.parar();
+     delay(500);
+     movimento.esq();
+     delay(400);
+     movimento.parar();
+     delay(500);
+     movimento.frenlen();
+     delay(400);
+     movimento.exesq();
+     delay(400);
+
+     while(sensores.brancoBrancoBrancoBranco()){
+     movimento.frenlen();
+     
+     }
+     
+     
+     
+  }
