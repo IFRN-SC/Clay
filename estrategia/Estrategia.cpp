@@ -29,7 +29,7 @@ void Estrategia::seguirLinha() {
     //delay(200);
   } else if (sensores.pretoBrancoBrancoBranco()) {
     movimento.exdir();
-    //delay(150);
+   //delay(150);
   } else if (sensores.pretoPretoPretoPreto()) {
     movimento.fren();
   } else if(sensores.brancoPretoPretoBranco()) {
@@ -37,19 +37,19 @@ void Estrategia::seguirLinha() {
     //delay(1000);
   } else if(sensores.brancoBrancoPretoBranco()) {
     movimento.exdir();
-    //delay(150);
+    delay(150);
   } else if(sensores.pretoPretoPretoBranco())  {
     movimento.esq();
-    //delay(150);
+    delay(300);
   } else if(sensores.brancoPretoBrancoBranco())  {
     movimento.dir();
-    //delay(150);
+    delay(300);
   } else if(sensores.pretoPretoBrancoBranco())  {
     movimento.esq();
-    //delay(150);
+    delay(300);
   } else if(sensores.brancoBrancoPretoPreto())  {
     movimento.esq();
-    //delay(150);
+    delay(300);
   } 
   
 }

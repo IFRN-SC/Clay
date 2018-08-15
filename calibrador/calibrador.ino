@@ -26,7 +26,7 @@ void setup() {
     s3 = v3 + s3;
     s4 = v4 + s4;
     
-    delay(1000);
+    delay(100);
   }
 
   md1b = s1 / 12;
@@ -59,7 +59,7 @@ void setup() {
       s3 = v3 + s3;
       s4 = v4 + s4;
 
-   delay(1000);
+   delay(100);
 
     }
 
