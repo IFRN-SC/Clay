@@ -5,8 +5,9 @@ void Estrategia::executa() {
   float sensorFrontal;
 
   sensorFrontal = robo.lerSensorSonarFrontal();
-  if(sensorFrontal < 10){
-    desviarObstaculo();  
+  if(sensorFrontal <= 10){
+    desviarObstaculo(); 
+  
   }
   else{
     seguirLinha();  
@@ -63,11 +64,11 @@ void Estrategia::desviarObstaculo() {
      movimento.parar();
      delay(5000);
      movimento.dir();
-     delay(400);
+     delay(450);
      movimento.parar();
      delay(500);
      movimento.fren();
-     delay(600);
+     delay(800);
      movimento.parar();
      delay(500);
      movimento.esq();
@@ -83,10 +84,11 @@ void Estrategia::desviarObstaculo() {
      movimento.parar();
      delay(500);
      movimento.esq();
-     delay(150);
+     delay(100);
 
      while(sensores.brancoBrancoBrancoBranco()){
      movimento.frenlen();
+
      
      }
  
