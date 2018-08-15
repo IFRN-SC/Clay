@@ -32,6 +32,7 @@ void Estrategia::seguirLinha() {
     movimento.exdir();
    //delay(150);
   } else if (sensores.pretoPretoPretoPreto()) {
+<<<<<<< Updated upstream
     movimento.fren();
   } else if(sensores.brancoPretoPretoBranco()) {
     movimento.frenlen();
@@ -56,7 +57,17 @@ void Estrategia::seguirLinha() {
 }
 void Estrategia::verde() {
 
+=======
+    robo.acionarMotores(50, 50);
+  }else if (sensores.pretoPretoPretoBranco()){
+    robo.acionarMotores(50, -60);
+  }else if (sensores.pretoBrancoBrancoPreto()){
+    robo.acionarMotores(50, -60);
+>>>>>>> Stashed changes
   }
+   else if (sensores.pretoBrancoPretoPreto()){
+   robo.acionarMotores(-60, 50);
+   }
 
 void Estrategia::sala3() {}
 void Estrategia::desviarObstaculo() {

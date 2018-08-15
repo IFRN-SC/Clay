@@ -1,6 +1,6 @@
 #include "robo_hardware2.h"
 #include "Sensores2.h"
-#define CINZA 50
+#define CINZA 60
 
 void Sensores2:: atualizar(){
 	double valorEsq = robo.lerSensorLinhaEsq();
