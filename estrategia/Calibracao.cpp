@@ -3,13 +3,13 @@
 
 
 
-#define CINMESQ 57.64
+#define CINMESQ 56.81
 
-#define CINESQ  64.87
+#define CINESQ  58.88
 
-#define CINDIR  64.28
+#define CINDIR  57.12
 
-#define CINMDIR 62.07
+#define CINMDIR 57.31
 
 
 //Funções para atualizar os valores de cada sensor
