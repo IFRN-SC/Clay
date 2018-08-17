@@ -1,17 +1,17 @@
-class Sensores2{
+class Sensores2 {
 
-double valorEsq;
-double valorDir;
+    double valorEsq;
+    double valorDir;
 
-public:
+  public:
 
-bool brancoBranco();
+    bool brancoBranco();
 
-bool brancoPreto();
+    bool brancoPreto();
 
-bool pretoBranco();
+    bool pretoBranco();
 
-bool pretoPreto();
+    bool pretoPreto();
 
-void atualizar();
+    void atualizar();
 };

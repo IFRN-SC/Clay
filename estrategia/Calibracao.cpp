@@ -3,14 +3,10 @@
 
 
 
-#define CINMESQ 56.81
-
-#define CINESQ  58.88
-
-#define CINDIR  57.12
-
-#define CINMDIR 57.31
-
+#define CINMESQ 41.38
+#define CINESQ  50.37
+#define CINDIR  47.67
+#define CINMDIR 44.64
 
 //Funções para atualizar os valores de cada sensor
 void Calibracao:: atualizarVME(){

@@ -1,18 +1,21 @@
 #include "Sensores.h"
 #include "Movimento.h"
+#include "CalibradorGT.h"
 
-class Estrategia{
+class Estrategia {
 
-Sensores sensores;
-Movimento movimento;
+    CalibradorGT calibrador;
+    Sensores sensores;
+    Movimento movimento;
 
-public:
+  public:
 
-void executa();
-void seguirLinha();
-void verde();
-void sala3();
-void desviarObstaculo();
+    void calibracao();
+    void executa();
+    void seguirLinha();
+    void verde();
+    void sala3();
+    void desviarObstaculo();
 
 
 };
