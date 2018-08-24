@@ -2,17 +2,19 @@
 #include "robo_hardware2.h"
 
 void Estrategia::executa() {
+  
   float sensorFrontal;
+  float sensorLateral;
 
   sensorFrontal = robo.lerSensorSonarFrontal();
-  if(sensorFrontal <= 10){
-    desviarObstaculo(); 
-  
+  if(sensorFrontal < 10){
+    desviarObstaculo();  
   }
+ 
   else{
     seguirLinha();  
   }
-   verde();
+  
 }
 void Estrategia::seguirLinha() {
 
@@ -20,55 +22,52 @@ void Estrategia::seguirLinha() {
     movimento.fren();
   } else if (sensores.brancoPretoBrancoBranco()) {
     movimento.dir();
-    //delay(200);
     
   } else if (sensores.brancoBrancoPretoBranco()) {
     movimento.esq();
     
   } else if (sensores.brancoBrancoBrancoPreto()) {
     movimento.exesq();
-    //delay(200);
+    delay(300);
   } else if (sensores.pretoBrancoBrancoBranco()) {
     movimento.exdir();
-   //delay(150);
+    delay(300);
   } else if (sensores.pretoPretoPretoPreto()) {
     movimento.fren();
   } else if(sensores.brancoPretoPretoBranco()) {
     movimento.frenlen();
-    //delay(1000);
   } else if(sensores.brancoBrancoPretoBranco()) {
     movimento.exdir();
-    delay(150);
+    delay(200);
   } else if(sensores.pretoPretoPretoBranco())  {
     movimento.esq();
-    delay(300);
+    delay(200);
   } else if(sensores.brancoPretoBrancoBranco())  {
-    movimento.dir();
-    delay(300);
+    movimento.esq();
+    delay(200);
   } else if(sensores.pretoPretoBrancoBranco())  {
     movimento.esq();
-    delay(300);
+    delay(200);
   } else if(sensores.brancoBrancoPretoPreto())  {
     movimento.esq();
-    delay(300);
+    delay(200);
   } 
   
 }
-void Estrategia::verde() {
-
-  }
-
+void Estrategia::verde() {}
 void Estrategia::sala3() {}
+
+
 void Estrategia::desviarObstaculo() {
      
      movimento.parar();
      delay(5000);
      movimento.dir();
-     delay(450);
+     delay(400);
      movimento.parar();
      delay(500);
      movimento.fren();
-     delay(800);
+     delay(600);
      movimento.parar();
      delay(500);
      movimento.esq();
@@ -84,12 +83,13 @@ void Estrategia::desviarObstaculo() {
      movimento.parar();
      delay(500);
      movimento.esq();
-     delay(100);
+     delay(150);
 
      while(sensores.brancoBrancoBrancoBranco()){
      movimento.frenlen();
-
      
      }
- 
+     
+     
+     
   }

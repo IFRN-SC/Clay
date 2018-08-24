@@ -10,6 +10,4 @@ void setup() {
 }
 void loop() {
   estrategia.executa();
-
-
 }

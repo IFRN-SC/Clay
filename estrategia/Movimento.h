@@ -11,5 +11,6 @@ void exesq();
 void parar();
 void frenlen();
 void girando();
+void superfrent();
 
 };
