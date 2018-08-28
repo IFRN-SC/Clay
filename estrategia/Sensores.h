@@ -1,3 +1,4 @@
+#include "CalibradorGT.h"
 class Sensores {
 
     double valorMaisEsq;
@@ -5,9 +6,15 @@ class Sensores {
     double valorDir;
     double valorMaisDir;
 
+    double cinmesq;
+    double cinesq;
+    double cindir;
+    double cinmdir;
 
-  public:
-
+    CalibradorGT calibrador;
+    
+public:
+    
     bool brancoBrancoBrancoBranco();
 
     bool brancoBrancoBrancoPreto();

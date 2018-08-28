@@ -1,6 +1,10 @@
 #include "robo_hardware2.h"
 #include "Sensores.h"
-#define CINZA 50
+
+#define CINMESQ 41.38
+#define CINESQ  50.37
+#define CINDIR  47.67
+#define CINMDIR 44.64
 
 void Sensores:: atualizar() {
   valorMaisEsq = robo.lerSensorLinhaMaisEsq();
@@ -8,6 +12,7 @@ void Sensores:: atualizar() {
   valorDir = robo.lerSensorLinhaDir();
   valorMaisDir = robo.lerSensorLinhaMaisDir();
 
+  calibrador
 }
 
 bool Sensores:: brancoBrancoBrancoBranco() {

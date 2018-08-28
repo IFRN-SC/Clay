@@ -8,6 +8,22 @@ void CalibradorGT :: atualizar(){
      v3 = robo.lerSensorLinhaDir();
      v4 = robo.lerSensorLinhaMaisDir();
 }
+float CalibradorGT :: vsMEsq(float md1b, float md1p){
+  sRME = (md1b + md1p) / 2;
+  return sRME;
+  }
+  float CalibradorGT :: vsEsq(float md2b, float md2p){
+  sRME = (md2b + md2p) / 2;
+  return sRE;
+  }
+  float CalibradorGT :: vsDir(float md3b, float md3p){
+  sRME = (md3b + md3p) / 2;
+  return sRD;
+  }
+  float CalibradorGT :: vsMDir(float md4b, float md4p){
+  sRME = (md4b + md4p) / 2;
+  return sRMD;
+  }
 
 void CalibradorGT :: calibrar(){
         robo.ligarLed(1);
@@ -78,11 +94,10 @@ void CalibradorGT :: calibrar(){
 
 
 
-      sRME = (md1b + md1p) / 2;
-      sRE = (md2b + md2p) / 2;
-      sRD = (md3b + md3p) / 2;
-      sRMD = (md4b + md4p) / 2;
-
+      sRME = vsMEsq(md1b,md1p);
+      sRE = vsEsq(md2b,md2p);
+      sRD = vsDir(md3b,md3p);
+      sRMD = vsMDir(md4b,md4p);
 
       Serial.println("Mais Esquerdo: ");
       Serial.println(sRME);
@@ -92,10 +107,6 @@ void CalibradorGT :: calibrar(){
       Serial.println(sRD);
       Serial.println("Mais Direito: ");
       Serial.println(sRMD);
-
       Serial.print("PRONTO!!!");
-
-
-
 
 }
