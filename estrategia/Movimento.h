@@ -12,5 +12,7 @@ void parar();
 void frenlen();
 void girando();
 void superfrent();
+void dirr();
+void esqq();
 
 };
