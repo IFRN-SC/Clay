@@ -5,10 +5,14 @@ void Estrategia::executa() {
   
   float sensorFrontal;
   float sensorLateral;
-
+  
+  sensorLateral = robo.lerSensorSonarDir();
   sensorFrontal = robo.lerSensorSonarFrontal();
   if(sensorFrontal < 10){
     desviarObstaculo();  
+  }
+  else if(sensorLateral < 10){
+    sala3(); 
   }
  
   else{
@@ -20,6 +24,7 @@ void Estrategia::seguirLinha() {
 
   if (sensores.brancoBrancoBrancoBranco()) {
     movimento.fren();
+    
   } else if (sensores.brancoPretoBrancoBranco()) {
     movimento.dir();
     
@@ -38,26 +43,36 @@ void Estrategia::seguirLinha() {
     movimento.frenlen();
   } else if(sensores.brancoBrancoPretoBranco()) {
     movimento.exdir();
-    delay(200);
+    delay(250);
   } else if(sensores.pretoPretoPretoBranco())  {
     movimento.esq();
-    delay(200);
+    delay(250);
   } else if(sensores.brancoPretoBrancoBranco())  {
     movimento.esq();
-    delay(200);
+    delay(250);
   } else if(sensores.pretoPretoBrancoBranco())  {
     movimento.esq();
-    delay(200);
+    delay(250);
   } else if(sensores.brancoBrancoPretoPreto())  {
     movimento.esq();
-    delay(200);
+    delay(250);
   } 
   
 }
 void Estrategia::verde() {}
-void Estrategia::sala3() {}
-
-
+void Estrategia::sala3() {
+  
+  if (sensores.brancoBrancoBrancoBranco()) {
+    movimento.superfrent();
+  }
+  else if(sensores.brancoPretoBrancoBranco()) {
+   movimento.dirr();
+  }
+  else if (sensores.brancoBrancoPretoBranco()) {
+    movimento.esqq(); 
+  }
+ 
+}
 void Estrategia::desviarObstaculo() {
      
      movimento.parar();
