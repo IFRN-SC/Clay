@@ -1,43 +1,38 @@
-#include "CalibradorGT.h"
-class Sensores {
+#include "Calibracao.h"
+class Sensores{
 
-    double valorMaisEsq;
-    double valorEsq;
-    double valorDir;
-    double valorMaisDir;
+/*double valorMaisEsq;
+double valorEsq;
+double valorDir;
+double valorMaisDir;
+*/
+Calibracao calibracao;
 
-    double cinmesq;
-    double cinesq;
-    double cindir;
-    double cinmdir;
-
-    CalibradorGT calibrador;
-    
 public:
-    
-    bool brancoBrancoBrancoBranco();
 
-    bool brancoBrancoBrancoPreto();
+bool brancoBrancoBrancoBranco();
 
-    bool brancoBrancoPretoBranco();
+bool brancoBrancoBrancoPreto();
 
-    bool brancoBrancoPretoPreto();
+bool brancoBrancoPretoBranco();
 
-    bool brancoPretoBrancoBranco();
+bool brancoBrancoPretoPreto();
 
-    bool brancoPretoPretoBranco();
+bool brancoPretoBrancoBranco();
 
-    bool pretoBrancoBrancoBranco();
+bool brancoPretoPretoBranco();
 
-    bool pretoPretoPretoPreto();
+bool pretoBrancoBrancoBranco();
 
-    bool pretoPretoPretoBranco();
+bool pretoPretoPretoPreto();
 
-    bool brancoPretoPretoPreto();
+bool pretoPretoPretoBranco();
 
-    bool pretoPretoBrancoBranco();
+bool brancoPretoPretoPreto();
 
-    bool brancoPretoBrancoPreto();
+bool pretoPretoBrancoBranco();
 
-    void atualizar();
+bool brancoPretoBrancoPreto();
+
+//void atualizar();
 };

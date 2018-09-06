@@ -1,14 +1,23 @@
 #include "robo_hardware2.h"
 #include "Calibracao.h"
+#include "Calibrador.h"
+
+
+Calibrador calibrador;
 
 
 
-#define CINMESQ 41.38
-#define CINESQ  50.37
-#define CINDIR  47.67
-#define CINMDIR 44.64
+void Calibracao:: valores(){
+  sRME = calibrador.getSRME();
+  sRE = calibrador.getSRE();
+  sRD = calibrador.getSRD();
+  sRMD = calibrador.getSRMD();
+}
 
-//Funções para atualizar os valores de cada sensor
+void Calibracao::calibrar(){
+  calibrador.calibrar();
+}
+  //Funções para atualizar os valores de cada sensor
 void Calibracao:: atualizarVME(){
    valorMaisEsq=robo.lerSensorLinhaMaisEsq();
 }
@@ -25,45 +34,45 @@ void Calibracao:: atualizarVMD(){
 //Calibracao Sensor Mais Esquerdo
 bool Calibracao:: bValorMaisEsq(){
 	atualizarVME();
-  return (valorMaisEsq > CINMESQ);
+  return (valorMaisEsq > sRME);
 }
 
 bool Calibracao:: pValorMaisEsq(){
 	atualizarVME();
-	return (valorMaisEsq <= CINMESQ);
+	return (valorMaisEsq <= sRME);
 }
 
 //Calibracao Sensor Esquerdo
 bool Calibracao:: bValorEsq(){
 	atualizarVE();
-	return (valorEsq > CINESQ);
+	return (valorEsq > sRE);
 }
 
 bool Calibracao:: pValorEsq(){
 	atualizarVE();
-	return (valorEsq <= CINESQ);
+	return (valorEsq <= sRE);
 }
 
 //Calibracao Sensor Direito
 bool Calibracao:: bValorDir(){
 	atualizarVD();
-	return (valorDir > CINDIR);
+	return (valorDir > sRD);
 }
 
 bool Calibracao:: pValorDir(){
 	atualizarVD();
-	return (valorDir <= CINDIR);
+	return (valorDir <= sRD);
 }
 
 //Calibracao Sensor Mais Direito
 bool Calibracao:: bValorMaisDir(){
 	atualizarVMD();
-	return(valorMaisDir > CINMDIR);
+	return(valorMaisDir > sRMD);
 }
 
 bool Calibracao:: pValorMaisDir(){
 	atualizarVMD();
-	return(valorMaisDir <= CINDIR);
+	return(valorMaisDir <= sRMD);
 }
 
 

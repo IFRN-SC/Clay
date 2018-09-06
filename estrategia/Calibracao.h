@@ -1,9 +1,17 @@
-class Calibracao{
+#ifndef CALIBRACAO
+#define CALIBRACAO
 
-double valorMaisEsq;
-double valorEsq;
-double valorDir;
-double valorMaisDir;
+  
+  class Calibracao{
+
+float sRME;
+float sRE;
+float sRD;
+float sRMD;
+float valorMaisEsq;
+float valorEsq;
+float valorDir;
+float valorMaisDir;
 
 public:
 
@@ -19,9 +27,13 @@ bool pValorDir();
 bool bValorMaisDir();
 bool pValorMaisDir();
 
+void valores();
+void calibrar();
 void atualizarVME();
 void atualizarVE();
 void atualizarVD();
 void atualizarVMD();
 
 };
+
+#endif
