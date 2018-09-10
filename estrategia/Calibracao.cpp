@@ -1,21 +1,20 @@
 #include "robo_hardware2.h"
 #include "Calibracao.h"
-#include "Calibrador.h"
-
-
-Calibrador calibrador;
-
 
 
 void Calibracao:: valores(){
   sRME = calibrador.getSRME();
   sRE = calibrador.getSRE();
   sRD = calibrador.getSRD();
-  sRMD = calibrador.getSRMD();
+  sRMD = calibrador.getSRMD();/*
+  Serial.println(sRME);
+  Serial.println(sRE);  
+  Serial.println(sRD);  
+  Serial.println(sRMD);  */
 }
 
 void Calibracao::calibrar(){
-  calibrador.calibrar();
+//  calibrador.calibrar();
 }
   //Funções para atualizar os valores de cada sensor
 void Calibracao:: atualizarVME(){
@@ -76,6 +75,9 @@ bool Calibracao:: pValorMaisDir(){
 }
 
 
-
+void Calibracao::setValoresCalibracao(Calibrador c){
+  calibrador=c;
+  valores();
+}
 
 

@@ -1,5 +1,6 @@
 #include "Sensores.h"
 #include "Movimento.h"
+#include "Calibrador.h"
 
 class Estrategia{
 
@@ -14,5 +15,6 @@ void verde();
 void sala3();
 void desviarObstaculo();
 
+inline void setValoresCalibracao(Calibrador c){sensores.setValoresCalibracao(c);}
 
 };

@@ -1,8 +1,11 @@
-#ifndef CALIBRACAO
-#define CALIBRACAO
+#ifndef CALIBRACAO_H
+#define CALIBRACAO_H
 
+#include "Calibrador.h"
   
-  class Calibracao{
+class Calibracao{
+
+Calibrador calibrador;
 
 float sRME;
 float sRE;
@@ -33,6 +36,8 @@ void atualizarVME();
 void atualizarVE();
 void atualizarVD();
 void atualizarVMD();
+
+void setValoresCalibracao(Calibrador c);
 
 };
 

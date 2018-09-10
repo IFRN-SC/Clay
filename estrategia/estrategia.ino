@@ -8,8 +8,12 @@ Menu menu;
 
 void setup() {
   robo.configurar(false);
+  Serial.begin(9600);
+  Serial.println("Teste");
   menu.menuLon();
+  
+  estrategia.setValoresCalibracao(menu.getValoresCalibracao());
 }
 void loop() {
   estrategia.executa();
-}s
+}

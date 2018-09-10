@@ -1,9 +1,5 @@
 #include "Calibrador.h"
 #include "robo_hardware2.h"
-#include "Calibrador.h"
-#include "Calibracao.h"
-
-Calibracao calibracao;
 
 float Calibrador:: getSRME() {
   return sRME;
@@ -21,10 +17,11 @@ float Calibrador:: getSRMD() {
 void Calibrador:: calibrar() {
 
   robo.ligarLed(1);
-
+  
+ 
   while ( !robo.botao1Pressionado() );
 
-  Serial.print("BRANCO COMEÇOU!");
+  Serial.println("BRANCO COMEÇOU!");
 
   for (int i = 0; i < 20; i++) {             //Armazenamento de leitura no Branco (15x)
     v1 = robo.lerSensorLinhaMaisEsq();
@@ -94,11 +91,13 @@ void Calibrador:: calibrar() {
   Serial.print("PRETO PRONTO!");
   robo.ligarLed(3);
 
-  calibracao.valores();
+ // calibracao.valores();
 
   while ( !robo.botao2Pressionado() );
 
   robo.desligarLed(1);
+
+ 
 
 }
 

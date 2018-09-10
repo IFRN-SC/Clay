@@ -1,11 +1,15 @@
-#include "Calibracao.h"
+#include "Calibrador.h"
 
 class Menu{
-  Calibracao calibracao;
+  Calibrador calibrador;
   bool pare;
+
+  void printDados();
   
   public:
   void menuLon();
+
+  const Calibrador getValoresCalibracao(){return calibrador;}
  
 };
 

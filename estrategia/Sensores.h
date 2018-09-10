@@ -1,4 +1,6 @@
 #include "Calibracao.h"
+#include "Calibrador.h"
+
 class Sensores{
 
 /*double valorMaisEsq;
@@ -35,4 +37,6 @@ bool pretoPretoBrancoBranco();
 bool brancoPretoBrancoPreto();
 
 //void atualizar();
+
+inline void setValoresCalibracao(Calibrador c){calibracao.setValoresCalibracao(c);}
 };
