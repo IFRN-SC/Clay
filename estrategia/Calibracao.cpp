@@ -71,7 +71,7 @@ bool Calibracao:: bValorMaisDir(){
 
 bool Calibracao:: pValorMaisDir(){
 	atualizarVMD();
-	return(valorMaisDir <= sRMD);
+	return(valorMaisDir <= sRD);
 }
 
 

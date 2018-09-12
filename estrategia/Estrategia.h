@@ -3,12 +3,14 @@
 #include "Calibrador.h"
 
 class Estrategia{
+  bool parar;
 
 Sensores sensores;
 Movimento movimento;
 
 public:
 
+void led();
 void executa();
 void seguirLinha();
 void verde();

@@ -13,9 +13,25 @@ float Calibrador:: getSRD() {
 float Calibrador:: getSRMD() {
   return sRME;
 }
+void Calibrador::setSRME(float sRME2){
+  sRME = sRME2;
+}
 
-void Calibrador:: calibrar() {
+void Calibrador::setSRE(float sRE2){
+  sRE = sRE2;
+}
 
+void Calibrador::setSRD(float sRD2){
+  sRD = sRD2;
+}
+
+void Calibrador::setSRMD(float sRMD2){
+  sRMD = sRMD2;
+}
+
+
+void Calibrador:: calibrar() {    
+delay(1000);
   robo.ligarLed(1);
   
  
@@ -23,7 +39,7 @@ void Calibrador:: calibrar() {
 
   Serial.println("BRANCO COMEÇOU!");
 
-  for (int i = 0; i < 20; i++) {             //Armazenamento de leitura no Branco (15x)
+  for (int i = 0; i < 100; i++) {             //Armazenamento de leitura no Branco (15x)
     v1 = robo.lerSensorLinhaMaisEsq();
     v2 = robo.lerSensorLinhaEsq();
     v3 = robo.lerSensorLinhaDir();
@@ -34,13 +50,13 @@ void Calibrador:: calibrar() {
     s3 = v3 + s3;
     s4 = v4 + s4;
 
-    delay(500);
+    delay(50);
   }
 
-  md1b = s1 / 20;
-  md2b = s2 / 20;
-  md3b = s3 / 20;
-  md4b = s4 / 20;
+  md1b = s1 / 100;
+  md2b = s2 / 100;
+  md3b = s3 / 100;
+  md4b = s4 / 100;
 
 
   Serial.print("BRANCO PRONTO!");
@@ -58,7 +74,7 @@ void Calibrador:: calibrar() {
   s3 = 0;
   s4 = 0;
 
-  for (int i = 0; i < 20; i++) {             //Armazenamento de leitura no Preto (15x)
+  for (int i = 0; i < 100; i++) {             //Armazenamento de leitura no Preto (15x)
     v1 = robo.lerSensorLinhaMaisEsq();
     v2 = robo.lerSensorLinhaEsq();
     v3 = robo.lerSensorLinhaDir();
@@ -70,16 +86,16 @@ void Calibrador:: calibrar() {
     s3 = v3 + s3;
     s4 = v4 + s4;
 
-    delay(500);
+    delay(100);
 
   }
 
 
 
-  md1p = s1 / 20;
-  md2p = s2 / 20;
-  md3p = s3 / 20;
-  md4p = s4 / 20;
+  md1p = s1 / 100;
+  md2p = s2 / 100;
+  md3p = s3 / 100;
+  md4p = s4 / 100;
 
 
 

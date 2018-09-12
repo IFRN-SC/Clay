@@ -14,5 +14,8 @@ void girando();
 void superfrent();
 void dirr();
 void esqq();
+void rabesq();
+void frenmed();
+void rabdir();
 
 };

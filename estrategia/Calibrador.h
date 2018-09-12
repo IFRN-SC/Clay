@@ -20,6 +20,10 @@ class Calibrador {
     float getSRE();
     float getSRD();
     float getSRMD();
+    void setSRME(float);
+    void setSRE(float);
+    void setSRD(float);
+    void setSRMD(float);
     
 
 };
