@@ -133,43 +133,69 @@ void Estrategia::sala3() {
 }
 void Estrategia::desviarObstaculo() {
   //movimento.parar();
-  robo.acionarMotores(-10,-10);
+  robo.acionarMotores(-12,-12);
   delay(2000);
   movimento.esq();
-  delay(460);
+  delay(445);
   movimento.parar();
   delay(2000);
   movimento.fren();
-  delay(580);
+  delay(420);
   movimento.parar();
   delay(2000);
   movimento.dir();
-  delay(450);
+  delay(380);
   movimento.parar();
   delay(2000);
   movimento.fren();
-  delay(740);
-
- 
+  delay(860); 
   movimento.parar();
   delay(2000);
   movimento.dir();
   delay(350);
   movimento.parar();
   delay(2000);
-  movimento.esq();
-  delay(120);
   movimento.fren();
-  delay(500);
-  movimento.esq();
-  delay(450);
-  robo.acionarMotores(-30,-30);
-  delay(200);
-  movimento.parar();
-  delay(2000);
-  movimento.esq();
-  delay(100);
-  movimento.parar();
-  delay(2000);
+  delay(300);
 
+  while(!parar){
+    if((sensores.pretoPretoPretoPreto()) || (sensores.pretoPretoBrancoBranco()) || (sensores.brancoBrancoPretoPreto())){
+      robo.ligarLed(1);
+      robo.acionarMotores(-15,-15);
+      delay(500);
+      movimento.parar();
+      delay(500);
+      movimento.fren();
+      delay(100);
+       movimento.parar();
+      delay(2000);
+      movimento.esq();
+      delay(450);
+      movimento.parar();
+      delay(2000);
+      robo.acionarMotores(-50,-50);
+      delay(150);
+      movimento.parar();
+      delay(2000);
+      parar = true;
+    }
+  
+}
+
+  //movimento.fren();
+  //delay(500);
+  //movimento.parar();
+  //delay(2000);
+  //movimento.esq();
+  //delay(450);
+  //movimento.parar();
+  //delay(2000);
+  //robo.acionarMotores(-30,-30);
+  //delay(200);
+  //movimento.parar();
+  //delay(2000);
+  //movimento.esq();
+  //delay(120);
+  //movimento.parar();
+ // delay(2000);
 }
