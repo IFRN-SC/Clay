@@ -32,88 +32,93 @@ void Calibrador::setSRMD(float sRMD2){
 
 void Calibrador:: calibrar() {    
 delay(1000);
+  Serial.begin(9600);
+  robo.configurar(false);
   robo.ligarLed(1);
+
+  Serial.println("CALIBRADOR INICIADO!");
+
+
+  while (!endC) {
+    endStop = false;
+    
+
+    while (!robo.botao1Pressionado() );
+    delay(1000);
+    Serial.println("BRANCO INICIADO!");
+
+    v1 = robo.lerSensorLinhaMaisEsq();
+    v2 = robo.lerSensorLinhaEsq();
+    v3 = robo.lerSensorLinhaDir();
+    v4 = robo.lerSensorLinhaMaisDir();
+
+    s1 = v1 + s1;
+    s2 = v2 + s2;
+    s3 = v3 + s3;
+    s4 = v4 + s4;
+
+
+
+    Serial.println("BRANCO PRONTO!");
+    robo.ligarLed(2);
+
+
+    while ( !robo.botao1Pressionado() );
+    delay(1000);
+    Serial.println("PRETO INICIADO!");
+
+    v1 = robo.lerSensorLinhaMaisEsq();
+    v2 = robo.lerSensorLinhaEsq();
+    v3 = robo.lerSensorLinhaDir();
+    v4 = robo.lerSensorLinhaMaisDir();
+
+
+    s1 = v1 + s1;
+    s2 = v2 + s2;
+    s3 = v3 + s3;
+    s4 = v4 + s4;
+
+    Serial.println("PRETO PRONTO!!");
+    robo.ligarLed(3);
+
+
+    Serial.println("ESCOLHA PARAR (BOTAO 2) OU CONTINUAR (BOTAO 1)!");
+
+    while (!endStop) { //Stop
+
+
+      if (robo.botao2Pressionado()) {
+        endC = true;
+        endStop = true;
+        robo.desligarLed(1);
+        Serial.println("CALIBRADOR DESLIGADO!");
+      }
+      else if (robo.botao1Pressionado()) {
+        robo.desligarLed(2);
+        robo.desligarLed(3);
+        endC = false;
+        endStop = true;
+        Serial.println("MAIS UMA CALIBRAÃ‡ÃƒO!");
+      }
+
+    }
+
+    contador++;
+
+  }
   
- 
-  while ( !robo.botao1Pressionado() );
 
-  Serial.println("BRANCO COMEÇOU!");
+    sRME = s1 / (contador*2);
+    sRE = s2 / (contador*2);
+    sRD = s3 / (contador*2);
+    sRMD = s4/ (contador*2);
 
-  for (int i = 0; i < 200; i++) {             //Armazenamento de leitura no Branco (15x)
-    v1 = robo.lerSensorLinhaMaisEsq();
-    v2 = robo.lerSensorLinhaEsq();
-    v3 = robo.lerSensorLinhaDir();
-    v4 = robo.lerSensorLinhaMaisDir();
-
-    s1 = v1 + s1;
-    s2 = v2 + s2;
-    s3 = v3 + s3;
-    s4 = v4 + s4;
-
-    delay(50);
-  }
-
-  md1b = s1 / 200;
-  md2b = s2 / 200;
-  md3b = s3 / 200;
-  md4b = s4 / 200;
-
-
-  Serial.print("BRANCO PRONTO!");
-  robo.ligarLed(2);
-
-  while ( !robo.botao1Pressionado() );
-
-  Serial.print("PRETO COMEÇOU!");
-
-
-
-
-  s1 = 0; //ZERANDO ÀS VÁRIAVEIS PARA SEREM REUTILIZADAS
-  s2 = 0;
-  s3 = 0;
-  s4 = 0;
-
-  for (int i = 0; i < 200; i++) {             //Armazenamento de leitura no Preto (15x)
-    v1 = robo.lerSensorLinhaMaisEsq();
-    v2 = robo.lerSensorLinhaEsq();
-    v3 = robo.lerSensorLinhaDir();
-    v4 = robo.lerSensorLinhaMaisDir();
-
-
-    s1 = v1 + s1;
-    s2 = v2 + s2;
-    s3 = v3 + s3;
-    s4 = v4 + s4;
-
-    delay(50);
-
-  }
-
-
-
-  md1p = s1 / 200;
-  md2p = s2 / 200;
-  md3p = s3 / 200;
-  md4p = s4 / 200;
-
-
-
-  sRME = (md1b + md1p) / 2;
-  sRE = (md2b + md2p) / 2;
-  sRD = (md3b + md3p) / 2;
-  sRMD = (md4b + md4p) / 2;
-
-  Serial.print("PRETO PRONTO!");
-  robo.ligarLed(3);
-
- // calibracao.valores();
-
-  while ( !robo.botao2Pressionado() );
-
-  robo.desligarLed(1);
-
- 
-
+    Serial.println("Mais Esquerdo: ");
+    Serial.println(sRME);
+    Serial.println("Esquerdo: ");
+    Serial.println(sRE);
+    Serial.println("Direito: ");
+    Serial.println(sRD);
+    Serial.println("Mais Direito: ");
+    Serial.println(sRMD);
 }
-

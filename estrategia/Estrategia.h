@@ -16,6 +16,8 @@ void seguirLinha();
 void verde();
 void sala3();
 void desviarObstaculo();
+void redutor();
+void voltarParaALinha();
 
 inline void setValoresCalibracao(Calibrador c){sensores.setValoresCalibracao(c);}
 

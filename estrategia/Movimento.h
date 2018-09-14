@@ -17,5 +17,5 @@ void esqq();
 void rabesq();
 void frenmed();
 void rabdir();
-
+void re();
 };

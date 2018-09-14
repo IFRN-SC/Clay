@@ -11,7 +11,9 @@ class Calibrador {
     float md1b, md2b, md3b, md4b; //Armazena as médias tiradas DO BRANCO no primeiro instante(Não as definitivas)
     float md1p, md2p, md3p, md4p; //Armazena as médias tiradas DO PRETO no primeiro instante(Não as definitivas)
     float sRME, sRE, sRD, sRMD; //VALOR CALIBRADO DE CADA SENSOR(MÉDIA FINAL)
-    
+    bool endC;
+    bool endStop;
+    int contador;
 
   public:
 
