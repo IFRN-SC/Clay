@@ -1,216 +1,242 @@
 #include "Estrategia.h"
 #include "robo_hardware2.h"
 
-void Estrategia::executa() {
+  void Estrategia::executa() {
 
-  float sensorFrontal;
-  float sensorLateral;
-  float sensorLateralDir;
+    float sensorFrontal;
+    float sensorLateral;
+    float sensorBaixo;
 
-  sensorLateralDir = robo.lerSensorSonarDir();
-  sensorLateral = robo.lerSensorSonarEsq();
-  sensorFrontal = robo.lerSensorSonarFrontal();
-  if (sensorFrontal < 5) {
-    robo.acionarMotores(-15, -15);
-    delay(500);
-    desviarObstaculo();
+    sensorBaixo = robo.lerSensorSonarDir();
+    sensorLateral = robo.lerSensorSonarEsq();
+    sensorFrontal = robo.lerSensorSonarFrontal();
+    if (sensorFrontal < 10) {
+      desviarObstaculo();
+
+    }
+    else if (sensorBaixo > 3.5) {
+      redutor();
+    }
+    else if (sensorLateral < 10) {
+      sala3();
+    }
+    else {
+      seguirLinha();
+    }
 
   }
-  else if (sensorLateralDir > 3.5) {
-    redutor();
-  }
-  else if (sensorLateral < 10) {
-    sala3();
-  }
 
-  else {
+  void Estrategia::redutor() {
+    movimento.frenmed();
+    delay(60);
+
     seguirLinha();
   }
 
-}
+  void Estrategia::seguirLinha() {
 
-void Estrategia::redutor()
-{
-  movimento.frenmed();
-  delay(100);
+    if (sensores.brancoBrancoBrancoBranco()) {
+      movimento.fren();
 
-  seguirLinha();
-}
+    } 
+    else if (sensores.brancoPretoBrancoBranco()) {
+      movimento.dir();
 
-void Estrategia::seguirLinha() {
+    } 
+    else if (sensores.brancoBrancoPretoBranco()) {
+      movimento.esq();
 
-  if (sensores.brancoBrancoBrancoBranco()) {
-    movimento.fren();
-
-  } else if (sensores.brancoPretoBrancoBranco()) {
-    movimento.esq();
-
-  } else if (sensores.brancoBrancoPretoBranco()) {
-    movimento.dir();
-
-  } else if (sensores.brancoBrancoBrancoPreto()) {
-    movimento.exdir();
-  } else if (sensores.pretoBrancoBrancoBranco()) {
-    movimento.exesq();
-  } else if (sensores.pretoPretoPretoPreto()) {
-    movimento.frenlen();
-  } else if (sensores.brancoPretoPretoBranco()) {
-    movimento.frenlen();
-  } else if (sensores.brancoBrancoPretoBranco()) {
-    movimento.dir();
-  } else if (sensores.pretoPretoPretoBranco())  {
-    movimento.esq();
-  } else if (sensores.brancoPretoBrancoBranco())  {
-    movimento.esq();
-  } else if (sensores.pretoPretoBrancoBranco())  {
-    movimento.esq();
-  } else if (sensores.brancoBrancoPretoPreto())  {
-    movimento.dir();
-  }
-
-}
-void Estrategia::verde() {}
-
-void Estrategia::led() {
-
-  static long redLedInterval = 300;
-  static bool redLedState = false;
-  static   long previousMillis = 0;
-  unsigned long currentMillis = millis();
-
-  if (currentMillis - previousMillis > redLedInterval)
-  {
-    previousMillis = currentMillis;
-
-    if (redLedState == LOW) {
-      robo.ligarTodosLeds();
-      redLedState = HIGH;
-
-    } else {
-
-      robo.desligarTodosLeds();
-      redLedState = LOW;
-
+    } 
+    else if (sensores.brancoBrancoBrancoPreto()) {
+      movimento.exesq();
+      delay(300);
+    } 
+    else if (sensores.pretoBrancoBrancoBranco()) {
+      movimento.exdir();
+      delay(300);
+    } 
+    else if (sensores.pretoPretoPretoPreto()) {
+      movimento.frenlen();
+    } 
+    else if (sensores.brancoPretoPretoBranco()) {
+      movimento.frenlen();
+    }
+    else if (sensores.brancoBrancoPretoBranco()) {
+      movimento.exdir();
+      delay(250);
+    }
+    else if (sensores.pretoPretoPretoBranco())  {
+      movimento.esq();
+      delay(250);
+    } 
+    else if (sensores.brancoPretoBrancoBranco())  {
+      movimento.dir();
+      delay(250);
+    } 
+    else if (sensores.pretoPretoBrancoBranco())  {
+      movimento.dir();
+      delay(250);
+    } 
+    else if (sensores.brancoBrancoPretoPreto())  {
+      movimento.esq();
+      delay(250);
     }
   }
-}
+  void Estrategia::verde() {}
 
-void Estrategia::sala3() {
+  void Estrategia::led() {
 
+    static long redLedInterval = 300;
+    static bool redLedState = false;
+    static   long previousMillis = 0;
+    unsigned long currentMillis = millis();
 
-  if (sensores.brancoBrancoBrancoBranco()) {
-    movimento.frenmed();
+    if (currentMillis - previousMillis > redLedInterval) {
+      previousMillis = currentMillis;
+
+      if (redLedState == LOW) {
+        robo.ligarTodosLeds();
+        redLedState = HIGH;
+
+      } 
+      else {
+
+        robo.desligarTodosLeds();
+        redLedState = LOW;
+
+      }
+    }
   }
-  else if (sensores.brancoPretoBrancoBranco()) {
-    movimento.esqq();
-  }
-  else if (sensores.brancoBrancoPretoBranco()) {
-    movimento.dirr();
-  }
-  else if (sensores.pretoPretoPretoPreto()) {
-    led();
-    movimento.superfrent();
-    delay(400);
-    led();
-    movimento.rabdir();
-    delay(200);
-    led();
-    movimento.superfrent();
-    delay(400);
-    led();
-    movimento.rabdir();
-    delay(200);
-    led();
-    movimento.superfrent();
-    delay(400);
-    led();
-    movimento.rabdir();
-    delay(200);
-    led();
 
+  void Estrategia::sala3() {
+
+    parar = false;
+
+    while (!parar) {
+
+      if (sensores.brancoBrancoBrancoBranco()) {
+        movimento.superfrent();
+      }
+      else if (sensores.brancoPretoBrancoBranco()) {
+        movimento.dirr();
+      }
+      else if (sensores.brancoBrancoPretoBranco()) {
+        movimento.esqq();
+      }
+      else if (sensores.pretoPretoBrancoBranco()) {
+        movimento.esqq();
+      }
+      else if (sensores.brancoBrancoPretoPreto()) {
+        movimento.dirr();
+      }
+      else if (sensores.pretoPretoPretoPreto()) {
+        movimento.superfrent();
+        delay(700);
+      
+         movimento.rabdir();
+         delay(200);
+
+         movimento.superfrent();
+         delay(400);
+
+         movimento.rabdir();
+         delay(200);
+
+         movimento.superfrent();
+         delay(400);
+
+         movimento.rabdir();
+         delay(200);
+
+         parar = true;
+
+      }
+    }
+
+  }
+
+  void Estrategia::desviarObstaculo() {
+    parar = false;
+    robo.desligarLed(1);
+    robo.acionarMotores(-20, -20);
+    delay(500);
+    movimento.dir();
+    delay(425);
     movimento.parar();
-    while (true);
-  }
-  else if (sensores.pretoPretoBrancoBranco()) {
-    movimento.dirr();
-  }
-  else if (sensores.brancoBrancoPretoPreto()) {
-    movimento.esqq();
-  }
+    delay(500);
+    movimento.fren();
+    delay(560);
+    movimento.parar();
+    delay(500);
+    movimento.esq();
+    delay(400);
+    movimento.parar();
+    delay(500);
+    movimento.fren();
+    delay(1030);
+    movimento.parar();
+    delay(500);
+    movimento.esq();
+    delay(320);
+    movimento.parar();
+    delay(2000);
+    movimento.frenlen();
+    delay(300);
+    float sensorLateral;
+
+    while (!parar) {
 
 
-}
-void Estrategia::desviarObstaculo() {
-  //movimento.parar();
-  robo.acionarMotores(-20, -20);
-  delay(500);
-  movimento.dir();
-  delay(440);
-  movimento.parar();
-  delay(2000);
-  movimento.fren();
-  delay(900);
-  movimento.parar();
-  delay(2000);
-  movimento.esq();
-  delay(330);
-  movimento.parar();
-  delay(2000);
-  movimento.fren();
-  delay(1400);
-  movimento.parar();
-  delay(2000);
-  movimento.esq();
-  delay(280);
-  movimento.parar();
-  delay(2000);
-  movimento.frenlen();
-  delay(300);
-  float sensorLateral;
+      sensorLateral = robo.lerSensorSonarEsq();
+      if (sensores.pretoPretoPretoPreto() && sensorLateral < 15) {
+        voltarParaALinha();
 
-  while (!parar) {
+      }
+      else if (sensorLateral < 15 && sensores.pretoPretoPretoPreto()) {
+        voltarParaALinha();
+      }
+      else if (sensorLateral < 15 && sensores.pretoPretoBrancoBranco()) {
+        voltarParaALinha();
+      }
+      else if (sensorLateral < 15 && sensores.brancoPretoPretoPreto()) {
+        voltarParaALinha();
+      }
+      else if (sensorLateral < 15 && sensores.pretoPretoBrancoBranco()) {
+        voltarParaALinha();
+      }
+      else if (sensorLateral < 15 && sensores.brancoPretoPretoPreto()) {
+        voltarParaALinha();
+      }
+      else if (sensorLateral < 15 && sensores.brancoBrancoPretoPreto()) {
+        voltarParaALinha();
+      }
 
-
-    sensorLateral = robo.lerSensorSonarEsq();
-    if (sensores.pretoPretoPretoPreto() && sensorLateral < 20) {
-      voltarParaALinha();
-
-    }
-    else if (sensorLateral < 15) {
-      voltarParaALinha();
-    }
-    else if (sensorLateral < 15) {
-    voltarParaALinha();
-    }
-    else if (sensorLateral < 15) {
-    voltarParaALinha();
-    }
-    else if (sensorLateral < 15) {
-    voltarParaALinha();
     }
 
   }
 
-}
-
-void Estrategia:: voltarParaALinha() {
-  robo.ligarLed(1);
-  robo.acionarMotores(-15, -15);
-  delay(500);
-  movimento.parar();
-  delay(500);
-  movimento.frenmed();
-  delay(120);
-  movimento.parar();
-  delay(2000);
-  movimento.dir();
-  delay(400);
-  movimento.parar();
-  delay(2000);
-  robo.acionarMotores(-50, -50);
-  delay(120);
-  movimento.parar();
-  delay(2000);
-  parar = true;
-}
+  void Estrategia:: voltarParaALinha() {
+    robo.ligarLed(1);
+    robo.acionarMotores(-40, -40);
+    delay(300);
+    movimento.parar();
+    delay(500);
+    movimento.fren();
+    delay(210);
+    movimento.parar();
+    delay(500);
+    movimento.dir();
+    delay(100);
+    movimento.fren();
+    delay(100);
+    movimento.dir();
+    delay(400);
+    movimento.parar();
+    delay(500);
+    robo.acionarMotores(-50, -50);
+    delay(130);
+    movimento.parar();
+    delay(500);
+    parar = true;
+  }
 

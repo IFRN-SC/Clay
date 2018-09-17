@@ -3,17 +3,17 @@
 #include "Servo.h"
 #include "Menu.h"
 
-Estrategia estrategia;
-Menu menu;
+  Estrategia estrategia;
+  Menu menu;
 
-void setup() {
-  robo.configurar(false);
-  Serial.begin(9600);
+  void setup() {
+    robo.configurar(false);
+    Serial.begin(9600);
   
-  menu.menuLon();
+    menu.menuLon();
   
- estrategia.setValoresCalibracao(menu.getValoresCalibracao());
-}
-void loop() {
-  estrategia.executa();
-}
+    estrategia.setValoresCalibracao(menu.getValoresCalibracao());
+  }
+  void loop() {
+    estrategia.executa();
+  }
