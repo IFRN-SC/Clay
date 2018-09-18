@@ -18,4 +18,10 @@ class Movimento{
     void frenmed();
     void rabdir();
     void re();
+    void obFren();
+    void obDir();
+    void obEsq();
+    void obFrenLen();
+    void obRe();
+    void obReLen();
 };

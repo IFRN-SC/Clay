@@ -129,58 +129,53 @@
       else if (sensores.brancoBrancoPretoPreto()) {
         movimento.dirr();
       }
+      else if (sensores.brancoBrancoBrancoPreto()) {
+      movimento.exesq();
+      } 
+      else if (sensores.pretoBrancoBrancoBranco()) {
+      movimento.exdir();
+      } 
       else if (sensores.pretoPretoPretoPreto()) {
         movimento.superfrent();
-        delay(700);
+        delay(1000);
       
-         movimento.rabdir();
-         delay(200);
 
-         movimento.superfrent();
-         delay(400);
+        movimento.parar();
 
-         movimento.rabdir();
-         delay(200);
-
-         movimento.superfrent();
-         delay(400);
-
-         movimento.rabdir();
-         delay(200);
-
-         parar = true;
+        parar = true;
 
       }
     }
+
+    while(true);
 
   }
 
   void Estrategia::desviarObstaculo() {
     parar = false;
-    robo.desligarLed(1);
-    robo.acionarMotores(-20, -20);
+    movimento.obReLen();
     delay(500);
-    movimento.dir();
-    delay(425);
+    movimento.obEsq();
+    delay(480);
     movimento.parar();
     delay(500);
-    movimento.fren();
+    movimento.obFren();
     delay(560);
     movimento.parar();
     delay(500);
-    movimento.esq();
+    movimento.obDir();
+    delay(390);
+    movimento.parar();
+    delay(500);
+    movimento.obFren();
+    delay(1300);
+    movimento.parar();
+    delay(500);
+    movimento.obDir();
     delay(400);
     movimento.parar();
     delay(500);
-    movimento.fren();
-    delay(1030);
-    movimento.parar();
-    delay(500);
-    movimento.esq();
-    delay(320);
-    movimento.parar();
-    delay(2000);
-    movimento.frenlen();
+    movimento.obFrenLen();
     delay(300);
     float sensorLateral;
 
@@ -217,23 +212,27 @@
 
   void Estrategia:: voltarParaALinha() {
     robo.ligarLed(1);
-    robo.acionarMotores(-40, -40);
+    movimento.obRe();
     delay(300);
     movimento.parar();
     delay(500);
-    movimento.fren();
+    movimento.obFren();
     delay(210);
     movimento.parar();
     delay(500);
-    movimento.dir();
+    movimento.obEsq();
     delay(100);
-    movimento.fren();
+    movimento.parar();
+    delay(500);
+    movimento.obFren();
     delay(100);
-    movimento.dir();
+    movimento.parar();
+    delay(500);
+    movimento.obDir();
     delay(400);
     movimento.parar();
     delay(500);
-    robo.acionarMotores(-50, -50);
+    movimento.obRe();
     delay(130);
     movimento.parar();
     delay(500);
