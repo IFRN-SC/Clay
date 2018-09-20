@@ -46,6 +46,8 @@
   void Movimento:: re(){
     robo.acionarMotores(-20, -20);
   }
+//Movimento Obstaculo
+
   void Movimento:: obFren(){
     robo.acionarMotores(40, 40);
   }
@@ -64,4 +66,19 @@
   void Movimento:: obReLen(){
     robo.acionarMotores(-20, -20);
   }
+//Movimento Sala3
+	void Movimento:: frenS3(){
+		robo.acionarMotores(30,30);
+	}
 
+	void Movimento:: dirS3(){
+		robo.acionarMotores(30,-30);
+	}
+
+	void Movimento:: esqS3(){
+		robo.acionarMotores(-30,30);
+	}
+
+	void Movimento:: reS3(){
+		robo.acionarMotores(30,-30);
+	}
