@@ -1,38 +1,42 @@
-#include "Calibracao.h"
+#ifndef SENSORES_H
+#define SENSORES_H
+
+#include "Logica.h"
+#include "Calibrador.h"
+
 class Sensores{
 
-/*double valorMaisEsq;
-double valorEsq;
-double valorDir;
-double valorMaisDir;
-*/
-Calibracao calibracao;
+  private:
 
-public:
+    Logica logica;
 
-bool brancoBrancoBrancoBranco();
+  public:
 
-bool brancoBrancoBrancoPreto();
+    bool brancoBrancoBrancoBranco();
 
-bool brancoBrancoPretoBranco();
+    bool brancoBrancoBrancoPreto();
 
-bool brancoBrancoPretoPreto();
+    bool brancoBrancoPretoBranco();
 
-bool brancoPretoBrancoBranco();
+    bool brancoBrancoPretoPreto();
 
-bool brancoPretoPretoBranco();
+    bool brancoPretoBrancoBranco();
 
-bool pretoBrancoBrancoBranco();
+    bool brancoPretoPretoBranco();
 
-bool pretoPretoPretoPreto();
+    bool pretoBrancoBrancoBranco();
 
-bool pretoPretoPretoBranco();
+    bool pretoPretoPretoPreto();
 
-bool brancoPretoPretoPreto();
+    bool pretoPretoPretoBranco();
 
-bool pretoPretoBrancoBranco();
+    bool brancoPretoPretoPreto();
 
-bool brancoPretoBrancoPreto();
+    bool pretoPretoBrancoBranco();
 
-//void atualizar();
+    bool brancoPretoBrancoPreto();
+
+    inline void setValoresCalibracao(Calibrador c){logica.setValoresCalibracao(c);}
 };
+
+#endif
