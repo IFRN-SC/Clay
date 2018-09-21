@@ -26,7 +26,7 @@
     robo.acionarMotores(-40, 40);
   }
   void Movimento:: superfrent(){
-    robo.acionarMotores(100, 100);
+    robo.acionarMotores(95, 95);
   }
   void Movimento:: dirr(){
     robo.acionarMotores(50,80);
@@ -35,7 +35,7 @@
     robo.acionarMotores(80,50);
   }
   void Movimento:: frenmed(){
-    robo.acionarMotores(70,70);
+    robo.acionarMotores(80,80);
   }
   void Movimento:: rabdir(){
     robo.acionarMotores(-65, 50);
@@ -44,7 +44,7 @@
     robo.acionarMotores(50, -65);
   }
   void Movimento:: re(){
-    robo.acionarMotores(-20, -20);
+    robo.acionarMotores(-40, -40);
   }
   void Movimento:: obFren(){
     robo.acionarMotores(40, 40);
