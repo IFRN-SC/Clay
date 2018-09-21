@@ -2,6 +2,8 @@
 #include "Menu.h"
 #include "Servo.h"
 
+
+
   void Menu::menuLon(){
   
     Serial.println("Pressione botao1 para calibrar.");
@@ -15,6 +17,7 @@
       val.refletanciaEsq=calibrador.getSRE();
       val.refletanciaDir=calibrador.getSRD();
       val.refletanciaMaisDir=calibrador.getSRMD();
+        
       robo.salvarCalibracao(val);
       } 
       else if(robo.botao2Pressionado()){
