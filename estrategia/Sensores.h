@@ -1,3 +1,6 @@
+#ifndef SENSORES_H
+#define SENSORES_H
+
 #include "Logica.h"
 #include "Calibrador.h"
 
@@ -35,3 +38,5 @@ class Sensores{
 
     inline void setValoresCalibracao(Calibrador c){logica.setValoresCalibracao(c);}
 };
+
+#endif
