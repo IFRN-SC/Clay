@@ -1,3 +1,6 @@
+#ifndef MOVIMENTO_H
+#define MOVIMENTO_H
+
 class Movimento{
 
 
@@ -25,3 +28,5 @@ class Movimento{
     void obRe();
     void obReLen();
 };
+
+#endif
