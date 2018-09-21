@@ -1,3 +1,7 @@
+#ifndef MENU_H
+#define MENU_H
+
+
 #include "Calibrador.h"
 
 class Menu{
@@ -27,3 +31,4 @@ class Menu{
  
 };
 
+#endif
