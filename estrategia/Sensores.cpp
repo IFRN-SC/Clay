@@ -60,7 +60,7 @@
   } 
   bool Sensores:: pretoPretoBrancoBranco() {
 
-    return (logica.pValorMaisEsq() && logica.pValorEsq() && logica.pValorDir() && logica.bValorMaisDir());
+    return (logica.pValorMaisEsq() && logica.pValorEsq() && logica.bValorDir() && logica.bValorMaisDir());
 
   } 
   bool Sensores:: brancoPretoBrancoPreto() {
