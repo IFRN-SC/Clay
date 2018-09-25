@@ -5,10 +5,10 @@
     robo.acionarMotores(50,45);
   }
   void Movimento:: dir(){
-    robo.acionarMotores(50,-55);
+    robo.acionarMotores(50,-50);
   }
   void Movimento:: esq(){
-    robo.acionarMotores(-55,50);
+    robo.acionarMotores(-50,50);
   }
   void Movimento:: exdir(){
     robo.acionarMotores(50,-60);

@@ -33,23 +33,18 @@ void Estrategia::seguirLinha() {
 
   if (sensores.brancoBrancoBrancoBranco()) {
     movimento.fren();
-
   }
   else if (sensores.brancoPretoBrancoBranco()) {
     movimento.esq();
-
   }
   else if (sensores.brancoBrancoPretoBranco()) {
     movimento.dir();
-
   }
   else if (sensores.brancoBrancoBrancoPreto()) {
     movimento.exdir();
-    delay(300);
   }
   else if (sensores.pretoBrancoBrancoBranco()) {
     movimento.exesq();
-    delay(300);
   }
   else if (sensores.pretoPretoPretoPreto()) {
     movimento.frenlen();
@@ -59,23 +54,18 @@ void Estrategia::seguirLinha() {
   }
   else if (sensores.brancoBrancoPretoBranco()) {
     movimento.exesq();
-    delay(250);
   }
   else if (sensores.pretoPretoPretoBranco())  {
     movimento.dir();
-    delay(250);
   }
   else if (sensores.brancoPretoBrancoBranco())  {
     movimento.esq();
-    delay(250);
   }
   else if (sensores.pretoPretoBrancoBranco())  {
     movimento.esq();
-    delay(250);
   }
   else if (sensores.brancoBrancoPretoPreto())  {
     movimento.dir();
-    delay(250);
   }
 }
 void Estrategia::verde() {}
@@ -107,6 +97,7 @@ void Estrategia::led() {
 void Estrategia::sala3() {
 
   oSala3.alinhar();
+  
 }
 
 void Estrategia::desviarObstaculo() {
