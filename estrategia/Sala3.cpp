@@ -24,10 +24,10 @@ void Sala3:: rampa() {
       movimento.dirr();
     }
     else if (sensores.brancoBrancoBrancoPreto()) {
-      movimento.exdir();
+      movimento.exesq();
     }
     else if (sensores.pretoBrancoBrancoBranco()) {
-      movimento.exesq();
+      movimento.exdir();
     }
     else if (sensores.pretoPretoPretoPreto()) {
       movimento.superfrent();
@@ -37,7 +37,7 @@ void Sala3:: rampa() {
       parar = true;
     }
     else if (sensores.pretoPretoBrancoBranco()) {
-      robo.acionarMotores(80, -60);
+      robo.acionarMotores(-60, 60);
       delay(1000);
 
       movimento.parar();
@@ -45,12 +45,9 @@ void Sala3:: rampa() {
       parar = true;
     }
     else if (sensores.brancoBrancoPretoPreto()) {
-      robo.acionarMotores(-60, 80);
+      robo.acionarMotores(60, -60);
       delay(1000);
-
-
       movimento.parar();
-
       parar = true;
     }
   }
