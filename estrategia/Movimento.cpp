@@ -1,6 +1,8 @@
 #include "robo_hardware2.h"
 #include "Movimento.h"
 
+
+  //Movimento normal
   void Movimento:: fren(){
     robo.acionarMotores(50,45);
   }

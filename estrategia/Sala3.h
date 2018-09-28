@@ -13,8 +13,8 @@ class Sala3{
 
 	public:
 	
-		void alinhar();
+     void alinhar();
 
-    void rampa();
+     void rampa();
 };
 #endif

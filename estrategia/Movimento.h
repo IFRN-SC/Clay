@@ -6,6 +6,7 @@ class Movimento{
 
   public:
 
+//Movimento normal
     void fren();
     void dir();
     void esq();
