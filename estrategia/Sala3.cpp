@@ -31,23 +31,14 @@ void Sala3:: rampa() {
     }
     else if (sensores.pretoPretoPretoPreto()) {
       movimento.superfrent();
-      delay(900);
-      movimento.parar();
-      while (true);
       parar = true;
     }
     else if (sensores.pretoPretoBrancoBranco()) {
-      robo.acionarMotores(-60, 60);
-      delay(1000);
-
-      movimento.parar();
-
+      movimento.exesq();
       parar = true;
     }
     else if (sensores.brancoBrancoPretoPreto()) {
-      robo.acionarMotores(60, -60);
-      delay(1000);
-      movimento.parar();
+      movimento.exdir();
       parar = true;
     }
   }
