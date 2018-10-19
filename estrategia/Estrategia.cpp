@@ -4,12 +4,14 @@
   void Estrategia::executa() {
 
     float valorSensorMaisEsq;
+    float valorSensorEsq;
     
     sensorBaixo = robo.lerSensorSonarDir();
     sensorLateral = robo.lerSensorSonarEsq();
     sensorFrontal = robo.lerSensorSonarFrontal();
 
     valorSensorMaisEsq = robo.lerSensorLinhaMaisEsq();
+    valorSensorEsq = robo.lerSensorLinhaEsq();
     
     if (sensorFrontal < 10) {
       desviarObstaculo();
@@ -17,9 +19,12 @@
     else if (sensorLateral < 15) {
       rampa();
     }
-    //else if (valorSensorMaisEsq > 97){
-     // redutor();
-    //}
+    else if (valorSensorMaisEsq > 97){
+     redutor();
+    }
+    else if (valorSensorMaisEsq >= 65 && valorSensorMaisEsq <= 70){
+    verde();
+    }
     //else if(sensorFrontal <= 70 && sensorFrontal > 30){
     //  sala3();
     //}
@@ -29,13 +34,11 @@
 
   }
   void Estrategia::redutor() {
-    
-    movimento.parar();
-    delay(3000);
-    movimento.re();
-    delay(400);
+
     movimento.frenmed();
     delay(400);
+    movimento.parar();
+    delay(200);
 
     while (sensores.brancoBrancoBrancoBranco()) {
       movimento.frenlen();
@@ -66,7 +69,9 @@
   }
 
   void Estrategia::seguirLinha() {
-
+    
+ // CONDIÇÕES BASICAS SEGUIR LINHA
+ 
     if (sensores.brancoBrancoBrancoBranco()) {
       movimento.fren();
 
@@ -77,7 +82,9 @@
     } 
     else if (sensores.brancoBrancoPretoBranco()) {
       movimento.esq();
-
+      
+  // CONDIÇÕES NORMAIS SEGUIR LINHA 
+  
     } 
     else if (sensores.brancoBrancoBrancoPreto()) {
       movimento.exesq();
@@ -88,6 +95,8 @@
       delay(300);
     } 
     else if (sensores.pretoPretoPretoPreto()) {
+      movimento.esq();
+      delay(250);
       movimento.frenlen();
     } 
     else if (sensores.brancoPretoPretoBranco()) {
@@ -113,9 +122,26 @@
       movimento.esq();
       delay(250);
     }
-  }
-  void Estrategia::verde() {}
+    
 
+    
+  }
+  void Estrategia::verde() {
+
+    movimento.parar();
+    delay(4000);
+    movimento.frenlen();
+    delay(200);
+    movimento.dir();
+    delay(400);
+    movimento.fren();
+    delay(300);
+    
+    while (sensores.brancoBrancoBrancoBranco()) {
+    movimento.frenlen();
+    } 
+    
+  }
   void Estrategia::led() {
 
     static long redLedInterval = 300;
