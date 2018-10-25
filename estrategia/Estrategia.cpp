@@ -5,6 +5,8 @@
 
     float valorSensorMaisEsq;
     float valorSensorEsq;
+    float valorSensorDir;
+    float valorSensorMaisDir;
     
     sensorBaixo = robo.lerSensorSonarDir();
     sensorLateral = robo.lerSensorSonarEsq();
@@ -12,22 +14,22 @@
 
     valorSensorMaisEsq = robo.lerSensorLinhaMaisEsq();
     valorSensorEsq = robo.lerSensorLinhaEsq();
+    valorSensorDir = robo.lerSensorLinhaDir();
+    valorSensorMaisDir = robo.lerSensorLinhaMaisDir();
     
     if (sensorFrontal < 10) {
       desviarObstaculo();
     }
-    else if (sensorLateral < 15) {
+    else if (sensorLateral < 10) {
       rampa();
     }
     else if (valorSensorMaisEsq > 97){
      redutor();
     }
-    else if (valorSensorMaisEsq >= 65 && valorSensorMaisEsq <= 70){
+    else if (valorSensorMaisEsq >= 60 && valorSensorMaisEsq <= 65){
     verde();
     }
-    //else if(sensorFrontal <= 70 && sensorFrontal > 30){
-    //  sala3();
-    //}
+
     else {
       seguirLinha();
     }
@@ -38,43 +40,23 @@
     movimento.frenmed();
     delay(400);
     movimento.parar();
-    delay(200);
+    delay(2000);
 
     while (sensores.brancoBrancoBrancoBranco()) {
-      movimento.frenlen();
+      seguirLinha();
     } 
     
 
     seguirLinha();
   }
-  void Estrategia::sala3() {
-    
-  movimento.esq();
-  delay(200);
-  movimento.fren();
-  delay(500);
-  movimento.girando();
-  delay(1800);
-  movimento.re();
-  delay(800); 
-  movimento.parar();
-  delay(2000);
-  movimento.fren();
-  delay(1000);
-  movimento.parar();
-  delay(1000);
-  movimento.girando();
-  while(true);
-    
-  }
-
+  void Estrategia::sala3() {}
   void Estrategia::seguirLinha() {
     
  // CONDIÇÕES BASICAS SEGUIR LINHA
  
     if (sensores.brancoBrancoBrancoBranco()) {
       movimento.fren();
-
+      
     } 
     else if (sensores.brancoPretoBrancoBranco()) {
       movimento.dir();
@@ -84,7 +66,6 @@
       movimento.esq();
       
   // CONDIÇÕES NORMAIS SEGUIR LINHA 
-  
     } 
     else if (sensores.brancoBrancoBrancoPreto()) {
       movimento.exesq();
@@ -97,17 +78,17 @@
     else if (sensores.pretoPretoPretoPreto()) {
       movimento.esq();
       delay(250);
-      movimento.frenlen();
+      
     } 
     else if (sensores.brancoPretoPretoBranco()) {
-      movimento.frenlen();
+      movimento.fren(); 
     }
     else if (sensores.brancoBrancoPretoBranco()) {
       movimento.exdir();
       delay(250);
     }
     else if (sensores.pretoPretoPretoBranco())  {
-      movimento.esq();
+      movimento.exdir();
       delay(250);
     } 
     else if (sensores.brancoPretoBrancoBranco())  {
@@ -115,11 +96,15 @@
       delay(250);
     } 
     else if (sensores.pretoPretoBrancoBranco())  {
-      movimento.dir();
+      movimento.exdir();
       delay(250);
     } 
     else if (sensores.brancoBrancoPretoPreto())  {
-      movimento.esq();
+      movimento.exesq();
+      delay(250);
+      
+    }else if (sensores.brancoPretoPretoPreto())  {
+      movimento.exdir();
       delay(250);
     }
     
@@ -129,16 +114,16 @@
   void Estrategia::verde() {
 
     movimento.parar();
-    delay(4000);
+    delay(200);
     movimento.frenlen();
     delay(200);
     movimento.dir();
-    delay(400);
-    movimento.fren();
     delay(300);
+    movimento.fren();
+    delay(500);
     
     while (sensores.brancoBrancoBrancoBranco()) {
-    movimento.frenlen();
+    seguirLinha();
     } 
     
   }
@@ -181,14 +166,7 @@
       else if (sensores.brancoBrancoPretoBranco()) {
         movimento.esqq();
       }
-      //else if (sensores.brancoBrancoBrancoPreto()) {
-      ///movimento.esqq();
-      //movimento.superfrent();
-      //} 
-      //else if (sensores.pretoBrancoBrancoBranco()) {
-      //movimento.dirr();
-      //movimento.superfrent();
-      //} 
+      
       else if (sensores.pretoPretoPretoPreto()) {
         
         movimento.frenmed();
@@ -203,24 +181,7 @@
 
         movimento.parar();
         while(true);
-        //parar = true;
-      //}
-      //else if (sensores.pretoPretoBrancoBranco()) {
-        //robo.acionarMotores(80, 100);
-       // delay(1000);
-     
-       // movimento.parar();
-
-       // parar = true;
-     // }
-     // else if (sensores.brancoBrancoPretoPreto()) {
-        ///robo.acionarMotores(100, 80);
-        //delay(1000);
-      
-
-        //movimento.parar();
-
-       // parar = true;
+   
       }
     }
 
