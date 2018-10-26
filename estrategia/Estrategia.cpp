@@ -18,21 +18,21 @@
     valorSensorDir = robo.lerSensorLinhaDir();
     valorSensorMaisDir = robo.lerSensorLinhaMaisDir();
     
-    if (sensorFrontal < 10) {    
+    if (sensorFrontal < 5) {    
       desviarObstaculo();
     }
     else if (sensorLateral < 10) {
       rampa();
     }
-    //else if (valorSensorMaisEsq > 97){
-    // redutor();
+    else if (valorSensorMaisEsq > 97){
+     redutor();
+    }
+    //else if (valorSensorMaisEsq >= 60 && valorSensorMaisEsq <= 65){
+   // verde();
     //}
-    else if (valorSensorMaisEsq >= 40 && valorSensorMaisEsq <= 45){
-    verde();
-    }
-    else if (valorSensorMaisDir >= 40 && valorSensorMaisDir <= 45){
-    verde1();
-    }
+    //else if (valorSensorMaisDir >= 60 && valorSensorMaisDir <= 65){
+    ///verde1();
+    //}
 
     else {
       seguirLinha();
@@ -41,7 +41,7 @@
   }
   void Estrategia::redutor() {
 
-    movimento.frenmed();
+    movimento.redutor();
     delay(400);
     movimento.parar();
     delay(2000);
@@ -217,52 +217,54 @@
   }
 
   void Estrategia::desviarObstaculo() {
-    
-    parar = false;
-    movimento.obReLen();
-    delay(500);
-    movimento.obEsq();
-    delay(480);
-    movimento.obFren();
-    delay(560);
-    movimento.obDir();
-    delay(390);
-    movimento.obFren();
-    delay(1300);
-    movimento.obDir();
-    delay(400);
-    movimento.obFrenLen();
-    delay(300);
 
-    while (!parar) {
+    movimento.parar();
+    delay(1000);
 
+    movimento.girando();
+    delay(700);
 
-      sensorLateral = robo.lerSensorSonarEsq();
-      if (sensores.pretoPretoPretoPreto() && sensorLateral < 15) {
-        voltarParaALinha();
+    movimento.parar();
+    delay(1000);
 
-      }
-      else if (sensorLateral < 15 && sensores.pretoPretoPretoPreto()) {
-        voltarParaALinha();
-      }
-      else if (sensorLateral < 15 && sensores.pretoPretoBrancoBranco()) {
-        voltarParaALinha();
-      }
-      else if (sensorLateral < 15 && sensores.brancoPretoPretoPreto()) {
-        voltarParaALinha();
-      }
-      else if (sensorLateral < 15 && sensores.pretoPretoBrancoBranco()) {
-        voltarParaALinha();
-      }
-      else if (sensorLateral < 15 && sensores.brancoPretoPretoPreto()) {
-        voltarParaALinha();
-      }
-      else if (sensorLateral < 15 && sensores.brancoBrancoPretoPreto()) {
-        voltarParaALinha();
-      }
-
+    while (sensores.brancoBrancoBrancoBranco()) {
+      movimento.re();
+    }
+    while (sensores.brancoBrancoBrancoBranco()){
+      movimento.obs1();
     }
 
+    movimento.fren();
+    delay(1100);
+
+    movimento.obs1();
+    delay(600);
+
+    movimento.fren();
+    delay(400);
+
+    movimento.esq();
+    delay(400);
+
+    movimento.fren();
+    delay(1300);
+
+    movimento.fren();
+    delay(500);
+
+    movimento.esq();
+    delay(400);
+
+    movimento.fren();
+    delay(400);
+
+    movimento.fren();
+    delay(500);
+
+    while (sensores.brancoBrancoBrancoBranco()) {
+     seguirLinha();
+    }
+ 
   }
 
   void Estrategia:: voltarParaALinha() {

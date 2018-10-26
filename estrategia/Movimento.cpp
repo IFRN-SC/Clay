@@ -2,7 +2,7 @@
 #include "Movimento.h"
 
   void Movimento:: fren(){
-    robo.acionarMotores(40,40);
+    robo.acionarMotores(35,35);
   }
   void Movimento:: dir(){
     robo.acionarMotores(-55,50);
@@ -20,10 +20,13 @@
     robo.acionarMotores(0, 0);
   }
   void Movimento:: frenlen(){
-    robo.acionarMotores(30, 30);
+    robo.acionarMotores(25, 25);
   }
   void Movimento:: girando(){
     robo.acionarMotores(-40, 40);
+  }
+  void Movimento::redutor(){
+    robo.acionarMotores(70, 70);
   }
   void Movimento:: superfrent(){
     robo.acionarMotores(95, 95);
@@ -44,7 +47,7 @@
     robo.acionarMotores(50, -65);
   }
   void Movimento:: re(){
-    robo.acionarMotores(-50, -50);
+    robo.acionarMotores(-30, -30);
   }
   void Movimento:: obFren(){
     robo.acionarMotores(40, 40);
@@ -59,9 +62,13 @@
     robo.acionarMotores(30, 30);
   }
   void Movimento:: obRe(){
-    robo.acionarMotores(-50, -50);
+    robo.acionarMotores(-25, -25);
   }
   void Movimento:: obReLen(){
     robo.acionarMotores(-20, -20);
   }
+  void Movimento:: obs1(){
+    robo.acionarMotores(0, -30);
+  }
+ 
 

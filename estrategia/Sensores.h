@@ -40,6 +40,16 @@ class Sensores{
 
     bool Branco();
 
+    bool Preto();
+
+    bool preto();
+
+    bool Brancobranco();
+
+    bool brancoPreto();
+
+    bool brancoBranco();
+
     
     
     inline void setValoresCalibracao(Calibrador c){logica.setValoresCalibracao(c);}

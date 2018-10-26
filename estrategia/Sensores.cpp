@@ -79,4 +79,25 @@
 
   }
   
+  bool Sensores:: preto() {
+
+    return (logica.pValorMaisEsq());
+  }
+  
+  bool Sensores:: Preto() {
+
+    return (logica.pValorMaisDir());
+  }
+
+  bool Sensores:: brancoPreto() {
+
+    return (logica.pValorMaisEsq() && logica.pValorEsq ());
+  }
+
+   bool Sensores:: brancoBranco() {
+
+    return (logica.pValorDir() && logica.pValorMaisDir());
+
+  }
+  
 

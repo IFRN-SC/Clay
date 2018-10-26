@@ -27,6 +27,8 @@ class Movimento{
     void obFrenLen();
     void obRe();
     void obReLen();
+    void redutor();
+    void obs1();
 };
 
 #endif
