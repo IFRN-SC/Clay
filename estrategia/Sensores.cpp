@@ -50,22 +50,27 @@
   }
   bool Sensores:: pretoPretoPretoBranco() {
 
-    return (logica.pValorMaisEsq() && logica.pValorEsq() && logica.pValorDir() && logica.pValorMaisDir());
+    return (logica.pValorMaisEsq() && logica.pValorEsq() && logica.pValorDir() && logica.bValorMaisDir());
 
   } 
   bool Sensores:: brancoPretoPretoPreto() {
 
-    return (logica.pValorMaisEsq() && logica.pValorEsq() && logica.pValorDir() && logica.pValorMaisDir());
+    return (logica.bValorMaisEsq() && logica.pValorEsq() && logica.pValorDir() && logica.pValorMaisDir());
 
   } 
   bool Sensores:: pretoPretoBrancoBranco() {
 
-    return (logica.pValorMaisEsq() && logica.pValorEsq() && logica.pValorDir() && logica.pValorMaisDir());
+    return (logica.pValorMaisEsq() && logica.pValorEsq() && logica.bValorDir() && logica.bValorMaisDir());
 
   } 
   bool Sensores:: brancoPretoBrancoPreto() {
 
-    return (logica.pValorMaisEsq() && logica.pValorEsq() && logica.pValorDir() && logica.pValorMaisDir());
+    return (logica.bValorMaisEsq() && logica.pValorEsq() && logica.bValorDir() && logica.pValorMaisDir());
 
   }
+	bool Sensores:: entSala3(){
+		
+		return ((pretoPretoPretoPreto()) || (brancoPretoPretoPreto()) || (pretoPretoPretoBranco()));
+
+	}
 
