@@ -1,124 +1,76 @@
 #include "robo_hardware2.h"
 #include "Sensores.h"
-//#define CINZA 50
 
-/*void Sensores:: atualizar(){
-	valorMaisEsq = robo.lerSensorLinhaMaisEsq();
-	valorEsq = robo.lerSensorLinhaEsq();
-	valorDir = robo.lerSensorLinhaDir();
-	valorMaisDir = robo.lerSensorLinhaMaisDir();
 
-}
-*/
-bool Sensores:: brancoBrancoBrancoBranco(){
+  bool Sensores:: brancoBrancoBrancoBranco() {
 
-	//atualizar();
-
-	//return (valorMaisEsq > CINZA && valorEsq > CINZA && valorDir > CINZA && valorMaisDir > CINZA);
-
-	return(calibracao.bValorMaisEsq() && calibracao.bValorEsq() && calibracao.bValorDir() && calibracao.bValorMaisDir());
-}
-
-bool Sensores:: brancoBrancoBrancoPreto(){
-
-	//atualizar();
-
-	//return (valorMaisEsq > CINZA && valorEsq > CINZA && valorDir > CINZA && valorMaisDir <= CINZA);
-
-	return(calibracao.bValorMaisEsq() && calibracao.bValorEsq() && calibracao.bValorDir() && calibracao.pValorMaisDir());
-
-}
-
-bool Sensores:: brancoBrancoPretoBranco(){
-
-	//atualizar();
-
-	//return (valorMaisEsq > CINZA && valorEsq > CINZA && valorDir <= CINZA && valorMaisDir > CINZA);
-
-	return (calibracao.bValorMaisEsq() && calibracao.bValorEsq() && calibracao.pValorDir() && calibracao.bValorMaisDir());
-
-}
-
-bool Sensores:: brancoBrancoPretoPreto(){
-
-	//atualizar();
-
-	//return (valorMaisEsq > CINZA && valorEsq > CINZA && valorDir <= CINZA && valorMaisDir <= CINZA);
-
-	return(calibracao.bValorMaisEsq() && calibracao.bValorEsq() && calibracao.pValorDir() && calibracao.pValorMaisDir());
-
-}
-
-bool Sensores:: brancoPretoBrancoBranco(){
-
-	//atualizar();
-
-	//return (valorMaisEsq > CINZA && valorEsq <= CINZA && valorDir > CINZA && valorMaisDir > CINZA);
-
-	return (calibracao.bValorMaisEsq() && calibracao.pValorEsq() && calibracao.bValorDir() && calibracao.bValorMaisDir());
-
-}
-
-bool Sensores:: brancoPretoPretoBranco(){
-
-	//atualizar();
-
-	//return (valorMaisEsq > CINZA && valorEsq <= CINZA && valorDir <= CINZA && valorMaisDir > CINZA);
-
-	return (calibracao.bValorMaisDir() && calibracao.pValorEsq() && calibracao.pValorDir() && calibracao.bValorMaisDir());
-
-}
-
-bool Sensores:: pretoBrancoBrancoBranco(){
-
-	//atualizar();
-
-	//return (valorMaisEsq <= CINZA && valorEsq > CINZA && valorDir > CINZA && valorMaisDir > CINZA);
-
-	return (calibracao.pValorMaisEsq() && calibracao.bValorEsq() && calibracao.bValorDir() && calibracao.bValorMaisDir());
-
-}
-
-bool Sensores:: pretoPretoPretoPreto(){
-
-  //atualizar();
-
-  //return(valorMaisEsq <= CINZA && valorEsq <= CINZA && valorDir <= CINZA && valorMaisDir <= CINZA);
-
-	return (calibracao.pValorMaisEsq() && calibracao.pValorEsq() && calibracao.pValorDir() && calibracao.pValorMaisDir());
-  
+    return (logica.bValorMaisEsq() && logica.bValorEsq() && logica.bValorDir() && logica.bValorMaisDir());
   }
-bool Sensores:: pretoPretoPretoBranco(){
 
-  //atualizar();
+  bool Sensores:: brancoBrancoBrancoPreto() {
 
-  //return(valorMaisEsq <= CINZA && valorEsq <= CINZA && valorDir <= CINZA && valorMaisDir <= CINZA);
+    return (logica.bValorMaisEsq() && logica.bValorEsq() && logica.bValorDir() && logica.pValorMaisDir());
 
-  return (calibracao.pValorMaisEsq() && calibracao.pValorEsq() && calibracao.pValorDir() && calibracao.pValorMaisDir());
-  
-  }bool Sensores:: brancoPretoPretoPreto(){
-
-  //atualizar();
-
-  //return(valorMaisEsq <= CINZA && valorEsq <= CINZA && valorDir <= CINZA && valorMaisDir <= CINZA);
-
-  return (calibracao.pValorMaisEsq() && calibracao.pValorEsq() && calibracao.pValorDir() && calibracao.pValorMaisDir());
-  
-  }bool Sensores:: pretoPretoBrancoBranco(){
-
-  //atualizar();
-
-  //return(valorMaisEsq <= CINZA && valorEsq <= CINZA && valorDir <= CINZA && valorMaisDir <= CINZA);
-
-  return (calibracao.pValorMaisEsq() && calibracao.pValorEsq() && calibracao.pValorDir() && calibracao.pValorMaisDir());
-  
-  }bool Sensores:: brancoPretoBrancoPreto(){
-
-  //atualizar();
-
-  //return(valorMaisEsq <= CINZA && valorEsq <= CINZA && valorDir <= CINZA && valorMaisDir <= CINZA);
-
-  return (calibracao.pValorMaisEsq() && calibracao.pValorEsq() && calibracao.pValorDir() && calibracao.pValorMaisDir());
-  
   }
+
+  bool Sensores:: brancoBrancoPretoBranco() {
+
+    return (logica.bValorMaisEsq() && logica.bValorEsq() && logica.pValorDir() && logica.bValorMaisDir());
+
+  }
+
+  bool Sensores:: brancoBrancoPretoPreto() {
+
+    return (logica.bValorMaisEsq() && logica.bValorEsq() && logica.pValorDir() && logica.pValorMaisDir());
+
+  }
+
+  bool Sensores:: brancoPretoBrancoBranco() {
+
+    return (logica.bValorMaisEsq() && logica.pValorEsq() && logica.bValorDir() && logica.bValorMaisDir());
+
+  }
+
+  bool Sensores:: brancoPretoPretoBranco() {
+
+    return (logica.bValorMaisDir() && logica.pValorEsq() && logica.pValorDir() && logica.bValorMaisDir());
+
+  }
+
+  bool Sensores:: pretoBrancoBrancoBranco() {
+
+    return (logica.pValorMaisEsq() && logica.bValorEsq() && logica.bValorDir() && logica.bValorMaisDir());
+
+  }
+
+  bool Sensores:: pretoPretoPretoPreto() {
+
+    return (logica.pValorMaisEsq() && logica.pValorEsq() && logica.pValorDir() && logica.pValorMaisDir());
+
+  }
+  bool Sensores:: pretoPretoPretoBranco() {
+
+    return (logica.pValorMaisEsq() && logica.pValorEsq() && logica.pValorDir() && logica.bValorMaisDir());
+
+  } 
+  bool Sensores:: brancoPretoPretoPreto() {
+
+    return (logica.bValorMaisEsq() && logica.pValorEsq() && logica.pValorDir() && logica.pValorMaisDir());
+
+  } 
+  bool Sensores:: pretoPretoBrancoBranco() {
+
+    return (logica.pValorMaisEsq() && logica.pValorEsq() && logica.bValorDir() && logica.bValorMaisDir());
+
+  } 
+  bool Sensores:: brancoPretoBrancoPreto() {
+
+    return (logica.bValorMaisEsq() && logica.pValorEsq() && logica.bValorDir() && logica.pValorMaisDir());
+
+  }
+	bool Sensores:: entSala3(){
+		
+		return ((pretoPretoPretoPreto()) || (brancoPretoPretoPreto()) || (pretoPretoPretoBranco()));
+
+	}
 
