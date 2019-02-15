@@ -21,7 +21,6 @@ class Movimento{
     void frenmed();
     void rabdir();
     void re();
-    void dirpuch();
 
 //Movimento obstaculo
     void obFren();
@@ -30,8 +29,6 @@ class Movimento{
     void obFrenLen();
     void obRe();
     void obReLen();
-    void esqobs();
-    void frenbaixo();
 
 //Movimento sala3
 
@@ -39,8 +36,6 @@ class Movimento{
 	void dirS3();
 	void esqS3();
 	void reS3();
-  void menos1();
-  void menos2();
 };
 
 #endif

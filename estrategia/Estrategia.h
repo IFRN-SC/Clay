@@ -9,6 +9,7 @@
 class Estrategia{
 
   private:
+    int v;
   
     #define VERMELHO 1
     #define AMARELO 2
@@ -35,10 +36,7 @@ class Estrategia{
     void redutor();
     void voltarParaALinha();
     void rampa();
-    void verde1();
-    void funverde();
-   // void sala3.2
-
+    
     inline void setValoresCalibracao(Calibrador c){sensores.setValoresCalibracao(c);}
 
 };
