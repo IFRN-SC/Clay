@@ -17,7 +17,7 @@ class Logica{
     float valorMaisDir;
 
   public:
-
+    
     bool bValorMaisEsq();
     bool pValorMaisEsq();
     
