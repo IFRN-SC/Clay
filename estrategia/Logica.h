@@ -17,17 +17,21 @@ class Logica{
     float valorMaisDir;
 
   public:
-
+    
     bool bValorMaisEsq();
     bool pValorMaisEsq();
+    
     bool bValorEsq();
     bool pValorEsq();
+    
     bool bValorDir();
     bool pValorDir();
+    
     bool bValorMaisDir();
     bool pValorMaisDir();
 
     void valores();
+    
     void atualizarVME();
     void atualizarVE();
     void atualizarVD();
