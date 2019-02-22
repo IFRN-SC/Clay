@@ -36,6 +36,10 @@ class Sensores{
 
     bool brancoPretoBrancoPreto();
 
+    bool branco1();
+
+    bool branco2();
+
 		bool entSala3();
 
     inline void setValoresCalibracao(Calibrador c){logica.setValoresCalibracao(c);}
