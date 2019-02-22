@@ -9,6 +9,7 @@
 class Estrategia{
 
   private:
+    int v;
   
     #define VERMELHO 1
     #define AMARELO 2
