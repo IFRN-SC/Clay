@@ -20,7 +20,7 @@
     robo.acionarMotores(0, 0);
   }
   void Movimento:: frenlen(){
-    robo.acionarMotores(20, 20);
+    robo.acionarMotores(30, 30);
   }
   void Movimento:: girando(){
     robo.acionarMotores(-40, 40);
