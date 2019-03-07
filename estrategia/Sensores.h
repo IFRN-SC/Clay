@@ -36,9 +36,13 @@ class Sensores{
 
     bool brancoPretoBrancoPreto();
 
-    bool branco1();
+    bool brancoMesq();
 
-    bool branco2();
+    bool brancoMdir();
+
+    bool brancoDir();
+
+    bool brancoEsq();
 
 		bool entSala3();
 
