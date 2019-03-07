@@ -63,17 +63,26 @@
     return (logica.pValorMaisEsq() && logica.pValorEsq() && logica.bValorDir() && logica.bValorMaisDir());
 
   }
-  bool Sensores:: branco1 (){
+  bool Sensores:: brancoMesq (){
 
     return (logica.bValorMaisEsq());
-    
   }
-
-  bool Sensores:: branco2 (){
+  
+  bool Sensores:: brancoMdir (){
 
     return (logica.bValorMaisDir());
-    
   }
+  
+  bool Sensores:: brancoDir (){
+
+    return (logica.bValorDir());
+  }
+  
+  bool Sensores:: brancoEsq (){
+
+    return (logica.bValorEsq()); 
+  }
+  
   bool Sensores:: brancoPretoBrancoPreto() {
 
     return (logica.bValorMaisEsq() && logica.pValorEsq() && logica.bValorDir() && logica.pValorMaisDir());
