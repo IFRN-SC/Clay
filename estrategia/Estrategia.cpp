@@ -132,13 +132,14 @@ void Estrategia::sala3() {
 }
 
 void Estrategia::desviarObstaculo() {
+
   
   while (sensores.brancoMdir()){
     robo.acionarMotores(0, -30);
   }
   
   movimento.fren();
-  delay(350);
+  delay(300);
   
   while (sensores.brancoMdir()){
    robo.acionarMotores(-20, -30);
@@ -152,15 +153,36 @@ void Estrategia::desviarObstaculo() {
   delay(500);
   
   if (sensores.pretoPretoPretoPreto()){
+
    movimento.fren();
-   delay(900);
-   movimento.girando();
-   delay(800);
+   delay(600);
    movimento.parar();
-   while(1);
+   delay(500);
+   robo.acionarMotores(0, 40);
+   delay(1100);
+   movimento.parar();
+   delay(500);
+   movimento.fren();
+   delay(400);
+   movimento.parar();
+   delay(100);
+   movimento.fren();
+   delay(300);
+   movimento.parar();
+   delay(200);
+   robo.acionarMotores(0, 40);
+   delay(900);
+   while(!sensores.pretoPretoPretoPreto()){
+    movimento.frenlen();
+   }
+   if(!sensores.brancoBrancoBrancoBranco()){
+    robo.acionarMotores(30, 30);
+    delay(200);
+    robo.acionarMotores(50, -50);
+    delay(700);
+   }
   }
-
-
+   seguirLinha();
   
 }
 void Estrategia:: voltarParaALinha() {
