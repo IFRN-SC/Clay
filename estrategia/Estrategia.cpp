@@ -139,7 +139,7 @@ void Estrategia::desviarObstaculo() {
   }
   
   movimento.fren();
-  delay(350);
+  delay(250);
   
   while (sensores.brancoMdir()){
    robo.acionarMotores(-30, -40);
@@ -162,9 +162,9 @@ void Estrategia::desviarObstaculo() {
    delay(800);
    movimento.parar();
    delay(500);
-   movimento.fren();
-   delay(400);
-   movimento.parar();
+   robo.acionarMotores(70, 70);
+   delay(700);
+   /*movimento.parar();
    delay(100);
    robo.acionarMotores(0, - 40);
    delay(200);
@@ -174,18 +174,21 @@ void Estrategia::desviarObstaculo() {
    delay(400);
    movimento.parar();
    delay(100);
-   movimento.fren();
-   delay(400);
+   movimento.fren(); //É esse!!!
+   delay(500);*/
+   
    movimento.parar();
-   delay(200);
+   delay(500);
    robo.acionarMotores(-40, 40);
    delay(700);
+   
    while(!sensores.pretoPretoPretoPreto()){
     movimento.frenlen();
    }
    if(!sensores.brancoBrancoBrancoBranco()){
+    
     robo.acionarMotores(30, 30);
-    delay(400);
+    delay(600);
     robo.acionarMotores(50, -50);
     delay(500);
     movimento.parar();
