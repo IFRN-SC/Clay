@@ -12,7 +12,7 @@ void Estrategia::executa() {
   //} 
   
   if (sensorLateral < 10) {
-    oSala3.rampa();
+    rampa();
   }
 
   else if (sensorFrontal < 4) {
@@ -101,6 +101,56 @@ void Estrategia::seguirLinha() {
 }
 void Estrategia::verde() {}
 
+void Estrategia::rampa() {
+  
+  parar = false;
+
+  while (!parar) {
+
+    if (sensores.brancoBrancoBrancoBranco()) {
+      movimento.superfrent();
+    }
+    else if (sensores.brancoPretoBrancoBranco()) {
+      movimento.esqq();
+    }
+    else if (sensores.brancoBrancoPretoBranco()) {
+      movimento.dirr();
+    }
+    else if (sensores.brancoBrancoBrancoPreto()) {
+      movimento.exesq();
+    }
+    else if (sensores.pretoBrancoBrancoBranco()) {
+      movimento.exdir();
+    }
+    else if (sensores.pretoPretoPretoPreto()) {
+      movimento.superfrent();
+      delay(900);
+    }
+    else if (sensores.pretoPretoPretoBranco()) {
+      movimento.superfrent();
+      delay(900);
+    }
+    else if (sensores.brancoPretoPretoPreto()) {
+      movimento.superfrent();
+      delay(900);
+    }
+    else if (sensores.pretoPretoBrancoBranco()) {
+      robo.acionarMotores(-60, 60);
+      delay(1000);
+
+      movimento.parar();
+
+      parar = true;
+    }
+    else if (sensores.brancoBrancoPretoPreto()) {
+      robo.acionarMotores(60, -60);
+      delay(1000);
+      movimento.parar();
+      parar = true;
+    }
+  }
+}
+
 void Estrategia::led() {
 
   static long redLedInterval = 300;
@@ -174,7 +224,7 @@ void Estrategia::desviarObstaculo() {
    delay(400);
    movimento.parar();
    delay(100);
-   movimento.fren(); //É esse!!!
+   movimento.fren(); //É esse!!! hgkgkyh
    delay(500);*/
    
    movimento.parar();
