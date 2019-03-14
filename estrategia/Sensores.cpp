@@ -82,7 +82,22 @@
 
     return (logica.bValorEsq()); 
   }
-  
+
+  bool Sensores:: pretoMdir (){
+
+    return (logica.pValorMaisDir());
+  }
+
+  bool Sensores:: brancoBrancoBranco (){
+
+    return (logica.bValorDir() && logica.bValorEsq() && logica.bValorMaisDir());
+  }
+
+  bool Sensores:: pretoPretoPreto (){
+
+    return (logica.pValorDir() && logica.pValorEsq() && logica.pValorMaisDir());
+    
+  }
   bool Sensores:: brancoPretoBrancoPreto() {
 
     return (logica.bValorMaisEsq() && logica.pValorEsq() && logica.bValorDir() && logica.pValorMaisDir());
