@@ -7,6 +7,8 @@ void Estrategia::executa() {
   sensorLateral = robo.lerSensorSonarEsq();
   sensorFrontal = robo.lerSensorSonarFrontal();
 
+  valorSensorMaisEsq = robo.lerSensorLinhaMaisEsq();
+
   // if (sensorLateral < 10 && sensores.entSala3()) {
   // oSala3.rampa();
   //} 
@@ -18,9 +20,9 @@ void Estrategia::executa() {
   else if (sensorFrontal < 5) {
     desviarObstaculo();
   }
-  //else if (sensorBaixo > 2 && sensorBaixo < 3) {
-  //redutor();
-  // }
+  else if (valorSensorMaisEsq > 85) {
+  redutor();
+  }
   else {
     seguirLinha();
   }
@@ -126,35 +128,50 @@ void Estrategia::rampa() {
     else if (sensores.pretoBrancoBrancoBranco()) {
       movimento.exdir();
     }
-    else if (sensores.pretoPretoPretoPreto()) {
-      movimento.superfrent();
-      delay(900);
-    }
+    
     else if (sensores.pretoPretoPretoBranco()) {
       movimento.superfrent();
-      delay(900);
+      delay(800);
+
+      movimento.parar();
+      delay(500);
+      
+      sala3();
     }
     else if (sensores.brancoPretoPretoPreto()) {
       movimento.superfrent();
-      delay(900);
+      delay(800);
+      
+      movimento.parar();
+      delay(500);
+
+        sala3();
     }
-    else if (sensores.pretoPretoBrancoBranco()) {
-      robo.acionarMotores(-60, 60);
-      delay(1000);
+    else if (sensores.pretoPretoPretoPreto()) {
+      movimento.superfrent();
+      delay(800);
 
       movimento.parar();
+      delay(500);
 
-      parar = true;
+      sala3();
     }
-    else if (sensores.brancoBrancoPretoPreto()) {
-      robo.acionarMotores(60, -60);
-      delay(1000);
-      movimento.parar();
-      parar = true;
-    }
+    
   }
 }
+void Estrategia::sala3() {
 
+    movimento.parar();
+    delay(2000);
+
+    movimento.girando();
+    delay(1100);
+    robo.acionarMotores(-50, -50);
+    delay(800);
+    robo.acionarMotores(80, 80);
+    while(1);
+    
+}
 void Estrategia::led() {
 
   static long redLedInterval = 300;
@@ -177,12 +194,6 @@ void Estrategia::led() {
 
     }
   }
-}
-
-void Estrategia::sala3() {
-
-  oSala3.alinhar();
-  
 }
 
 void Estrategia::desviarObstaculo() {

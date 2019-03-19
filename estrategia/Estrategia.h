@@ -21,6 +21,8 @@ class Estrategia{
     float sensorFrontal;
     float sensorLateral;
     float sensorBaixo;
+
+    float valorSensorMaisEsq;
     
     bool parar;
 
