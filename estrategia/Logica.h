@@ -17,6 +17,8 @@ class Logica{
     float valorMaisDir;
 
   public:
+
+    bool superBrancoME();
     
     bool bValorMaisEsq();
     bool pValorMaisEsq();

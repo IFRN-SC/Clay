@@ -67,6 +67,12 @@
 
     return (logica.bValorMaisEsq());
   }
+
+   bool Sensores::  superBrancoME(){
+
+    return (logica.superBrancoME());
+  }
+  
   
   bool Sensores:: brancoMdir (){
 

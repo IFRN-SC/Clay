@@ -17,7 +17,7 @@
       val.refletanciaEsq=calibrador.getSRE();
       val.refletanciaDir=calibrador.getSRD();
       val.refletanciaMaisDir=calibrador.getSRMD();
-        
+      
       robo.salvarCalibracao(val);
       } 
       else if(robo.botao2Pressionado()){

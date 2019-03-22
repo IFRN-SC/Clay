@@ -28,10 +28,15 @@
 	  atualizarVME();
     return (valorMaisEsq > sRME);
   }
-
+  
   bool Logica:: pValorMaisEsq(){
 	  atualizarVME();
 	  return (valorMaisEsq <= sRME);
+  }
+
+  bool Logica:: superBrancoME(){
+    atualizarVME();
+    return (valorMaisEsq + 20 >= sRME);
   }
 
   //Calibracao Sensor Esquerdo
