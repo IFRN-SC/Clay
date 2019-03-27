@@ -11,16 +11,16 @@
   
   //Funções para atualizar os valores de cada sensor
   void Logica:: atualizarVME(){
-    valorMaisEsq=robo.lerSensorLinhaMaisEsqSemRuido();
+    valorMaisEsq=robo.lerSensorLinhaMaisEsq();
   }
   void Logica:: atualizarVE(){
-	  valorEsq=robo.lerSensorLinhaEsqSemRuido();
+	  valorEsq=robo.lerSensorLinhaEsq();
   }
   void Logica:: atualizarVD(){
-	  valorDir= robo.lerSensorLinhaDirSemRuido();
+	  valorDir= robo.lerSensorLinhaDir();
   }
   void Logica:: atualizarVMD(){
-	  valorMaisDir=robo.lerSensorLinhaMaisDirSemRuido();
+	  valorMaisDir=robo.lerSensorLinhaMaisDir();
   }
 
   //Calibracao Sensor Mais Esquerdo
@@ -77,3 +77,5 @@
     calibrador=c;
     valores();
   }
+
+

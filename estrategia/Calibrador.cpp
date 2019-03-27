@@ -44,10 +44,10 @@
       delay(1000);
       Serial.println("BRANCO INICIADO!");
 
-      v1 = robo.lerSensorLinhaMaisEsqSemRuido();
-      v2 = robo.lerSensorLinhaEsqSemRuido();
-      v3 = robo.lerSensorLinhaDirSemRuido();
-      v4 = robo.lerSensorLinhaMaisDirSemRuido();
+      v1 = robo.lerSensorLinhaMaisEsq();
+      v2 = robo.lerSensorLinhaEsq();
+      v3 = robo.lerSensorLinhaDir();
+      v4 = robo.lerSensorLinhaMaisDir();
 
       s1 = (v1 + s1);
       s2 = (v2 + s2);
@@ -61,10 +61,10 @@
       delay(1000);
       Serial.println("PRETO INICIADO!");
 
-      v1 = robo.lerSensorLinhaMaisEsqSemRuido();
-      v2 = robo.lerSensorLinhaEsqSemRuido();
-      v3 = robo.lerSensorLinhaDirSemRuido();
-      v4 = robo.lerSensorLinhaMaisDirSemRuido();
+      v1 = robo.lerSensorLinhaMaisEsq();
+      v2 = robo.lerSensorLinhaEsq();
+      v3 = robo.lerSensorLinhaDir();
+      v4 = robo.lerSensorLinhaMaisDir();
 
 
       s1 = (v1 + s1);
