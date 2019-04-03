@@ -17,10 +17,10 @@ void Sala3::rampa (){
       movimento.dirr();
     }
     else if (sensores.brancoBrancoBrancoPreto()) {
-      movimento.exesq();
+      movimento.exdir();
     }
     else if (sensores.pretoBrancoBrancoBranco()) {
-      movimento.exdir();
+      movimento.exesq();
     }
     else if (sensores.pretoPretoPretoBranco()) {
       movimento.superfrent();
