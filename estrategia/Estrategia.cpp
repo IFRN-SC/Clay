@@ -35,7 +35,7 @@ void Estrategia::redutor() {
     delay(1000);
 
     movimento.re();
-    delay(200);
+    delay(100);
     
   if (!sensores.brancoBrancoBrancoBranco()){
     seguirLinha();
@@ -265,9 +265,9 @@ void Estrategia::desviarObstaculo() {
     robo.acionarMotores(-30, 0);
 }
   movimento.frenmed();
-  delay(500);
+  delay(550);
   movimento.rodaEsqMais();
-  delay(1050);
+  delay(1070);
   robo.ligarLed(1);
 
   movimento.frenmed();
@@ -276,13 +276,17 @@ void Estrategia::desviarObstaculo() {
   delay(1050);
   robo.ligarLed(2);
 
+  while (sensores.brancoBrancoBrancoBranco()){
+    movimento.frenmed();
+}
   movimento.frenmed();
-  delay(500);
-  movimento.rodaEsqMenos();
-  delay(1050);
+  delay(50);
 
-  movimento.re();
-  delay(100);
+  movimento.girando();
+  delay(600);
+
+  robo.acionarMotores(-30, -25);
+  delay(500);
 
   for (int obs2 = 0; obs2 < 7; obs2++){
    movimento.parar();
