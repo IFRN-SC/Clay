@@ -9,6 +9,10 @@
     
     return (logica.bValorMeio());
 }
+  bool Sensores:: PB(){
+
+    return (logica.pValorMeio());
+}
   bool Sensores:: BBBB() {
 
     return (logica.bValorMaisEsq() && logica.bValorEsq() && logica.bValorDir() && logica.bValorMaisDir());

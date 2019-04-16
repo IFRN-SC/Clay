@@ -79,109 +79,105 @@ void Estrategia::seguirLinha() {
   else if (sensores.BBPB()) { //BRANCO-BRANCO-PRETO-BRANCO
     movimento.dir();
 }
-  else if (sensores.BBBP()) { //BRANCO-BRANCO-BRANCO-PRETO
-    movimento.exdir();
-}
   else if (sensores.PBBB()) { //PRETO-BRANCO-BRANCO-BRANCO
     movimento.exesq();
 }
-  else if (sensores.PPPP()) { //PRETO-PRETO-PRETO-PRETO
+  else if (sensores.PPPP()) { //PRETO-PRETO-PRETO-PRETO   ///OOOOOO
     
     movimento.re();
     delay(300); 
     movimento.parar();
     delay(200); 
-   if (valorSensorMaisDir > 60 && valorSensorMaisDir < 70){
-    verde1();
     
-}  else if (valorSensorMaisDir > 80){
-    movimento.fren();
-    delay(500);
+    seguirLinha();
 }
-   seguirLinha();
-}
-
   else if (sensores.BPPB()){ //BRANCO-PRETO-PRETO-BRANCO
     movimento.re();
     delay(300);
 }
-  
   else if (sensores.BBBP()){  //BRANCO-BRANCO-BRANCO-PRETO
-    
+     
     movimento.parar();
-    delay(200);
+    delay(300);
+    
      while (sensores.MB()){
       movimento.exdir();
 } 
-     if (sensores.BBBP()){
-      while (!sensores.MB()){
+     if (sensores.PB()){
+      movimento.fren();
+      delay(100);
+}
+     
+     while (sensores.MB()){
       movimento.exdir();
 }
 }
-}
-
   else if (sensores.BPPP())  { //BRANCO-PRETO-PRETO-PRETO
     
     movimento.parar();
-    delay(200);
+    delay(300);
+    
     while (sensores.MB()){
-      movimento.exesq();
+      movimento.exdir();
 }
-    if (sensores.BPPP()){
-      while (!sensores.MB()){
-         movimento.exesq();
+     if (sensores.PB()){
+      movimento.fren();
+       delay(100);
+} 
+     while (sensores.MB()){
+      movimento.exdir();
 }
 }
-}
-
-
   else if (sensores.PPPB())  { //PRETO-PRETO-PRETO-BRANCO
     
     movimento.parar();
-    delay(200);
+    delay(300);
     
     while (sensores.MB()){
-      movimento.exdir();
+      movimento.exesq();
 } 
-    if (sensores.PPPB()){
-      while (!sensores.MB()){
-      movimento.exdir();
+    if (sensores.PB()){
+      movimento.fren();
+       delay(100);
+}
+   while (sensores.MB()){
+      movimento.exesq();
 }
 }
-}
-
   else if (sensores.PPBB())  { //PRETO-PRETO-BRANCO-BRANCO
     
      movimento.parar();
-     delay(200);
+     delay(300);
      
      while (sensores.MB()){
       movimento.exesq();  
 }    
-     if (sensores.PPBB()){
-      while (!sensores.MB()){
+     if (sensores.PB()){
+      movimento.fren();
+       delay(100);
+} 
+     while (sensores.MB()){
       movimento.exesq();
 }
 }
-}
-
-
   else if (sensores.BBPP())  { //BRANCO-BRANCO-PRETO-PRETO
     
     movimento.parar();
-     delay(200);
+     delay(300);
      
     while (sensores.MB()){
       movimento.exdir();
 }   
-    if (sensores.BBPP()){
-     while (!sensores.MB()){
-     movimento.exdir();
+    
+    if (sensores.PB()){
+      movimento.fren();
+       delay(100);
 }
+    while (sensores.MB()){
+      movimento.exdir();
 }
 }
 }  
-
 void Estrategia::verde2() {
   movimento.fren();
   delay(300);
