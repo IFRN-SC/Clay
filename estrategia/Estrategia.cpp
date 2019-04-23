@@ -248,9 +248,9 @@ void Estrategia::desviarObstaculo() {
     robo.acionarMotores(-30, 0);
 }
   movimento.frenmed();
-  delay(600);
+  delay(500);
   movimento.rodaEsqMais();
-  delay(1000);
+  delay(1050);
   robo.ligarLed(1);
 
   movimento.frenmed();
@@ -262,15 +262,20 @@ void Estrategia::desviarObstaculo() {
   delay(1000);
   robo.ligarLed(2);
 
+  //movimento.fren();
+  //delay(200);
+  movimento.parar();
+  delay(300);
+  
   while (sensores.MB()){
-    movimento.frenmed();
+    movimento.fren();
 }
  
   movimento.parar();
   delay(300);
   
   while (sensores.PB()){
-    movimento.frenmed();
+    movimento.fren();
 }
   movimento.rodaEsqMenos();
   delay(600);
