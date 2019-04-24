@@ -16,18 +16,23 @@ void Estrategia::executa() {
   if (sensorLateralEsq < 10 && sensorLateralDir < 10) {
     rampa();
 }
-  else if (sensorFrontal < 5) {
+  else if (sensorFrontal < 4) {
     desviarObstaculo();
 }
-  //else if (meio < 25) {
-  //redutor();
-  //}
+ /*else if (meio < 15) {
+  redutor();
+ }*/
   else {
     seguirLinha();
 }
 
 }
 void Estrategia::redutor() {
+
+    movimento.parar();
+    delay(500);
+    robo.desligarTodosLeds();
+    robo.ligarTodosLeds();
 
     movimento.superfrent();
     delay(500);
@@ -64,7 +69,8 @@ void Estrategia::redutor() {
    delay(1000);
    movimento.fren();
    delay(100);
-   
+
+  robo.desligarTodosLeds();
   seguirLinha();
   
  }
@@ -233,12 +239,7 @@ for(int i=0; i<8; i++){
  }  
 }
 void Estrategia::desviarObstaculo() {
-
-  movimento.parar();
-  delay(200);
-  
-  movimento.fren();
-  delay(100);
+ 
   robo.ligarLed(3);
   
   while (sensores.brancoEsq()){
@@ -247,23 +248,27 @@ void Estrategia::desviarObstaculo() {
   while (sensores.brancoDir()){
     robo.acionarMotores(-30, 0);
 }
+  if (sensores.pretoMesq()){
+    robo.acionarMotores(0, 30);
+}
+ 
   movimento.frenmed();
   delay(500);
   movimento.rodaEsqMais();
-  delay(1050);
+  delay(1030);
   robo.ligarLed(1);
 
   movimento.frenmed();
-  delay(550);
+  delay(800);
   
   movimento.parar();
   delay(300);
-  movimento.rodaEsqMais();
-  delay(1000);
+  movimento.rodaDirMenos();
+  delay(800);
   robo.ligarLed(2);
 
-  //movimento.fren();
-  //delay(200);
+  movimento.fren();
+  delay(400);
   movimento.parar();
   delay(300);
   
