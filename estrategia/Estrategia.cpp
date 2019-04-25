@@ -108,8 +108,9 @@ void Estrategia::seguirLinha() {
      movimento.parar();
      delay(300);
 
-     while (sensores.PB()){
+     if (sensores.PB()){
       movimento.fren();
+      delay(200);
 }
      
      while (sensores.MB()){
@@ -124,14 +125,15 @@ void Estrategia::seguirLinha() {
     movimento.parar();
      delay(300);
 
-    while (sensores.PB()){
+    if (sensores.PB()){
       movimento.fren();
+      delay(200);
 }
     while (sensores.MB()){
       movimento.exdir();
 }   
     robo.desligarLed(2);
- }
+}
 }  
 void Estrategia::verde2() {
   movimento.fren();
@@ -243,25 +245,25 @@ void Estrategia::desviarObstaculo() {
   robo.ligarLed(3);
   
   while (sensores.brancoEsq()){
-    robo.acionarMotores(-40, 0);
+    robo.acionarMotores(-35, 0);
 }
   while (sensores.brancoDir()){
-    robo.acionarMotores(-40, 0);
+    robo.acionarMotores(-35, 0);
 }
  
   movimento.frenmed();
-  delay(500);
+  delay(600);
   movimento.rodaEsqMais();
-  delay(1000);
+  delay(1100);
   robo.ligarLed(1);
 
   movimento.frenmed();
-  delay(500);
+  delay(600);
   
   movimento.parar();
   delay(300);
   movimento.rodaEsqMais();
-  delay(1050);
+  delay(950);
   robo.ligarLed(2);
 
   movimento.parar();
@@ -272,7 +274,7 @@ void Estrategia::desviarObstaculo() {
     delay(200);
 }
   while (sensores.MB()){
-    movimento.fren();
+    movimento.frenmed();
 }
  
   movimento.parar();

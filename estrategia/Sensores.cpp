@@ -5,6 +5,14 @@
     
     return (logica.bValorMaisEsq() && logica.bValorEsq()&& logica.bValorMeio() && logica.bValorDir() && logica.bValorMaisDir());
 }
+  bool Sensores::PPPE(){
+
+    return (logica.pValorMaisEsq() && logica.pValorEsq() && logica.pValorMeio());
+}
+  bool Sensores::PPPD(){
+
+    return (logica.pValorMeio() && logica.pValorDir() && logica.pValorMaisDir());
+}
   bool Sensores:: MB(){
     
     return (logica.bValorMeio());
