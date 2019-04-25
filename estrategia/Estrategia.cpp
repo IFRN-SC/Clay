@@ -243,35 +243,34 @@ void Estrategia::desviarObstaculo() {
   robo.ligarLed(3);
   
   while (sensores.brancoEsq()){
-    robo.acionarMotores(-30, 0);
+    robo.acionarMotores(-40, 0);
 }
   while (sensores.brancoDir()){
-    robo.acionarMotores(-30, 0);
-}
-  if (sensores.pretoMesq()){
-    robo.acionarMotores(0, 30);
+    robo.acionarMotores(-40, 0);
 }
  
   movimento.frenmed();
   delay(500);
   movimento.rodaEsqMais();
-  delay(1030);
+  delay(1000);
   robo.ligarLed(1);
 
   movimento.frenmed();
-  delay(800);
+  delay(500);
   
   movimento.parar();
   delay(300);
-  movimento.rodaDirMenos();
-  delay(800);
+  movimento.rodaEsqMais();
+  delay(1050);
   robo.ligarLed(2);
 
-  movimento.fren();
-  delay(400);
   movimento.parar();
   delay(300);
-  
+
+  if (sensores.PB()){
+    movimento.re();
+    delay(200);
+}
   while (sensores.MB()){
     movimento.fren();
 }
