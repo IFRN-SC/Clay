@@ -252,18 +252,18 @@ void Estrategia::desviarObstaculo() {
 }
  
   movimento.frenmed();
-  delay(600);
+  delay(500);
   movimento.rodaEsqMais();
-  delay(900);
+  delay(950);
   robo.ligarLed(1);
 
   movimento.frenmed();
-  delay(400);
+  delay(450);
   
   movimento.parar();
   delay(300);
   movimento.rodaEsqMais();
-  delay(950);
+  delay(95z0);
   robo.ligarLed(2);
 
   movimento.re();
@@ -286,7 +286,7 @@ void Estrategia::desviarObstaculo() {
     movimento.fren();
 }
   movimento.rodaEsqMenos();
-  delay(700);
+  delay(500);
 
   if (sensores.MB()){
     movimento.re();
