@@ -254,7 +254,7 @@ void Estrategia::desviarObstaculo() {
   movimento.frenmed();
   delay(500);
   movimento.rodaEsqMais();
-  delay(950);
+  delay(1050);
   robo.ligarLed(1);
 
   movimento.frenmed();
@@ -263,7 +263,7 @@ void Estrategia::desviarObstaculo() {
   movimento.parar();
   delay(300);
   movimento.rodaEsqMais();
-  delay(95z0);
+  delay(1050);
   robo.ligarLed(2);
 
   movimento.re();
