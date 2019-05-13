@@ -88,7 +88,11 @@ void Estrategia::seguirLinha() {
   else if (sensores.PBBB()) { //PRETO-BRANCO-BRANCO-BRANCO
     movimento.exesq();
 }
-  else if (sensores.PPPP()) { //PRETO-PRETO-PRETO-PRETO   ///OOOOOO
+ else if (sensores.BBBP()) { //BRANCO-BRANCO-BRANCO-PRETO
+    movimento.exdir();
+}
+  else if (sensores.PPPP()) { //PRETO-PRETO-PRETO-PRETO  
+    
     
     movimento.re();
     delay(300); 
@@ -240,9 +244,12 @@ for(int i=0; i<8; i++){
     sala3.alinhar(); 
  }  
 }
-void Estrategia::desviarObstaculo() {
+void Estrategia::desviarObstaculo() { //13/05/2019 "RIP"
  
   robo.ligarLed(3);
+  
+  movimento.fren();
+  delay(100);
   
   while (sensores.brancoEsq()){
     robo.acionarMotores(-45, 0);
@@ -252,18 +259,18 @@ void Estrategia::desviarObstaculo() {
 }
  
   movimento.frenmed();
-  delay(500);
+  delay(450);
   movimento.rodaEsqMais();
   delay(1050);
   robo.ligarLed(1);
 
   movimento.frenmed();
-  delay(450);
+  delay(500);
   
   movimento.parar();
   delay(300);
   movimento.rodaEsqMais();
-  delay(1050);
+  delay(950);
   robo.ligarLed(2);
 
   movimento.re();
@@ -282,16 +289,15 @@ void Estrategia::desviarObstaculo() {
   movimento.parar();
   delay(300);
   
-  while (sensores.PB()){
-    movimento.fren();
-}
+  movimento.frenmed();
+  delay(100);
+  
+  while (sensores.MB()){
   movimento.rodaEsqMenos();
-  delay(500);
-
-  if (sensores.MB()){
-    movimento.re();
-    delay(300);
 }
+  movimento.re();
+  delay(200);
+    
   seguirLinha();
 }
 void Estrategia:: led(){
