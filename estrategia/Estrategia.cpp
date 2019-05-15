@@ -92,8 +92,7 @@ void Estrategia::seguirLinha() {
     movimento.exdir();
 }
   else if (sensores.PPPP()) { //PRETO-PRETO-PRETO-PRETO  
-    
-    
+
     movimento.re();
     delay(300); 
     movimento.parar();
@@ -106,9 +105,11 @@ void Estrategia::seguirLinha() {
     delay(300);
 }
   else if (sensores.PPBB())  { //PRETO-PRETO-BRANCO-BRANCO
-
-    robo.ligarLed(3);
-    
+     
+     robo.ligarLed(3);
+     movimento.fren();
+     delay(50);
+     
      movimento.parar();
      delay(300);
 
@@ -125,7 +126,9 @@ void Estrategia::seguirLinha() {
   else if (sensores.BBPP())  { //BRANCO-BRANCO-PRETO-PRETO
 
     robo.ligarLed(2);
-    
+    movimento.fren();
+    delay(50);
+     
     movimento.parar();
      delay(300);
 
@@ -137,6 +140,43 @@ void Estrategia::seguirLinha() {
       movimento.exdir();
 }   
     robo.desligarLed(2);
+}
+ else if (sensores.PPPD())  { //BRANCO-BRANCO-PRETO-PRETO
+
+    robo.ligarLed(2);
+    movimento.fren();
+    delay(50);
+     
+    movimento.parar();
+     delay(300);
+
+    if (sensores.PB()){
+      movimento.fren();
+      delay(200);
+}
+    while (sensores.MB()){
+      movimento.exdir();
+}   
+    robo.desligarLed(2);
+}
+ else if (sensores.PPPE())  { //PRETO-PRETO-BRANCO-BRANCO
+ 
+     robo.ligarLed(3);
+     movimento.fren();
+     delay(50);
+     
+     movimento.parar();
+     delay(300);
+
+     if (sensores.PB()){
+      movimento.fren();
+      delay(200);
+}
+     
+     while (sensores.MB()){
+      movimento.exesq();  
+}    
+    robo.desligarLed(3);
 }
 }  
 void Estrategia::verde2() {
@@ -244,7 +284,7 @@ for(int i=0; i<8; i++){
     sala3.alinhar(); 
  }  
 }
-void Estrategia::desviarObstaculo() { //13/05/2019 "RIP"
+void Estrategia::desviarObstaculo() { //15/05/2019 "RIP"
  
   robo.ligarLed(3);
   
@@ -252,10 +292,10 @@ void Estrategia::desviarObstaculo() { //13/05/2019 "RIP"
   delay(100);
   
   while (sensores.brancoEsq()){
-    robo.acionarMotores(-45, 0);
+    robo.acionarMotores(-30, 0);
 }
   while (sensores.brancoDir()){
-    robo.acionarMotores(-45, 0);
+    robo.acionarMotores(-30, 0);
 }
  
   movimento.frenmed();
@@ -270,7 +310,7 @@ void Estrategia::desviarObstaculo() { //13/05/2019 "RIP"
   movimento.parar();
   delay(300);
   movimento.rodaEsqMais();
-  delay(950);
+  delay(1000);
   robo.ligarLed(2);
 
   movimento.re();
@@ -282,23 +322,27 @@ void Estrategia::desviarObstaculo() { //13/05/2019 "RIP"
     movimento.re();
     delay(200);
 }
-  while (sensores.MB()){
+  while (sensores.brancoMesq()){
     movimento.frenmed();
 }
- 
-  movimento.parar();
-  delay(300);
-  
-  movimento.frenmed();
-  delay(100);
-  
-  while (sensores.MB()){
-  movimento.rodaEsqMenos();
+
+  robo.acionarMotores(-40, 40);
+  delay(600);
+
+  while(sensores.brancoEsq()){
+    robo.acionarMotores(40,-40);
 }
-  movimento.re();
-  delay(200);
-    
-  seguirLinha();
+  /*if (sensores.PBBB() || sensores.PPBB()){
+     seguirLinha();
+}
+  else if (sensores.MB()){
+   movimento.rodaEsqMenos();
+   delay(600);
+
+   movimento.re();
+   delay(100);
+}*/
+   seguirLinha();
 }
 void Estrategia:: led(){
 
