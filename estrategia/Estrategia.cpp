@@ -288,18 +288,15 @@ void Estrategia::desviarObstaculo() { //15/05/2019 "RIP"
  
   robo.ligarLed(3);
   
-  movimento.fren();
-  delay(70);
-  
   while (sensores.brancoEsq()){
-    robo.acionarMotores(-30, 0);
+    robo.acionarMotores(-35, 0);
 }
   while (sensores.brancoDir()){
-    robo.acionarMotores(-30, 0);
+    robo.acionarMotores(-35, 0);
 }
  
   movimento.frenmed();
-  delay(450);
+  delay(400);
   movimento.rodaEsqMais();
   delay(1050);
   robo.ligarLed(1);
@@ -310,7 +307,7 @@ void Estrategia::desviarObstaculo() { //15/05/2019 "RIP"
   movimento.parar();
   delay(300);
   movimento.rodaEsqMais();
-  delay(1000);
+  delay(1050);
   robo.ligarLed(2);
 
   movimento.re();
@@ -332,9 +329,12 @@ void Estrategia::desviarObstaculo() { //15/05/2019 "RIP"
   while(sensores.brancoEsq()){
     robo.acionarMotores(40,-40);
   }*/
+
+  movimento.parar();
+  delay(200);
   
   movimento.frenmed();
-  delay(100);
+  delay(50);
 
   movimento.girando();
   delay(400);
@@ -344,7 +344,7 @@ void Estrategia::desviarObstaculo() { //15/05/2019 "RIP"
 
   if (sensores.MB()){
   movimento.re();
-  delay(200);
+  delay(300);
 } 
   seguirLinha();
 }
