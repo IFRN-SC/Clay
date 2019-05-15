@@ -29,7 +29,7 @@ void Movimento:: superfrent(){
     robo.acionarMotores(0, 0);
 }
  void Movimento:: girando(){
-    robo.acionarMotores(-30, 30);
+    robo.acionarMotores(-40, 40);
 }
  void Movimento:: esqq(){
     robo.acionarMotores(60,40);

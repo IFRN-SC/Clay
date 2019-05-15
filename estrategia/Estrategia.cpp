@@ -289,7 +289,7 @@ void Estrategia::desviarObstaculo() { //15/05/2019 "RIP"
   robo.ligarLed(3);
   
   movimento.fren();
-  delay(100);
+  delay(70);
   
   while (sensores.brancoEsq()){
     robo.acionarMotores(-30, 0);
@@ -326,23 +326,27 @@ void Estrategia::desviarObstaculo() { //15/05/2019 "RIP"
     movimento.frenmed();
 }
 
-  robo.acionarMotores(-40, 40);
+  /*robo.acionarMotores(-40, 40);
   delay(600);
 
   while(sensores.brancoEsq()){
     robo.acionarMotores(40,-40);
-}
-  /*if (sensores.PBBB() || sensores.PPBB()){
-     seguirLinha();
-}
-  else if (sensores.MB()){
-   movimento.rodaEsqMenos();
-   delay(600);
+  }*/
+  
+  movimento.frenmed();
+  delay(100);
 
-   movimento.re();
-   delay(100);
-}*/
-   seguirLinha();
+  movimento.girando();
+  delay(400);
+
+  movimento.re();
+  delay(100);
+
+  if (sensores.MB()){
+  movimento.re();
+  delay(200);
+} 
+  seguirLinha();
 }
 void Estrategia:: led(){
 
