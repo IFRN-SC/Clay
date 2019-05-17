@@ -18,6 +18,8 @@ class Estrategia{
     Movimento movimento;
     Sala3 sala3;
    
+    int contador = 0; 
+
     float sensorLateralDir;
     float sensorLateralEsq;
     float sensorFrontal;
@@ -31,6 +33,9 @@ class Estrategia{
     bool parar;
 
   public:
+    
+    void obs1();
+    void obs2();
 
     void executa();
     void seguirLinha();
