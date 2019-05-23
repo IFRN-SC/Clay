@@ -17,6 +17,7 @@ void Estrategia::executa() {
     rampa();
 }
   else if (robo.botao3Pressionado()){
+    
     movimento.parar();
     delay(3000);
     contador = contador + 1;
@@ -26,8 +27,7 @@ void Estrategia::executa() {
   contador = contador + 1;
 
    if (contador == 1){
-    obs1();
-      
+    obs1();    
  } else if (contador == 2){
     obs2();   
  } else if (contador == 3){
@@ -386,7 +386,7 @@ void Estrategia:: obs1(){
   robo.ligarLed(1);
 
   movimento.frenmed();
-  delay(400);
+  delay(350);
   
   movimento.parar();
   delay(300);
@@ -417,30 +417,30 @@ void Estrategia:: obs1(){
 }
 void Estrategia:: obs2(){
 
-  robo.ligarLed(3);
+ robo.ligarLed(3);
   
   movimento.fren();
   delay(100);
   
   while (sensores.brancoEsq()){
-    robo.acionarMotores(0, -30);
+    robo.acionarMotores(-35, 0);
 }
   while (sensores.brancoDir()){
-    robo.acionarMotores(0, -30);
+    robo.acionarMotores(-35, 0);
 }
  
   movimento.frenmed();
-  delay(550);
-  movimento.rodaDirMais();
-  delay(850);
+  delay(450);
+  movimento.rodaEsqMais();
+  delay(1050);
   robo.ligarLed(1);
 
   movimento.frenmed();
-  delay(400);
+  delay(350);
   
   movimento.parar();
   delay(300);
-  movimento.rodaDirMais();
+  movimento.rodaEsqMais();
   delay(950);
   robo.ligarLed(2);
 
@@ -453,12 +453,12 @@ void Estrategia:: obs2(){
     movimento.re();
     delay(200);
 }
- while (sensores.brancoMdir()){
+ while (sensores.brancoMesq()){
     movimento.frenmed();
 }  
- robo.acionarMotores(40, -40);
+ robo.acionarMotores(-40, 40);
  delay(600);
-  
+ 
  while(sensores.MB()){
     robo.acionarMotores(-40, 40);
 }
