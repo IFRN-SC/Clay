@@ -19,6 +19,8 @@ class Estrategia{
     Sala3 sala3;
    
     int contador = 0; 
+    const int pinoChave = 50;
+    const int pinoChave2 = 21;
 
     float sensorLateralDir;
     float sensorLateralEsq;
@@ -47,6 +49,8 @@ class Estrategia{
     void rampa();
     void Sala3();
     void led();
+    void redutoresq();
+    void redutordir();
     
     inline void setValoresCalibracao(Calibrador c){sensores.setValoresCalibracao(c);}
 

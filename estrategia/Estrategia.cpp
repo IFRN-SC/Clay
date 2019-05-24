@@ -3,6 +3,9 @@
 
 void Estrategia::executa() {
 
+  pinMode(pinoChave, INPUT_PULLUP);
+  pinMode(pinoChave2, INPUT_PULLUP);
+
   sensorLateralDir = robo.lerSensorSonarDir();
   sensorLateralEsq = robo.lerSensorSonarEsq();
   sensorFrontal = robo.lerSensorSonarFrontal();
@@ -15,11 +18,27 @@ void Estrategia::executa() {
 
   if (sensorLateralEsq < 10 && sensorLateralDir < 10) {
     rampa();
+}  
+  else if(digitalRead(pinoChave) == LOW){
+ 
+   movimento.fren();
+   delay(150);
+   movimento.parar(); 
+   delay(400);
+    
+  sensorLateralDir = robo.lerSensorSonarDir();
+  sensorLateralEsq = robo.lerSensorSonarEsq();
+  delay(1000);
+  
+   if (sensorLateralEsq < 15 && sensorLateralDir < 15) {
+   rampa();
+}    
+   redutor(); 
 }
   else if (robo.botao3Pressionado()){
     
     movimento.parar();
-    delay(3000);
+    delay(1000);
     contador = contador + 1;
  }
   else if (sensorFrontal < 4) {
@@ -46,21 +65,19 @@ void Estrategia::redutor() {
 
     movimento.parar();
     delay(500);
+    
     robo.desligarTodosLeds();
     robo.ligarTodosLeds();
 
     movimento.superfrent();
-    delay(500);
+    delay(400);
 
     movimento.parar();
     delay(500);
 
     movimento.parar();
     delay(1000);
-
-    movimento.re();
-    delay(200);
-    
+  
   if (!sensores.BBBB()){
     seguirLinha();
   }
