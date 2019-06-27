@@ -5,6 +5,22 @@
     
     return (logica.bValorMaisEsq() && logica.bValorEsq()&& logica.bValorMeio() && logica.bValorDir() && logica.bValorMaisDir());
 }
+ bool Sensores::PPBBB(){
+    
+    return (logica.pValorMaisEsq() && logica.pValorEsq()&& logica.bValorMeio() && logica.bValorDir() && logica.bValorMaisDir());
+}
+ bool Sensores::BBBPP(){
+    
+    return (logica.bValorMaisEsq() && logica.bValorEsq()&& logica.bValorMeio() && logica.pValorDir() && logica.pValorMaisDir());
+}
+  bool Sensores::BBPPP(){
+    
+    return (logica.bValorMaisEsq() && logica.bValorEsq()&& logica.pValorMeio() && logica.pValorDir() && logica.pValorMaisDir());
+}
+  bool Sensores::PPPBB(){
+    
+    return (logica.pValorMaisEsq() && logica.pValorEsq()&& logica.pValorMeio() && logica.bValorDir() && logica.bValorMaisDir());
+}
   bool Sensores::PPPE(){
 
     return (logica.pValorMaisEsq() && logica.pValorEsq() && logica.pValorMeio());

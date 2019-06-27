@@ -17,37 +17,40 @@
   float Calibrador:: getSRMD() { //MAIS-DIREITO
     return sRME;
 }
-  void Calibrador::setsM(float sM2){
+  void Calibrador::setsM(float sM2)
+{
     sM = sM2;
 }
-  void Calibrador::setSRME(float sRME2){
+  void Calibrador::setSRME(float sRME2)
+{
     sRME = sRME2;
 }
-  void Calibrador::setSRE(float sRE2){
+  void Calibrador::setSRE(float sRE2)
+{
     sRE = sRE2;
 }
-
-  void Calibrador::setSRD(float sRD2){
+  void Calibrador::setSRD(float sRD2)
+{
     sRD = sRD2;
 }
-
-  void Calibrador::setSRMD(float sRMD2){
+  void Calibrador::setSRMD(float sRMD2)
+{
     sRMD = sRMD2;
 }
-
-
-  void Calibrador:: calibrar() {    
+  void Calibrador:: calibrar() 
+{    
     delay(1000);
     robo.ligarLed(1);
 
     Serial.println("CALIBRADOR INICIADO!");
 
 
-    while (!endC) {
+    while (!endC) 
+{
       endStop = false;
     
 
-      while (!robo.botao1Pressionado() );
+     while (!robo.botao1Pressionado() );
       delay(1000);
       Serial.println("BRANCO INICIADO!");
 
@@ -66,7 +69,7 @@
       Serial.println("BRANCO PRONTO!");
       robo.ligarLed(2);
 
-      while ( !robo.botao1Pressionado() );
+     while ( !robo.botao1Pressionado() );
       delay(1000);
       Serial.println("PRETO INICIADO!");
 
@@ -89,34 +92,29 @@
 
     while (!endStop) { //Stop
 
-
-      if (robo.botao2Pressionado()) {
-        endC = true;
-        endStop = true;
-        robo.desligarLed(1);
-        robo.desligarLed(2);
-        robo.desligarLed(3);
-        Serial.println("CALIBRADOR DESLIGADO!");
-      }
-      else if (robo.botao1Pressionado()) {
-        robo.desligarLed(2);
-        robo.desligarLed(3);
-        endC = false;
-        endStop = true;
-        Serial.println("MAIS UMA CALIBRACAO!");
-      }
-
-    }
-
+     if (robo.botao2Pressionado()) 
+{    
+      endC = true;
+      endStop = true;
+      robo.desligarLed(1);
+      robo.desligarLed(2);
+      robo.desligarLed(3);
+      Serial.println("CALIBRADOR DESLIGADO!");
+}
+     else if (robo.botao1Pressionado()) 
+{
+       robo.desligarLed(2);
+       robo.desligarLed(3);
+       endC = false;
+       endStop = true;
+       Serial.println("MAIS UMA CALIBRACAO!");
+}
+}
     contador++;
-
-   }
-  
-
+}
     sRME = s1 / (contador*2);
     sRE = s2 / (contador*2);
     sRD = s3 / (contador*2);
     sRMD = s4/ (contador*2);
     sM = s5/ (contador*2);
-
-  }
+}

@@ -38,6 +38,8 @@ class Logica{
     
     bool bValorEsq();
     bool pValorEsq();
+
+    bool verdeEsq();
     
     bool bValorDir();
     bool pValorDir();

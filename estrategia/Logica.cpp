@@ -56,7 +56,6 @@
 	  atualizarVE();
 	  return (valorEsq > sRE);
 }
-
   bool Logica:: pValorEsq(){
 	  atualizarVE();
 	  return (valorEsq <= sRE);
