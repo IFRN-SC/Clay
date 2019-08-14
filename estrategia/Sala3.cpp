@@ -103,22 +103,25 @@ void Sala3::entregar()
 }
 void Sala3::umalinhar()
 {
-  robo.acionarMotores(54, 50);
-  delay(250);
+  movimento.parar();
+  delay(2000);
+  movimento.re();
+  delay(50);
   movimento.girando();
   delay(550);
   robo.acionarMotores(-40, -40);
   delay(1000);
-  movimento.fren();
-  delay(200);
   movimento.re();
   delay(300);
+  
+  robo.acionarMotores(37, 30);
+  delay(600);
 
   robo.acionarServoGarra1(180); //BRAÇO
   robo.acionarServoGarra2(180); //GARRA
   
   robo.acionarMotores(37, 30);
-  delay(2300);
+  delay(1600);
   
   robo.acionarServoGarra1(80); //BRAÇO
   robo.acionarServoGarra2(120); //GARRA
@@ -127,13 +130,18 @@ void Sala3::umalinhar()
   delay(1000);
   if (digitalRead(fimdocurso) == LOW || digitalRead(fimdocurso2) == LOW)
  {
+    robo.acionarMotores(0, -50);
+    delay(300);
+    robo.acionarMotores(-50, 0);
+    delay(300);
+    
     robo.acionarMotores(-40, -34);
     delay(3000);
     robo.ligarTodosLeds();
     entregar();
  }
   robo.acionarMotores(37, 30);
-  delay(800);
+  delay(600);
   
   robo.acionarMotores(40, -40);
   delay(400);
@@ -162,11 +170,81 @@ void Sala3::umalinhar()
     entregar();
  }
 
-  movimento.parar();
-  while(1);
- 
-  robo.desligarTodosLeds();
+   robo.acionarMotores(40, -40); // volta pra pegar a bola 
+   delay(600);
+   movimento.re();
+   delay(800);
+   
+   robo.acionarServoGarra1(180); //BRAÇO
+   robo.acionarServoGarra2(180); //GARRA
+   
+   robo.acionarMotores(35, 30);
+   delay(2300);
+   
+   robo.acionarServoGarra1(80); //BRAÇO
+   robo.acionarServoGarra2(120); //GARRA
 
-  procurar();
+   robo.acionarMotores(40, -40);
+   delay(1000);
+   robo.acionarMotores(-40, -34);
+   delay(1000);
+   
+    if (digitalRead(fimdocurso) == LOW || digitalRead(fimdocurso2) == LOW)
+ {
+    robo.ligarTodosLeds();
+    entregar();
+ }
+   robo.acionarMotores(37, 30);
+   delay(400);
+   robo.acionarMotores(40, -40);
+   delay(500);
+   robo.acionarServoGarra1(180); //BRAÇO
+   robo.acionarServoGarra2(180); //GARRA
+   
+   robo.acionarMotores(37, 30);
+   delay(1300);
+
+   robo.acionarServoGarra1(80); //BRAÇO
+   robo.acionarServoGarra2(120); //GARRA
+
+   robo.acionarMotores(0, -50);
+   delay(2000);
+   movimento.re();
+   delay(1500);
+   
+   if (digitalRead(fimdocurso) == LOW || digitalRead(fimdocurso2) == LOW)
+ {
+    robo.ligarTodosLeds();
+    entregar();
+ }
+ 
+   robo.acionarMotores(37, 30);
+   delay(400);
+   movimento.girando();
+   delay(500);
+
+   robo.acionarServoGarra1(180); //BRAÇO
+   robo.acionarServoGarra2(180); //GARRA
+   
+   robo.acionarMotores(35, 30);
+   delay(2300);
+
+   robo.acionarServoGarra1(80); //BRAÇO
+   robo.acionarServoGarra2(120); //GARRA  
+
+   robo.acionarMotores(40, -40);
+   delay(600);
+   movimento.re();
+   delay(1000);
+   
+   if (digitalRead(fimdocurso) == LOW || digitalRead(fimdocurso2) == LOW)
+ {
+    robo.ligarTodosLeds();
+    entregar();
+ }
+ 
+   robo.desligarTodosLeds();
+
+   procurar();
 }
 

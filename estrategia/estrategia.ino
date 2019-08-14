@@ -7,10 +7,10 @@
   Menu menu;
 
   void setup() {
-    robo.configurar(true);
+    robo.configurar(false); //COLOCAR VERDADEIRO QUANDO A GARRA VOLTAR A FUNCIONAR
     Serial.begin(9600);
-    robo.acionarServoGarra1(100); //BRAÇO
-    robo.acionarServoGarra2(140); //GARRA
+    //robo.acionarServoGarra1(100); //BRAÇO
+    //robo.acionarServoGarra2(140); //GARRA
     menu.menuLon(); 
     estrategia.setValoresCalibracao(menu.getValoresCalibracao());
   }

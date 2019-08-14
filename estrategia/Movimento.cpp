@@ -11,7 +11,7 @@ void Movimento:: frenlen(){
     robo.acionarMotores(20, 20);
 }
 void Movimento:: superfrent(){
-    robo.acionarMotores(75, 70);
+    robo.acionarMotores(70, 70);
 }
  void Movimento:: esq(){
     robo.acionarMotores(40,-35);

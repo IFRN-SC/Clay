@@ -19,7 +19,7 @@ class Estrategia{
     Sala3 sala3;
    
     int contador = 0; 
-    const int pinoChave = 50;
+    const int pinoChave = 28; //PODE SER 50 (Quando nao estiver utilizando S.C).
     const int pinoChave2 = 21;
 
     float sensorLateralDir;
