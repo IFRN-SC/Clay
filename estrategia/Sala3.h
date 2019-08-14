@@ -31,6 +31,7 @@ class Sala3 {
   void umalinhar();
   void procurar();
   void entregar();
+  void procurardois();
 	
 };
 
