@@ -14,6 +14,7 @@ void Sala3::executar()  //EXECUTA_TODA_A_RESENHA
 }
 void Sala3::alinhar()
 {
+  contador = contador + 2;
   robo.acionarMotores(-40, -34);
   delay(3000);
   movimento.re();
@@ -39,7 +40,7 @@ void Sala3::alinhar()
   movimento.fren();
   delay(200);
   robo.acionarMotores(-50, -50);
-  delay(500); 
+  delay(800); 
 
   sensorLateralDir = robo.lerSensorSonarDir();
   if (sensorLateralDir < 31)
@@ -48,16 +49,22 @@ void Sala3::alinhar()
  }
     procurar();
 }
-void Sala3::procurar()
+void Sala3::procurar() //VAGABUNDO
 {
   robo.acionarServoGarra1(180); //BRAÇO
   robo.acionarServoGarra2(180); //GARRA
   
-  robo.acionarMotores(35, 30);
-  delay(2300);
+  robo.acionarMotores(47, 40);
+  delay(1850);
 
-  robo.acionarServoGarra1(80); //BRAÇO
+  movimento.parar();
+  delay(1000);
+  
   robo.acionarServoGarra2(120); //GARRA
+  movimento.parar();
+  delay(500);
+  robo.acionarServoGarra1(80); //BRAÇO
+  
 
   alinhar();
 }
@@ -66,8 +73,8 @@ void Sala3::procurardois()
   robo.acionarServoGarra1(180); //BRAÇO
   robo.acionarServoGarra2(180); //GARRA
   
-  robo.acionarMotores(35, 30);
-  delay(1700);
+  robo.acionarMotores(47, 40);
+  delay(1400);
 
   robo.acionarServoGarra1(80); //BRAÇO
   robo.acionarServoGarra2(120); //GARRA
@@ -76,26 +83,37 @@ void Sala3::procurardois()
 }
 void Sala3::entregar()
 {
-  robo.acionarMotores(56, 50);
-  delay(1300);
+  if (contador == 1)
+  {
+    movimento.parar();
+    while(1);
+  }
+  robo.acionarMotores(47, 40);
+  delay(1400);
   robo.acionarMotores(40, -40);
-  delay(400);
+  delay(500);
   robo.acionarMotores(-40, -34);
   delay(2200);
-  robo.acionarMotores(35, 30);       //marca
-  delay(1600);
+  robo.acionarMotores(45, 40);       //marca
+  delay(1400);
+  movimento.parar();
+  delay(1000);
   movimento.girando();
-  delay(1200);
+  delay(1300);
   robo.acionarMotores(-40, -34);
   delay(1350);
-  robo.acionarMotores(35, 30);
-  delay(500);
+  robo.acionarMotores(47, 40);
+  delay(200);
   robo.acionarMotores(40, -40);
   delay(900);
-  robo.acionarMotores(35, 30);
-  delay(800);
+  robo.acionarMotores(47, 40);
+  delay(500);
+  robo.acionarMotores(0, -45);
+  delay(200);
   
-  robo.acionarServoGarra1(110); //BRAÇO
+  robo.acionarServoGarra1(130); //BRAÇO
+  movimento.parar();
+  delay(1000);
   robo.acionarServoGarra2(180); //GARRA
   
   movimento.parar();
@@ -103,9 +121,9 @@ void Sala3::entregar()
 }
 void Sala3::umalinhar()
 {
-  movimento.parar();
-  delay(2000);
-  movimento.re();
+  contador = contador + 1;
+  
+  movimento.fren();
   delay(50);
   movimento.girando();
   delay(550);
@@ -113,138 +131,14 @@ void Sala3::umalinhar()
   delay(1000);
   movimento.re();
   delay(300);
-  
-  robo.acionarMotores(37, 30);
-  delay(600);
-
-  robo.acionarServoGarra1(180); //BRAÇO
-  robo.acionarServoGarra2(180); //GARRA
-  
-  robo.acionarMotores(37, 30);
-  delay(1600);
-  
-  robo.acionarServoGarra1(80); //BRAÇO
-  robo.acionarServoGarra2(120); //GARRA
-
-  movimento.parar();
-  delay(1000);
-  if (digitalRead(fimdocurso) == LOW || digitalRead(fimdocurso2) == LOW)
- {
-    robo.acionarMotores(0, -50);
-    delay(300);
-    robo.acionarMotores(-50, 0);
-    delay(300);
-    
-    robo.acionarMotores(-40, -34);
-    delay(3000);
-    robo.ligarTodosLeds();
-    entregar();
- }
-  robo.acionarMotores(37, 30);
+  robo.acionarMotores(47, 40);
+  delay(300);
+  robo.acionarMotores(-40, -40);
   delay(600);
   
-  robo.acionarMotores(40, -40);
-  delay(400);
-  movimento.re();
-  delay(1300);
-
-  robo.acionarServoGarra1(180); //BRAÇO
-  robo.acionarServoGarra2(180); //GARRA
-  
-  robo.acionarMotores(30, 30);
-  delay(1500);
-
-  robo.acionarServoGarra1(80); //BRAÇO
-  robo.acionarServoGarra2(120); //GARRA
-
-  movimento.parar();
-  delay(1000);
-  
-  if (digitalRead(fimdocurso) == LOW || digitalRead(fimdocurso2) == LOW)
- {
-    movimento.girando();
-    delay(600);
-    robo.acionarMotores(-40, -34);
-    delay(3000);
-    robo.ligarTodosLeds();
-    entregar();
- }
-
-   robo.acionarMotores(40, -40); // volta pra pegar a bola 
-   delay(600);
-   movimento.re();
-   delay(800);
-   
-   robo.acionarServoGarra1(180); //BRAÇO
-   robo.acionarServoGarra2(180); //GARRA
-   
-   robo.acionarMotores(35, 30);
-   delay(2300);
-   
-   robo.acionarServoGarra1(80); //BRAÇO
-   robo.acionarServoGarra2(120); //GARRA
-
-   robo.acionarMotores(40, -40);
-   delay(1000);
-   robo.acionarMotores(-40, -34);
-   delay(1000);
-   
-    if (digitalRead(fimdocurso) == LOW || digitalRead(fimdocurso2) == LOW)
- {
-    robo.ligarTodosLeds();
-    entregar();
- }
-   robo.acionarMotores(37, 30);
-   delay(400);
-   robo.acionarMotores(40, -40);
-   delay(500);
-   robo.acionarServoGarra1(180); //BRAÇO
-   robo.acionarServoGarra2(180); //GARRA
-   
-   robo.acionarMotores(37, 30);
-   delay(1300);
-
-   robo.acionarServoGarra1(80); //BRAÇO
-   robo.acionarServoGarra2(120); //GARRA
-
-   robo.acionarMotores(0, -50);
-   delay(2000);
-   movimento.re();
-   delay(1500);
-   
-   if (digitalRead(fimdocurso) == LOW || digitalRead(fimdocurso2) == LOW)
- {
-    robo.ligarTodosLeds();
-    entregar();
- }
  
-   robo.acionarMotores(37, 30);
-   delay(400);
-   movimento.girando();
-   delay(500);
+  robo.desligarTodosLeds();
 
-   robo.acionarServoGarra1(180); //BRAÇO
-   robo.acionarServoGarra2(180); //GARRA
-   
-   robo.acionarMotores(35, 30);
-   delay(2300);
-
-   robo.acionarServoGarra1(80); //BRAÇO
-   robo.acionarServoGarra2(120); //GARRA  
-
-   robo.acionarMotores(40, -40);
-   delay(600);
-   movimento.re();
-   delay(1000);
-   
-   if (digitalRead(fimdocurso) == LOW || digitalRead(fimdocurso2) == LOW)
- {
-    robo.ligarTodosLeds();
-    entregar();
- }
- 
-   robo.desligarTodosLeds();
-
-   procurar();
+  procurar();
 }
 

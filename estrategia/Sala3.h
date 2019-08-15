@@ -19,7 +19,7 @@ class Sala3 {
   float sensorLateralEsq;
   float sensorFrontal;
     
-  const int fimdocurso = 28;
+  const int fimdocurso = 30;
   const int fimdocurso2 = 42;
 
   bool parar;

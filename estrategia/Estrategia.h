@@ -33,6 +33,9 @@ class Estrategia{
     float meio;
     
     bool parar;
+    
+    RGB corEsq;
+    RGB corDir;
 
   public:
     

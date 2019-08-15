@@ -1,6 +1,8 @@
 #include "Estrategia.h"
 #include "robo_hardware2.h"
 
+#define DIVISOR_BRANCO_VERDE 261
+
 void Estrategia::executa() {
 
   pinMode(pinoChave, INPUT_PULLUP);
@@ -103,8 +105,37 @@ void Estrategia::seguirLinha() {
  else if (sensores.BBBP()) { //BRANCO-BRANCO-BRANCO-PRETO
     movimento.exdir();
 }
-  else if (sensores.PPPP()) { //PRETO-PRETO-PRETO-PRETO  
-    movimento.fren(); 
+  else if (sensores.PPPP()) { //PRETO-PRETO-PRETO-PRETO 
+    
+   movimento.parar();
+   delay(1000);
+   
+   while(!sensores.BBBB())
+   {
+    movimento.fren();
+   }
+   while(!sensores.pretoMesq())
+   {
+     robo.acionarMotores(30, -30);
+   }
+   while (!sensores.pretoMdir())
+   {
+    robo.acionarMotores(-60, 0);
+   }
+    
+   corEsq = robo.getRGBEsquerdo();
+   if(corEsq.verde < 150)
+   {
+      movimento.esq();
+      delay(600);
+      movimento.parar();
+      while(1);
+   }
+   else if (corEsq.verde > 150)
+   {
+    movimento.girando();
+    while(1);
+   }
 }
   else if (sensores.BPPB()){ //BRANCO-PRETO-PRETO-BRANCO
     movimento.re();
