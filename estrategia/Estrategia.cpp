@@ -1,10 +1,8 @@
 #include "Estrategia.h"
 #include "robo_hardware2.h"
 
-#define DIVISOR_BRANCO_VERDE 261
-
-void Estrategia::executa() {
-
+void Estrategia::executa() 
+{
   pinMode(pinoChave, INPUT_PULLUP);
   pinMode(pinoChave2, INPUT_PULLUP);
 
@@ -18,13 +16,13 @@ void Estrategia::executa() {
   valorSensorMaisDir = robo.lerSensorLinhaMaisDir();
   meio = robo.lerSensorLinhaMeio();
 
-  if (sensorLateralEsq < 15 && sensorLateralDir < 15) {
+   if (sensorLateralEsq < 20 && sensorLateralDir < 20) {
     rampa();
 }  
-   else if(digitalRead(pinoChave) == LOW){
+  else if(digitalRead(pinoChave) == LOW){
     
-   movimento.fren();
-   delay(150);
+  movimento.fren();
+  delay(150);
 
   if (digitalRead(pinoChave2) == LOW)
     
@@ -68,11 +66,8 @@ void Estrategia::executa() {
 }
 void Estrategia::redutor() {
 
-   movimento.re();
-   delay(200);
-   
    movimento.superfrent();
-   delay(400);
+   delay(500);
 
    seguirLinha();
    delay(100);
@@ -106,36 +101,11 @@ void Estrategia::seguirLinha() {
     movimento.exdir();
 }
   else if (sensores.PPPP()) { //PRETO-PRETO-PRETO-PRETO 
-    
-   movimento.parar();
-   delay(1000);
-   
-   while(!sensores.BBBB())
-   {
+    movimento.parar();
+    delay(1000);
+
     movimento.fren();
-   }
-   while(!sensores.pretoMesq())
-   {
-     robo.acionarMotores(30, -30);
-   }
-   while (!sensores.pretoMdir())
-   {
-    robo.acionarMotores(-60, 0);
-   }
-    
-   corEsq = robo.getRGBEsquerdo();
-   if(corEsq.verde < 150)
-   {
-      movimento.esq();
-      delay(600);
-      movimento.parar();
-      while(1);
-   }
-   else if (corEsq.verde > 150)
-   {
-    movimento.girando();
-    while(1);
-   }
+    delay(300);
 }
   else if (sensores.BPPB()){ //BRANCO-PRETO-PRETO-BRANCO
     movimento.re();
@@ -343,7 +313,7 @@ void Estrategia::desviarObstaculo() { //15/05/2019 "RIP"
   movimento.frenmed();
   delay(450);
   movimento.rodaEsqMais();
-  delay(1050);
+  delay(1250);
   robo.ligarLed(1);
 
   movimento.frenmed();
@@ -409,11 +379,11 @@ void Estrategia:: obs1(){
   movimento.frenmed();
   delay(450);
   movimento.rodaEsqMais();
-  delay(1050);
+  delay(1250);
   robo.ligarLed(1);
 
   movimento.frenmed();
-  delay(400);
+  delay(500);
   
   movimento.parar();
   delay(300);

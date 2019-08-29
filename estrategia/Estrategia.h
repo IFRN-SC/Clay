@@ -19,7 +19,8 @@ class Estrategia{
     Sala3 sala3;
    
     int contador = 0; 
-    const int pinoChave = 28; //PODE SER 50 (Quando nao estiver utilizando S.C).
+    int calibrador = 0;
+    const int pinoChave = 50; //PODE SER 50 (Quando nao estiver utilizando S.C).
     const int pinoChave2 = 21;
 
     float sensorLateralDir;
@@ -31,6 +32,10 @@ class Estrategia{
     float valorSensorMaisEsq;
     float valorSensorMaisDir;
     float meio;
+
+    float corPreto;
+    float corBranco;
+    float corVerde;
     
     bool parar;
     

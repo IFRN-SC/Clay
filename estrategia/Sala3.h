@@ -5,34 +5,44 @@
 #include "Movimento.h"
 #include "Calibrador.h"
 
-class Sala3 {
-	
-	 private:
+class Sala3 
+{	
+	private:
 	
 	Movimento movimento;
 	Sensores sensores;
-
-  int salas = 0;
-  int contador = 0;
+  
+  const int fimdocurso = 30;
+  const int fimdocurso2 = 42;
+  
+  int tipoSala = 0;
+  int tipoArea = 0;
   
 	float sensorLateralDir;
   float sensorLateralEsq;
-  float sensorFrontal;
-    
-  const int fimdocurso = 30;
-  const int fimdocurso2 = 42;
-
-  bool parar;
+  float sensorFrontal;    
 	
-	 public:
+	public:
  
-	void alinhar();
   void executar();
-  void umalinhar();
+
+  void procurarAreaResgate();
   void procurar();
-  void entregar();
-  void procurardois();
-	
+  void alinhar();
+  void procurarDois();
+  void alinharDois();
+  void alinharInverso();
+  void resgatar();
+  void procurarInverso();
+  void bolinhaIdentificada();
+  void garraAbaixada();
+  void garraLevantada();
+  void garraFechada();
+  void garraAbaixadaBola();
+  void repeticaoBolaEncontrada();
+  void parar();
+  
+  
 };
 
 #endif

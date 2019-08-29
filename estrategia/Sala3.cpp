@@ -1,144 +1,254 @@
 #include "robo_hardware2.h"
 #include "Sala3.h"
 
-void Sala3::executar()  //EXECUTA_TODA_A_RESENHA
+void Sala3::executar() 
 {
   pinMode(fimdocurso, INPUT_PULLUP);
   pinMode(fimdocurso2, INPUT_PULLUP);
- 
+  
+  robo.desligarTodosLeds();
+  delay(400);
+
   sensorLateralDir = robo.lerSensorSonarDir();
   sensorLateralEsq = robo.lerSensorSonarEsq();
   sensorFrontal = robo.lerSensorSonarFrontal();
 
-  umalinhar();
-}
-void Sala3::alinhar()
-{
-  contador = contador + 2;
-  robo.acionarMotores(-40, -34);
-  delay(3000);
-  movimento.re();
-  delay(300);
-  robo.acionarMotores(-40, -40);
+  movimento.parar();
   delay(500);
 
-  if (digitalRead(fimdocurso) == LOW || digitalRead(fimdocurso2) == LOW)
- {
-    robo.ligarTodosLeds();
-    entregar();
- }
-  robo.acionarMotores(54, 50);
-  delay(300);
-  robo.acionarMotores(40, -40);
-  delay(550);
-  robo.acionarMotores(36, 30);
-  delay(600);
-  movimento.girando();
-  delay(550);
-  robo.acionarMotores(-40, -40);
-  delay(400);
-  movimento.fren();
-  delay(200);
-  robo.acionarMotores(-50, -50);
-  delay(800); 
+  if (sensorLateralDir < 15 || sensorLateralEsq > 15)
+{
+    tipoSala = tipoSala + 1; //TIPO SALA 1
+    procurarAreaResgate();
+}
+  else if (sensorLateralEsq < 15 || sensorLateralDir > 15)
+{
+    tipoSala = tipoSala + 2; //TIPO SALA 2
+    procurarAreaResgate();
+}
+}
+void Sala3:: procurarAreaResgate()
+{
+  if (tipoSala == 1)
+  {
+    garraAbaixada();
+    movimento.parar();
+    delay(500);
+    movimento.fren();
+    delay(1000);
+    garraFechada();
+    garraLevantada();
 
-  sensorLateralDir = robo.lerSensorSonarDir();
-  if (sensorLateralDir < 31)
- {
-    procurardois();
- }
+    movimento.girandoEsq();
+    delay(500);
+    movimento.re();
+    delay(400);
+    robo.acionarMotores(-43, -40);
+    delay(800);
+    movimento.fren();
+    delay(50);
+    
+    movimento.fren();
+    delay(1500);
+    movimento.girando();
+    delay(500);
+    movimento.re();
+    delay(2500);
+    movimento.fren();
+    delay(50);
+    
+    garraAbaixada();
+    movimento.fren();
+    delay(2000);
+    garraFechada();
+    garraLevantada();
+    movimento.parar();
+    delay(500);
+    movimento.girandoEsq();   //SOB OBSERVAÇÃO
+    delay(400);
+
+    sensorFrontal = robo.lerSensorSonarFrontal(); //TIPOAREA 1
+    if (sensorFrontal < 40)
+{ 
+    tipoArea = tipoArea + 1; 
+    movimento.girando();
+    delay(500);
+    movimento.re();
+    delay(400);
+    movimento.girandoEsq();
+    delay(100);
+    movimento.re();
+    delay(2000);
+    movimento.fren();
+    delay(350);
+    movimento.girandoEsq();
+    delay(500);
+    movimento.re();
+    delay(2000);
+ 
+    movimento.parar();
+    delay(500);
     procurar();
 }
-void Sala3::procurar() //VAGABUNDO
+    //AREA 2
+    
+    movimento.girando();
+    delay(600);
+    
+    sensorFrontal = robo.lerSensorSonarFrontal();
+    if (sensorFrontal < 40)
 {
-  robo.acionarServoGarra1(180); //BRAÇO
-  robo.acionarServoGarra2(180); //GARRA
-  
-  robo.acionarMotores(47, 40);
-  delay(1850);
-
-  movimento.parar();
-  delay(1000);
-  
-  robo.acionarServoGarra2(120); //GARRA
-  movimento.parar();
-  delay(500);
-  robo.acionarServoGarra1(80); //BRAÇO
-  
-
-  alinhar();
+    tipoArea = tipoArea + 2;
+    parar();
 }
-void Sala3::procurardois()
-{
-  robo.acionarServoGarra1(180); //BRAÇO
-  robo.acionarServoGarra2(180); //GARRA
-  
-  robo.acionarMotores(47, 40);
-  delay(1400);
+    movimento.girando();
+    delay(900);
 
-  robo.acionarServoGarra1(80); //BRAÇO
-  robo.acionarServoGarra2(120); //GARRA
-
-  alinhar();
-}
-void Sala3::entregar()
+    sensorFrontal = robo.lerSensorSonarFrontal();
+    if (tipoArea == 0)
 {
-  if (contador == 1)
-  {
-    movimento.parar();
-    while(1);
-  }
-  robo.acionarMotores(47, 40);
-  delay(1400);
-  robo.acionarMotores(40, -40);
-  delay(500);
-  robo.acionarMotores(-40, -34);
-  delay(2200);
-  robo.acionarMotores(45, 40);       //marca
-  delay(1400);
-  movimento.parar();
-  delay(1000);
-  movimento.girando();
-  delay(1300);
-  robo.acionarMotores(-40, -34);
-  delay(1350);
-  robo.acionarMotores(47, 40);
-  delay(200);
-  robo.acionarMotores(40, -40);
-  delay(900);
-  robo.acionarMotores(47, 40);
-  delay(500);
-  robo.acionarMotores(0, -45);
-  delay(200);
-  
-  robo.acionarServoGarra1(130); //BRAÇO
-  movimento.parar();
-  delay(1000);
-  robo.acionarServoGarra2(180); //GARRA
-  
-  movimento.parar();
-  while(1);
+    tipoArea = tipoArea + 3;
+    parar();
 }
-void Sala3::umalinhar()
+}
+}
+void Sala3:: procurar()
 {
-  contador = contador + 1;
-  
+  if (tipoArea == 1)
+{
+  garraAbaixada();
   movimento.fren();
-  delay(50);
-  movimento.girando();
-  delay(550);
-  robo.acionarMotores(-40, -40);
-  delay(1000);
-  movimento.re();
-  delay(300);
-  robo.acionarMotores(47, 40);
-  delay(300);
-  robo.acionarMotores(-40, -40);
-  delay(600);
+  delay(2500);
+  garraFechada();
+
+  robo.acionarMotores(-36, -30);
+  delay(3100);
   
- 
-  robo.desligarTodosLeds();
+    if (digitalRead(fimdocurso) == LOW || digitalRead(fimdocurso2) == LOW)
+{
+    resgatar(); 
+}
+    alinhar();
+}
+}
+void Sala3:: alinhar()
+{
+  if (tipoArea == 1)
+{
+  movimento.fren();
+  delay(400);
+  movimento.girando();
+  delay(400);
+  garraAbaixada();
+  movimento.fren();
+  delay(500);
+  garraFechada();
+  movimento.girandoEsq();
+  delay(500);
+  movimento.re();
+  delay(900);
 
   procurar();
 }
+}
+void Sala3:: resgatar()
+{
+  robo.ligarTodosLeds();
+  if (tipoArea == 1)
+{
+  movimento.fren();
+  delay(1600);
+  movimento.parar();
+  delay(400);
+  movimento.girando();
+  delay(500);
+  movimento.parar();
+  delay(400);
+  movimento.re();
+  delay(2500);
+  movimento.fren();
+  delay(50);
+  movimento.fren();
+  delay(1800);
+  movimento.girando();
+  delay(600);
+  movimento.re();
+  delay(1600);
+  movimento.parar();
+  delay(500);
+  movimento.fren();
+  delay(500);
+  movimento.parar();
+  delay(500);
+  movimento.girandoEsq();
+  delay(900);
+  movimento.parar();
+  delay(500);
+  movimento.fren();
+  delay(500);
+  repeticaoBolaEncontrada();
+  parar();
+}
+}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void Sala3:: garraAbaixada()
+{
+  robo.acionarServoGarra1(180);
+  robo.acionarServoGarra2(180);
+}
+void Sala3:: garraLevantada()
+{
+  robo.acionarServoGarra1(100);
+  robo.acionarServoGarra2(140);
+}
+void Sala3:: garraFechada()
+{
+  robo.acionarServoGarra2(110);
+  movimento.parar();
+  delay(400);
+  robo.acionarServoGarra1(90);
+}
+void Sala3:: garraAbaixadaBola()
+{
+  robo.acionarServoGarra2(170);
+  movimento.parar();
+  delay(1000);
+  robo.acionarServoGarra1(130);
+}
+void Sala3:: repeticaoBolaEncontrada()
+{
+  garraAbaixadaBola();
+  movimento.parar();
+  delay(500);
+  garraFechada();
+  movimento.parar();
+  delay(500);
+  garraAbaixadaBola();
+}
+void Sala3:: parar()
+{
+  movimento.parar();
+  while (1);
+}
+void Sala3::bolinhaIdentificada()
+{
+  if (digitalRead(fimdocurso) == LOW || digitalRead(fimdocurso2) == LOW)
+  {
+    robo.acionarMotores(0, 0);//resgatar(); 
+    while(1);
+  }
+}

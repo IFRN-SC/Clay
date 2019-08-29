@@ -25,6 +25,9 @@ class Movimento{
     void rodaDirMenos();
     void rodaEsqMais();
     void rodaDirMais();
+    void girandoEsq();
+    void reDir();
+    void reEsq();
 
 };
 

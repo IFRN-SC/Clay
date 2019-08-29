@@ -5,16 +5,18 @@
 
   Estrategia estrategia;
   Menu menu;
-
-  void setup() {
+  
+  void setup() 
+{  
     robo.configurar(true);
     Serial.begin(9600);
-    robo.acionarServoGarra1(100); //BRAÇO
+    robo.acionarServoGarra1(70); //BRAÇO
     robo.acionarServoGarra2(140); //GARRA
-    //robo.habilitaTCS34();
+    robo.habilitaTCS34();
     menu.menuLon(); 
     estrategia.setValoresCalibracao(menu.getValoresCalibracao());
-  }
-  void loop() {
+}
+  void loop() 
+{
     estrategia.executa();
-  }
+}
