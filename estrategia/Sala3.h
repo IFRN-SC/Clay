@@ -17,6 +17,8 @@ class Sala3
   
   int tipoSala = 0;
   int tipoArea = 0;
+  int contadorInverso = 0;
+  int contadorAuxiliar = 0;
   
 	float sensorLateralDir;
   float sensorLateralEsq;
@@ -26,15 +28,24 @@ class Sala3
  
   void executar();
 
-  void procurarAreaResgate();
+  void procurarAreaResgate1();
+  void procurarAreaResgate2();
   void procurar();
   void alinhar();
-  void procurarDois();
-  void alinharDois();
-  void alinharInverso();
   void resgatar();
+  
+  void procurarMenor();
+  void alinharMenor();
+  
+  void alinharInverso();
   void procurarInverso();
+  void reiniciar();
+  
   void bolinhaIdentificada();
+  
+
+  void abrirGarraLento();
+  void abrirGarraLento2();
   void garraAbaixada();
   void garraLevantada();
   void garraFechada();

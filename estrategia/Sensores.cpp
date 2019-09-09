@@ -1,9 +1,21 @@
 #include "robo_hardware2.h"
 #include "Sensores.h"
 
+bool Sensores::BPBBB(){
+    
+    return (logica.bValorMaisEsq() && logica.pValorEsq()&& logica.bValorMeio() && logica.bValorDir() && logica.bValorMaisDir());
+}
+bool Sensores::BBBPB(){
+    
+    return (logica.bValorMaisEsq() && logica.bValorEsq()&& logica.bValorMeio() && logica.pValorDir() && logica.bValorMaisDir());
+}
   bool Sensores::BBBBB(){
     
     return (logica.bValorMaisEsq() && logica.bValorEsq()&& logica.bValorMeio() && logica.bValorDir() && logica.bValorMaisDir());
+}
+bool Sensores::BBPBB(){
+    
+    return (logica.bValorMaisEsq() && logica.bValorEsq()&& logica.pValorMeio() && logica.bValorDir() && logica.bValorMaisDir());
 }
  bool Sensores::PPBBB(){
     

@@ -22,6 +22,9 @@ class Sensores{
 
     bool BBBPP();
     bool PPBBB();
+    bool BBPBB();
+    bool BBBPB();
+    bool BPBBB();
     
     bool BBBB();
     bool BBBBB();
