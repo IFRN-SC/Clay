@@ -19,6 +19,7 @@ class Sala3
   int tipoArea = 0;
   int contadorInverso = 0;
   int contadorAuxiliar = 0;
+  int contadorAuxiliarTipoArea3 = 0;
   
 	float sensorLateralDir;
   float sensorLateralEsq;

@@ -100,13 +100,9 @@ void Estrategia::seguirLinha() {
      delay(300);
      
      robo.ligarLed(3);
-     
-     while (sensores.PB()){
-      movimento.fren();
-      delay(150);
-} 
-    //movimento.fren();
-    //delay(400);
+ 
+     movimento.fren();
+     delay(250);
     
      while (sensores.MB()){
       movimento.exesq();  
@@ -120,12 +116,8 @@ void Estrategia::seguirLinha() {
      
     robo.ligarLed(2);
     
-    while (sensores.PB()){
-      movimento.fren();
-      delay(150);
-}
-   // movimento.fren();
-    //delay(400);
+    movimento.fren();
+    delay(250);
     
     while (sensores.MB()){
       movimento.exdir();
@@ -139,12 +131,8 @@ void Estrategia::seguirLinha() {
      
     robo.ligarLed(2);
     
-    while (sensores.PB()){
-      movimento.fren();
-      delay(150);
-}
-   // movimento.fren();
-   // delay(400);
+    movimento.fren();
+    delay(250);
     
     while (sensores.MB()){
       movimento.exdir();
@@ -158,12 +146,8 @@ void Estrategia::seguirLinha() {
      
      robo.ligarLed(3);
      
-     while (sensores.PB()){
-      movimento.fren();
-      delay(150);
-} 
-    //movimento.fren();
-    //delay(400);
+     movimento.fren();
+     delay(250);
     
      while (sensores.MB()){
       movimento.exesq();  
@@ -177,13 +161,9 @@ void Estrategia::seguirLinha() {
      
      robo.ligarLed(3);
      
-     while (sensores.PB()){
-      movimento.fren();
-      delay(150);
-} 
-    //movimento.fren();
-    //delay(400);
-    
+     movimento.fren();
+     delay(250);
+     
      while (sensores.MB()){
       movimento.exesq();  
 }    
@@ -196,12 +176,8 @@ void Estrategia::seguirLinha() {
      
     robo.ligarLed(2);
     
-    while (sensores.PB()){
-      movimento.fren();
-      delay(150);
-}
-   //movimento.fren();
-   // delay(400);
+    movimento.fren();
+    delay(250);
     
     while (sensores.MB()){
       movimento.exdir();
@@ -211,16 +187,12 @@ void Estrategia::seguirLinha() {
 } else if (sensores.BBBPP()){  //BRANCO-BARNCO-BRANCO-PRETO-PRETO
     
     movimento.parar();
-     delay(300);
+    delay(300);
      
     robo.ligarLed(2);
     
-    while (sensores.PB()) {
-      movimento.fren();
-      delay(150);
-}
-    //movimento.fren();
-    //delay(400);
+    movimento.fren();
+    delay(250);
     
     while (sensores.MB()) {
       movimento.exdir();
@@ -228,16 +200,12 @@ void Estrategia::seguirLinha() {
     robo.desligarLed(2);
 } else if (sensores.PPBBB()) {   //PRETO-PRETO-BRANCO-BRANCO-BRANCO
       
-    movimento.parar();
+     movimento.parar();
      delay(300);
      
      robo.ligarLed(3);
-     while (sensores.PB()) {
-      movimento.fren();
-      delay(150);
-} 
-    //movimento.fren();
-    //delay(400); 
+     movimento.fren();
+     delay(250); 
       
      while (sensores.MB()) {
       movimento.exesq();  

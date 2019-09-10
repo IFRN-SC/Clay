@@ -28,10 +28,10 @@ void Movimento:: superfrent(){
     robo.acionarMotores(-45, 45);
 }
  void Movimento:: exesq(){
-    robo.acionarMotores(60, -55);
+    robo.acionarMotores(70, -50);
 }
  void Movimento:: exdir(){
-    robo.acionarMotores(-55, 60);
+    robo.acionarMotores(-50, 70);
 }
  void Movimento:: parar(){
     robo.acionarMotores(0, 0);
