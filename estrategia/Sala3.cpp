@@ -5,7 +5,7 @@ void Sala3::executar()
 {
   robo.desligarTodosLeds();
   movimento.fren();
-  delay(700);
+  delay(500);
   movimento.parar();
   delay(1000);
   
@@ -38,7 +38,7 @@ void Sala3::executar()
 void Sala3::procurarAreaResgate1()
 {
     movimento.girandoEsq();
-    delay(1400);
+    delay(1100);
     movimento.re();
     delay(1000);
     movimento.fren();
@@ -413,7 +413,7 @@ void Sala3:: procurarInverso()
    delay(3500);
 
    sensorLateralDir = robo.lerSensorSonarDir();
-   if (sensorLateralDir > 60)
+   if (sensorLateralDir > 70)
 {
    movimento.parar();
    while(1);

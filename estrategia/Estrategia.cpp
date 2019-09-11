@@ -102,7 +102,7 @@ void Estrategia::seguirLinha() {
      robo.ligarLed(3);
  
      movimento.fren();
-     delay(250);
+     delay(180);
     
      while (sensores.MB()){
       movimento.exesq();  
@@ -117,7 +117,7 @@ void Estrategia::seguirLinha() {
     robo.ligarLed(2);
     
     movimento.fren();
-    delay(250);
+    delay(180);
     
     while (sensores.MB()){
       movimento.exdir();
@@ -132,7 +132,7 @@ void Estrategia::seguirLinha() {
     robo.ligarLed(2);
     
     movimento.fren();
-    delay(250);
+    delay(180);
     
     while (sensores.MB()){
       movimento.exdir();
@@ -147,7 +147,7 @@ void Estrategia::seguirLinha() {
      robo.ligarLed(3);
      
      movimento.fren();
-     delay(250);
+     delay(180);
     
      while (sensores.MB()){
       movimento.exesq();  
@@ -162,7 +162,7 @@ void Estrategia::seguirLinha() {
      robo.ligarLed(3);
      
      movimento.fren();
-     delay(250);
+     delay(180);
      
      while (sensores.MB()){
       movimento.exesq();  
@@ -177,7 +177,7 @@ void Estrategia::seguirLinha() {
     robo.ligarLed(2);
     
     movimento.fren();
-    delay(250);
+    delay(180);
     
     while (sensores.MB()){
       movimento.exdir();
@@ -192,7 +192,7 @@ void Estrategia::seguirLinha() {
     robo.ligarLed(2);
     
     movimento.fren();
-    delay(250);
+    delay(180);
     
     while (sensores.MB()) {
       movimento.exdir();
@@ -205,7 +205,7 @@ void Estrategia::seguirLinha() {
      
      robo.ligarLed(3);
      movimento.fren();
-     delay(250); 
+     delay(180); 
       
      while (sensores.MB()) {
       movimento.exesq();  
