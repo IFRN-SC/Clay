@@ -5,7 +5,7 @@ void Sala3::executar()
 {
   robo.desligarTodosLeds();
   movimento.fren();
-  delay(500);
+  delay(1000);
   movimento.parar();
   delay(1000);
   
@@ -37,21 +37,20 @@ void Sala3::executar()
 
 void Sala3::procurarAreaResgate1()
 {
-    movimento.girandoEsq();
-    delay(1100);
+    movimento.girarEsq90();
+    
     movimento.re();
     delay(1000);
     movimento.fren();
-    delay(1800);
-    movimento.girando();
-    delay(900);
+    delay(1600);
+    movimento.girarDir90();
+    
     movimento.re();
     delay(1500);
     
     movimento.fren();
     delay(2000);
-    movimento.girandoEsq();
-    delay(800);
+    movimento.girarEsq45();
     
     sensorFrontal = robo.lerSensorSonarFrontal(); //TIPO SALA 1
     if (sensorFrontal < 40)
@@ -91,8 +90,8 @@ void Sala3::procurarAreaResgate1()
 }
 
 
-    movimento.girando();
-    delay(1000);
+    movimento.girarDir90();
+    movimento.stopp();
     
     
     sensorFrontal = robo.lerSensorSonarFrontal(); // TIPO SALA 2
