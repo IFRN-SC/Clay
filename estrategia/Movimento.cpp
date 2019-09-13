@@ -3,7 +3,7 @@
 
  void Movimento:: fren()
 {
-    robo.acionarMotores(53, 50);
+    robo.acionarMotores(52, 50);
 }
  void Movimento:: stopp()
 {
@@ -21,12 +21,12 @@ void Movimento:: girarEsq45()
 void Movimento:: girarEsq90()
 {
     robo.acionarMotores(60, -60);
-    delay(1000);
+    delay(870);
 }
 void Movimento:: girarDir90()
 {
     robo.acionarMotores(-60, 60);
-    delay(1000);
+    delay(870);
 }
 void Movimento:: girarDir45()
 {

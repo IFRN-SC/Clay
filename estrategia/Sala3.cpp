@@ -5,7 +5,7 @@ void Sala3::executar()
 {
   robo.desligarTodosLeds();
   movimento.fren();
-  delay(1000);
+  delay(600);
   movimento.parar();
   delay(1000);
   
@@ -59,30 +59,32 @@ void Sala3::procurarAreaResgate1()
 }
     if (tipoArea == 1)
 {
-    movimento.girando();
-    delay(500);
+    movimento.girarDir45();
+    
     movimento.re();
     delay(2500);
     movimento.fren();
     delay(600);
-    movimento.girandoEsq();
-    delay(1400);
+    
+    movimento.girarEsq90();
+    
     movimento.re();
     delay(2500);
     movimento.parar();
     delay(1000);
-    
     movimento.fren();
     delay(400);
-    movimento.girando();
-    delay(850);
+    
+    movimento.girarDir90();
+    
     movimento.fren();
     delay(2500);
     movimento.re();
     delay(2400);
-    movimento.girandoEsq();
-    delay(1500);
-    movimento.re();
+    
+    movimento.girarEsq90();
+    
+    movimento.re(); 
     delay(1000);
     movimento.parar();
     delay(1000);
@@ -91,8 +93,7 @@ void Sala3::procurarAreaResgate1()
 
 
     movimento.girarDir90();
-    movimento.stopp();
-    
+   
     
     sensorFrontal = robo.lerSensorSonarFrontal(); // TIPO SALA 2
     if (sensorFrontal < 30)
@@ -101,14 +102,15 @@ void Sala3::procurarAreaResgate1()
 }
     if (tipoArea == 2)
 {
-    movimento.girandoEsq();
-    delay(800);
+    movimento.girarEsq45();
+
     movimento.re();
     delay(2500);
     movimento.fren();
     delay(600);
-    movimento.girandoEsq();
-    delay(1400);
+    
+    movimento.girarEsq90();
+    
     movimento.re();
     delay(2500);
     movimento.parar();
@@ -116,22 +118,24 @@ void Sala3::procurarAreaResgate1()
 
     movimento.fren();
     delay(300);
-    movimento.girando();
-    delay(850);
+    
+    movimento.girarDir90();
+    
     movimento.fren();
     delay(1500);
     movimento.re();
     delay(1800);
-    movimento.girandoEsq();
-    delay(1300);
+    
+    movimento.girarEsq90();
+    
     movimento.re();
     delay(1200);
 
-    
     movimento.fren();
     delay(3050);
-    movimento.girando();
-    delay(900);
+    
+    movimento.girarDir90();
+    
     movimento.re();
     delay(1200);
     movimento.fren();
@@ -140,19 +144,21 @@ void Sala3::procurarAreaResgate1()
     delay(3500);
     movimento.parar();
     delay(1000);
+    //movimento.stopp();
     alinhar();
 }
 
    if (tipoArea == 0)
 {
-    movimento.girandoEsq();
-    delay(700);
+    movimento.girarEsq45();
+    
     movimento.re();
     delay(2500);
     movimento.fren();
     delay(600);
-    movimento.girandoEsq();
-    delay(1400);
+    
+    movimento.girarEsq90();
+    
     movimento.re();
     delay(2500);
     movimento.parar();
@@ -160,14 +166,16 @@ void Sala3::procurarAreaResgate1()
 
     movimento.fren();
     delay(300);
-    movimento.girando();
-    delay(850);
+    
+    movimento.girarDir90();
+    
     movimento.fren();
     delay(2500);
     movimento.re();
     delay(2400);
-    movimento.girandoEsq();
-    delay(1500);
+    
+    movimento.girarEsq90();
+    
     movimento.re();
     delay(1000);
     movimento.parar();
@@ -252,12 +260,14 @@ void Sala3:: alinhar()
 {
     movimento.fren();
     delay(400);
-    movimento.girando();
-    delay(850);
+    
+    movimento.girarDir90();
+    
     movimento.fren();
     delay(600);
-    movimento.girandoEsq();
-    delay(1300);
+    
+    movimento.girarEsq90();
+    
     movimento.re();
     delay(1200);
     
@@ -280,8 +290,9 @@ void Sala3:: alinhar()
 {
     movimento.fren();
     delay(400);
-    movimento.girandoEsq();
-    delay(1000);
+    
+    movimento.girarEsq90();
+    
     movimento.re();
     delay(2000);
     movimento.parar();
@@ -295,12 +306,14 @@ void Sala3:: alinhar()
 }
     movimento.fren();
     delay(300);
-    movimento.girando();
-    delay(900);
+    
+    movimento.girarDir90();
+    
     movimento.fren();
     delay(500);
-    movimento.girandoEsq();
-    delay(1500);
+    
+    movimento.girarEsq90();
+    
     movimento.re();
     delay(1000);
     procurar();
@@ -309,12 +322,14 @@ void Sala3:: alinhar()
 {
     movimento.fren();
     delay(400);
-    movimento.girando();
-    delay(850);
+    
+    movimento.girarDir90();
+    
     movimento.fren();
     delay(600);
-    movimento.girandoEsq();
-    delay(1300);
+    
+    movimento.girarEsq90();
+    
     movimento.re();
     delay(1200);
     procurar();
@@ -347,12 +362,14 @@ void Sala3:: alinharMenor()
 {
     movimento.fren();
     delay(400);
-    movimento.girando();
-    delay(850);
+    
+    movimento.girarDir90();
+    
     movimento.fren();
     delay(600);
-    movimento.girandoEsq();
-    delay(1300);
+    
+    movimento.girarEsq90();
+    
     movimento.re();
     delay(1200);
 
@@ -375,14 +392,17 @@ void Sala3:: alinharInverso()
   
   movimento.fren();
   delay(400);
-  movimento.girandoEsq();
-  delay(1400);
+  
+  movimento.girarEsq90();
+  
   movimento.fren();
   delay(600);
-  movimento.girando();
-  delay(1000);
+  
+  movimento.girarDir90();
+  
   movimento.re();
   delay(1000);
+  
   procurarInverso();
 }
 
