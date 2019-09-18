@@ -11,7 +11,7 @@
     while(1);
 }
  void Movimento:: re(){
-    robo.acionarMotores(-53, -50);
+    robo.acionarMotores(-57, -50);
 }
 void Movimento:: girarEsq45()
 {

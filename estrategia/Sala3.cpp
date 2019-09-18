@@ -4,8 +4,9 @@
 void Sala3::executar() 
 {
   robo.desligarTodosLeds();
+  
   movimento.fren();
-  delay(600);
+  delay(800);
   movimento.parar();
   delay(1000);
   
@@ -42,7 +43,7 @@ void Sala3::procurarAreaResgate1()
     movimento.re();
     delay(1000);
     movimento.fren();
-    delay(1600);
+    delay(1700);
     movimento.girarDir90();
     
     movimento.re();
@@ -124,7 +125,7 @@ void Sala3::procurarAreaResgate1()
     movimento.fren();
     delay(1500);
     movimento.re();
-    delay(1800);
+    delay(1650);
     
     movimento.girarEsq90();
     

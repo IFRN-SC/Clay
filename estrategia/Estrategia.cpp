@@ -263,43 +263,59 @@ void Estrategia::rampa()
   sala3.executar();
 }
 void Estrategia::desviarObstaculo() { //15/05/2019 "RIP"
+    movimento.re();
+    delay(100);
+
+    while (sensores.brancoMesq()){
+        movimento.dir();    
+    }
+    while (sensores.pretoMesq()){
+        movimento.dir();    
+    }
+    while (sensores.brancoMdir()){
+        movimento.dir();    
+    }
+
+    robo.acionarMotores (0,0);
+    delay (5000);
+
+
+    
+
  
- robo.acionarMotores(0, 0);
 }
 void Estrategia:: obs1()
 {
-  movimento.girando();
-  delay(700);
-  movimento.fren();
-  delay(1000);
-  movimento.girandoEsq();
-  delay(1000);
-  movimento.fren();
-  delay(1800);
-  movimento.girandoEsq();
-  delay(1100);
+    movimento.re();
+    delay(100);
   
-  while (sensores.BBBBB())
-{
-   movimento.fren();
-}
-  while (!sensores.BBBBB())
-{
-   movimento.fren();
-}
-  movimento.fren();
-  delay(400);
-  movimento.girando();
-  delay(800);
+    while (sensores.brancoMesq()){
+        movimento.dir();    
+    }
+    while (sensores.pretoMesq()){
+        movimento.dir();    
+    }
+    
+    movimento.dir();    
+    delay (800);
+    
+    while (robo.lerSensorSonarEsq() < 40){
+        movimento.fren();      
+    }
+    
+    robo.acionarMotores(0, 0);   
+    delay(1000);
+    movimento.fren();      
+    delay (1100);
+  
+  
+    
 
-  movimento.parar();
-  delay(1000);
-  
-  while (sensores.BBBBB())
-{
-  movimento.re();
-}
-  seguirLinha();
+
+
+    
+
+    movimento.stopp();
 }
   /*robo.ligarLed(3);
   
