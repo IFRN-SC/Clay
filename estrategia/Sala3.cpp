@@ -4,9 +4,14 @@
 void Sala3::executar() 
 {
   robo.desligarTodosLeds();
+
   
   movimento.fren();
   delay(800);
+  
+  robo.acionarServoGarra1(50); //BRAÇO
+  robo.acionarServoGarra2(100); //GARRA
+  
   movimento.parar();
   delay(1000);
   
@@ -201,10 +206,15 @@ void Sala3:: procurar()
 {
    if (tipoArea == 1)
 {
+   garraAbaixada();
    movimento.fren();
-   delay(3000);
+   delay(2500);
+   garraFechada();
+   movimento.parar();
+   delay(200);
    movimento.re();
    delay(3500);
+   
    alinhar();
 }
    else if (tipoArea == 2)
@@ -504,11 +514,11 @@ void Sala3:: garraLevantada()
   robo.acionarServoGarra2(140);
 }
 void Sala3:: garraFechada()
-{
-  robo.acionarServoGarra2(110);
+{ 
+  robo.acionarServoGarra2(90); //GARRA
   movimento.parar();
-  delay(400);
-  robo.acionarServoGarra1(90);
+  delay(300);
+  robo.acionarServoGarra1(50); //BRAÇO
 }
 void Sala3:: garraAbaixadaBola()
 {

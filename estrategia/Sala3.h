@@ -12,7 +12,7 @@ class Sala3
 	Movimento movimento;
 	Sensores sensores;
   
-  const int fimdocurso = 30;
+  const int fimdocurso = 50;
   const int fimdocurso2 = 42;
   
   int tipoSala = 0;

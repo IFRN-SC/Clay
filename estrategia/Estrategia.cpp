@@ -245,7 +245,7 @@ void Estrategia::rampa()
   
    robo.ligarTodosLeds();
 
- while(robo.lerSensorSonarEsq() < 20 && robo.lerSensorSonarDir() < 20){
+ while(robo.lerSensorSonarEsq() < 20 || robo.lerSensorSonarDir() < 20){
       if (sensores.BBPBB()) 
    {      
         movimento.superfrent();

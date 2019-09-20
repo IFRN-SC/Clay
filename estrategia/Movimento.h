@@ -8,6 +8,7 @@ class Movimento
     void girarEsq45();
     void girarEsq90();
 
+
     void girarDir45();
     void girarDir90();
     
