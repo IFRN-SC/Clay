@@ -110,6 +110,8 @@ void Estrategia::seguirLinha() {
      while (sensores.MB()){
       movimento.exesq();  
 }    
+    movimento.exesq();
+    delay(100);
     robo.desligarLed(3);
 
 } else if (sensores.BBPP())  { //BRANCO-BRANCO-PRETO-PRETO
@@ -125,6 +127,8 @@ void Estrategia::seguirLinha() {
     while (sensores.MB()){
       movimento.exdir();
 }   
+    movimento.exdir();
+    delay(100);
     robo.desligarLed(2);
 
 } else if (sensores.PPPD())  { //BRANCO-BRANCO-PRETO-PRETO
@@ -140,6 +144,8 @@ void Estrategia::seguirLinha() {
     while (sensores.MB()){
       movimento.exdir();
 }   
+    movimento.exdir();
+    delay(100);
     robo.desligarLed(2);
 
 } else if (sensores.PPPE())  { //PRETO-PRETO-BRANCO-BRANCO
@@ -155,6 +161,8 @@ void Estrategia::seguirLinha() {
      while (sensores.MB()){
       movimento.exesq();  
 }    
+     movimento.exesq();
+     delay(100);
      robo.desligarLed(3);
      
 } else if (sensores.PPPBB()) { //PRETO-PRETO-PRETO-BRANCO-BRANCO
@@ -170,6 +178,8 @@ void Estrategia::seguirLinha() {
      while (sensores.MB()){
       movimento.exesq();  
 }    
+    movimento.exesq();
+    delay(100);
     robo.desligarLed(3);
 
 } else if (sensores.BBPPP()){  //BRANCO-BRANCO-PRETO-PRETO-PRETO
@@ -185,6 +195,8 @@ void Estrategia::seguirLinha() {
     while (sensores.MB()){
       movimento.exdir();
 }   
+    movimento.exdir();
+    delay(100);
     robo.desligarLed(2);
 
 } else if (sensores.BBBPP()){  //BRANCO-BARNCO-BRANCO-PRETO-PRETO
@@ -200,6 +212,8 @@ void Estrategia::seguirLinha() {
     while (sensores.MB()) {
       movimento.exdir();
 }   
+    movimento.exdir();
+    delay(100);
     robo.desligarLed(2);
 } else if (sensores.PPBBB()) {   //PRETO-PRETO-BRANCO-BRANCO-BRANCO
       
@@ -213,6 +227,8 @@ void Estrategia::seguirLinha() {
      while (sensores.MB()) {
       movimento.exesq();  
 }    
+    movimento.exesq();
+    delay(100);
     robo.desligarLed(3);
 }
 }  

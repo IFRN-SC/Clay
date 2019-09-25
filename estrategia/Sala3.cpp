@@ -527,6 +527,10 @@ void Sala3:: resgatar()
     movimento.fren();
     delay(150);
     movimento.stopp();
+    robo.acionarPassoAngDir(120, 60);
+    robo.acionarMotoresPasso(0, 0);
+
+    
 }
 }
 
