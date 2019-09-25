@@ -7,7 +7,7 @@ void Sala3::executar()
 
   
   movimento.fren();
-  delay(800);
+  delay(1400);
   
   robo.acionarServoGarra1(50); //BRAÇO
   robo.acionarServoGarra2(100); //GARRA
@@ -47,15 +47,33 @@ void Sala3::procurarAreaResgate1()
     
     movimento.re();
     delay(1000);
+    garraAbaixada();
+    
     movimento.fren();
     delay(1700);
+    
+    garraFechada();
+    
+    movimento.parar();
+    delay(500);
+    bolinhaIdentificada(); //PERGUNTA SE A BOLA FOI ENCONTRADA
+    
     movimento.girarDir90();
     
     movimento.re();
     delay(1500);
+
+    garraAbaixada();
     
     movimento.fren();
     delay(2000);
+
+    garraFechada();
+    
+    movimento.parar();
+    delay(500);
+    bolinhaIdentificada(); //PERGUNTA SE A BOLA FOI ENCONTRADA
+    
     movimento.girarEsq45();
     
     sensorFrontal = robo.lerSensorSonarFrontal(); //TIPO SALA 1
@@ -65,6 +83,8 @@ void Sala3::procurarAreaResgate1()
 }
     if (tipoArea == 1)
 {
+    tipoArea = tipoArea - 1;
+    
     movimento.girarDir45();
     
     movimento.re();
@@ -79,14 +99,22 @@ void Sala3::procurarAreaResgate1()
     movimento.parar();
     delay(1000);
     movimento.fren();
-    delay(400);
+    delay(500);
     
     movimento.girarDir90();
+
+    garraAbaixada();
     
     movimento.fren();
-    delay(2500);
+    delay(2000);
+    
+    garraFechada(); 
+    movimento.parar();
+    delay(500);
+    bolinhaIdentificada();
+    
     movimento.re();
-    delay(2400);
+    delay(2000);
     
     movimento.girarEsq90();
     
@@ -94,6 +122,14 @@ void Sala3::procurarAreaResgate1()
     delay(1000);
     movimento.parar();
     delay(1000);
+    
+   tipoArea = tipoArea + 1;
+    
+    if (quantidadeDeBolas > 0)
+   {
+     resgatar();
+   }
+    
     procurar();  
 }
 
@@ -208,19 +244,25 @@ void Sala3:: procurar()
 {
    garraAbaixada();
    movimento.fren();
-   delay(2500);
+   delay(2600);
    garraFechada();
    movimento.parar();
    delay(200);
    movimento.re();
    delay(3500);
+
+   bolinhaIdentificada();
    
    alinhar();
 }
    else if (tipoArea == 2)
 {
+   garraAbaixada();
    movimento.fren();
-   delay(3000);
+   delay(2600);
+   garraFechada();
+   movimento.parar();
+   delay(200);
    movimento.re();
    delay(3500);
 
@@ -356,9 +398,9 @@ void Sala3:: procurarMenor()
    if (tipoArea == 1 || tipoArea == 2)
 {
    movimento.fren();
-   delay(2500);
+   delay(500);
    movimento.re();
-   delay(3300);
+   delay(3000);
    alinharMenor();
 }
 }
@@ -453,6 +495,40 @@ void Sala3:: procurarInverso()
 }
 
 
+void Sala3:: resgatar()
+{
+  if (tipoArea == 1)
+{
+    movimento.re();
+    delay(500);
+    movimento.fren();
+    delay(1700);  
+    movimento.parar();
+    delay(500);
+    
+    movimento.girarDir90();
+    movimento.re();
+    delay(1500);
+    movimento.fren();
+    delay(2300);
+
+    
+    movimento.parar();
+    delay(500);
+    
+    //movimento.fren();
+    //delay(600);
+    
+    movimento.girarEsq90();
+    movimento.girarEsq90();
+    movimento.girarEsq90();
+    movimento.re();
+    delay(2000);
+    movimento.fren();
+    delay(150);
+    movimento.stopp();
+}
+}
 
 
 
@@ -502,7 +578,20 @@ void Sala3:: procurarInverso()
 
 
 
-
+void Sala3:: guardar()
+{
+  quantidadeDeBolas = quantidadeDeBolas + 1;
+  robo.acionarServoGarra2(150);
+  movimento.parar();
+  delay(500);
+}
+void Sala3:: guardarComCautela()
+{
+  quantidadeDeBolas = quantidadeDeBolas + 1;
+  robo.acionarServoGarra2(80, 150, 15); //GARRA
+  movimento.parar();
+  delay(1000);
+}
 void Sala3:: garraAbaixada()
 {
   robo.acionarServoGarra1(180);
@@ -510,12 +599,12 @@ void Sala3:: garraAbaixada()
 }
 void Sala3:: garraLevantada()
 {
-  robo.acionarServoGarra1(100);
+  robo.acionarServoGarra1(100); //braço
   robo.acionarServoGarra2(140);
 }
 void Sala3:: garraFechada()
 { 
-  robo.acionarServoGarra2(90); //GARRA
+  robo.acionarServoGarra2(80); //GARRA
   movimento.parar();
   delay(300);
   robo.acionarServoGarra1(50); //BRAÇO
@@ -562,11 +651,33 @@ void Sala3:: parar()
   movimento.parar();
   while (1);
 }
+
+
+
+
 void Sala3::bolinhaIdentificada()
-{
+{ 
+  if (tipoArea == 1)
+  {
+    if (digitalRead(fimdocurso) == LOW || digitalRead(fimdocurso2) == LOW)
+  {
+    movimento.stopp();
+  }
+  }
+
+  
+  else{ 
   if (digitalRead(fimdocurso) == LOW || digitalRead(fimdocurso2) == LOW)
   {
-    robo.acionarMotores(0, 0);//resgatar(); 
-    while(1);
+    if (quantidadeDeBolas == 0)
+   {
+    guardar();
+   }
+    else if (quantidadeDeBolas == 1 || quantidadeDeBolas == 2 || quantidadeDeBolas == 3)
+   {
+    guardarComCautela();
+   }
+  }
   }
 }
+     

@@ -69,12 +69,15 @@ void Estrategia::redutor() {
 void Estrategia::seguirLinha() {
 
   if (sensores.BBBB()) { //BRANCO-BRANCO-BRANCO-BRANCO
+    //reconhecerRampa();
     movimento.fren();
 }
   else if (sensores.BPBB()) { ;//BRANCO-PRETO-BRANCO-BRANCO
+    //reconhecerRampa();
     movimento.esq();
 }
   else if (sensores.BBPB()) { //BRANCO-BRANCO-PRETO-BRANCO
+    //reconhecerRampa();
     movimento.dir();
 }
   else if (sensores.PBBB()) { //PRETO-BRANCO-BRANCO-BRANCO
@@ -213,29 +216,15 @@ void Estrategia::seguirLinha() {
     robo.desligarLed(3);
 }
 }  
-void Estrategia::verde2() {
-  movimento.fren();
-  delay(300);
-  robo.acionarMotores(30, -35);
-  delay(500);
-  movimento.fren();
-  delay(200);
+void Estrategia::reconhecerRampa()
+{
+  sensorLateralDir = robo.lerSensorSonarDir();
+  sensorLateralEsq = robo.lerSensorSonarEsq();
 
-  movimento.parar();
-  delay(100);
-  seguirLinha();
-}
-void Estrategia::verde1() {
-  movimento.fren();
-  delay(300);
-  robo.acionarMotores(-35, 30);
-  delay(500);
-  movimento.fren();
-  delay(200);
-
-  movimento.parar();
-  delay(100);
-  seguirLinha();
+   if (sensorLateralEsq < 30 && sensorLateralDir < 30) 
+{
+    rampa();
+} 
 }
 void Estrategia::rampa() 
 {
@@ -245,7 +234,7 @@ void Estrategia::rampa()
   
    robo.ligarTodosLeds();
 
- while(robo.lerSensorSonarEsq() < 20 || robo.lerSensorSonarDir() < 20){
+ while(robo.lerSensorSonarEsq() < 30 && robo.lerSensorSonarDir() < 30){
       if (sensores.BBPBB()) 
    {      
         movimento.superfrent();

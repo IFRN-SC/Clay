@@ -20,6 +20,7 @@ class Sala3
   int contadorInverso = 0;
   int contadorAuxiliar = 0;
   int contadorAuxiliarTipoArea3 = 0;
+  int quantidadeDeBolas = 0;
   
 	float sensorLateralDir;
   float sensorLateralEsq;
@@ -43,8 +44,9 @@ class Sala3
   void reiniciar();
   
   void bolinhaIdentificada();
-  
 
+  void guardar();
+  void guardarComCautela();
   void abrirGarraLento();
   void abrirGarraLento2();
   void garraAbaixada();

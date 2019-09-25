@@ -59,6 +59,7 @@ class Estrategia{
     void led();
     void redutoresq();
     void redutordir();
+    void reconhecerRampa();
     
     inline void setValoresCalibracao(Calibrador c){sensores.setValoresCalibracao(c);}
 
