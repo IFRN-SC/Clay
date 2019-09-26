@@ -3,6 +3,7 @@
 
 void Estrategia::executa() 
 {
+  
   pinMode(pinoChave, INPUT_PULLUP);
   pinMode(pinoChave2, INPUT_PULLUP);
 
@@ -250,7 +251,7 @@ void Estrategia::rampa()
   
    robo.ligarTodosLeds();
 
- while(robo.lerSensorSonarEsq() < 30 && robo.lerSensorSonarDir() < 30){
+ while(robo.lerSensorSonarEsq() < 20 && robo.lerSensorSonarDir() < 20){
       if (sensores.BBPBB()) 
    {      
         movimento.superfrent();

@@ -5,9 +5,13 @@ void Sala3::executar()
 {
   robo.desligarTodosLeds();
 
-  
   movimento.fren();
-  delay(1400);
+  delay(400);
+  garraAbaixada();
+  movimento.fren();
+  delay(1000);
+  garraFechada();
+  bolinhaIdentificada();
   
   robo.acionarServoGarra1(50); //BRAÇO
   robo.acionarServoGarra2(100); //GARRA
@@ -106,7 +110,7 @@ void Sala3::procurarAreaResgate1()
     garraAbaixada();
     
     movimento.fren();
-    delay(2000);
+    delay(1600);
     
     garraFechada(); 
     movimento.parar();
@@ -510,7 +514,7 @@ void Sala3:: resgatar()
     movimento.re();
     delay(1500);
     movimento.fren();
-    delay(2300);
+    delay(2200);
 
     
     movimento.parar();
@@ -519,18 +523,22 @@ void Sala3:: resgatar()
     //movimento.fren();
     //delay(600);
     
-    movimento.girarEsq90();
-    movimento.girarEsq90();
-    movimento.girarEsq90();
+    movimento.girarDir90();
+    movimento.girarDir45();
     movimento.re();
     delay(2000);
     movimento.fren();
-    delay(150);
-    movimento.stopp();
-    robo.acionarPassoAngDir(120, 60);
-    robo.acionarMotoresPasso(0, 0);
+    delay(70);
 
-    
+    movimento.parar();
+    delay(500);
+    robo.acionarPassoAngDir(120, 50);
+
+    movimento.parar();
+    delay(500);
+    robo.acionarPassoAngDir(120, -50);
+    robo.acionarPassoAngDir(180, 50);
+    movimento.stopp();   
 }
 }
 
@@ -598,7 +606,7 @@ void Sala3:: guardarComCautela()
 }
 void Sala3:: garraAbaixada()
 {
-  robo.acionarServoGarra1(180);
+  robo.acionarServoGarra1(177);
   robo.acionarServoGarra2(180);
 }
 void Sala3:: garraLevantada()
