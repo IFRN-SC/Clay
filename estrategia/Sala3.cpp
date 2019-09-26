@@ -8,9 +8,14 @@ void Sala3::executar()
   movimento.fren();
   delay(400);
   garraAbaixada();
+  
   movimento.fren();
   delay(1000);
   garraFechada();
+  
+  movimento.parar();
+  delay(500);
+  
   bolinhaIdentificada();
   
   robo.acionarServoGarra1(50); //BRAÇO
@@ -118,7 +123,7 @@ void Sala3::procurarAreaResgate1()
     bolinhaIdentificada();
     
     movimento.re();
-    delay(2000);
+    delay(1600);
     
     movimento.girarEsq90();
     
@@ -671,15 +676,13 @@ void Sala3::bolinhaIdentificada()
 { 
   if (tipoArea == 1)
   {
-    if (digitalRead(fimdocurso) == LOW || digitalRead(fimdocurso2) == LOW)
+    if (digitalRead(fimdocurso) == LOW)
   {
     movimento.stopp();
   }
   }
-
-  
   else{ 
-  if (digitalRead(fimdocurso) == LOW || digitalRead(fimdocurso2) == LOW)
+  if (digitalRead(fimdocurso) == LOW)
   {
     if (quantidadeDeBolas == 0)
    {

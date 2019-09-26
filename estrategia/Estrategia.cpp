@@ -245,28 +245,29 @@ void Estrategia::reconhecerRampa()
 }
 void Estrategia::rampa() 
 {
-  sensorLateralDir = robo.lerSensorSonarDir();
-  sensorLateralEsq = robo.lerSensorSonarEsq();
-  delay(500);
-  
    robo.ligarTodosLeds();
+   
+   sensorLateralDir = robo.lerSensorSonarDir();
+   sensorLateralEsq = robo.lerSensorSonarEsq();
 
- while(robo.lerSensorSonarEsq() < 20 && robo.lerSensorSonarDir() < 20){
-      if (sensores.BBPBB()) 
-   {      
-        movimento.superfrent();
-   }
-      else if (sensores.BPBBB()) 
-   {
-        movimento.esqq();
-   }
-      else if (sensores.BBBPB()) 
-   {
-        movimento.dirr();
-   }  
+   delay(500);
+   
+   while(robo.lerSensorSonarEsq() < 20)
+ {
+     if (sensores.BBPBB()) 
+ {      
+       movimento.superfrent();
  }
-
-  sala3.executar();
+     else if (sensores.BPBBB()) 
+ {
+       movimento.esqq();
+ }
+     else if (sensores.BBBPB()) 
+ {
+       movimento.dirr();
+ }  
+ }
+     sala3.executar();
 }
 void Estrategia::desviarObstaculo() { //15/05/2019 "RIP"
     movimento.re();
