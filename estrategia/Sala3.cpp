@@ -115,7 +115,7 @@ void Sala3::procurarAreaResgate1()
     garraAbaixada();
     
     movimento.fren();
-    delay(1600);
+    delay(1800);
     
     garraFechada(); 
     movimento.parar();
@@ -253,14 +253,18 @@ void Sala3:: procurar()
 {
    garraAbaixada();
    movimento.fren();
-   delay(2600);
+   delay(2400);
+   
    garraFechada();
+   
+   movimento.parar();
+   delay(500);
+   bolinhaIdentificada();
+    
    movimento.parar();
    delay(200);
    movimento.re();
    delay(3500);
-
-   bolinhaIdentificada();
    
    alinhar();
 }
@@ -320,6 +324,11 @@ void Sala3:: alinhar()
 {
   if (tipoArea == 1)
 {
+     if (quantidadeDeBolas > 0)
+   {
+     resgatar();
+   }
+   
     movimento.fren();
     delay(400);
     
@@ -675,21 +684,28 @@ void Sala3:: parar()
 void Sala3::bolinhaIdentificada()
 { 
   if (tipoArea == 1)
-  {
+ {
     if (digitalRead(fimdocurso) == LOW)
-  {
-    movimento.stopp();
-  }
-  }
-  else{ 
-  if (digitalRead(fimdocurso) == LOW)
-  {
+ {
     if (quantidadeDeBolas == 0)
    {
     guardar();
    }
     else if (quantidadeDeBolas == 1 || quantidadeDeBolas == 2 || quantidadeDeBolas == 3)
-   {
+  {
+    guardarComCautela();
+   }
+ }
+ }
+  else{ 
+  if (digitalRead(fimdocurso) == LOW)
+ {
+    if (quantidadeDeBolas == 0)
+  {
+    guardar();
+   }
+    else if (quantidadeDeBolas == 1 || quantidadeDeBolas == 2 || quantidadeDeBolas == 3)
+  {
     guardarComCautela();
    }
   }
