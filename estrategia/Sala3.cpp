@@ -20,10 +20,13 @@ void Sala3::executar()
   delay(500);
   
   bolinhaIdentificada();
+
   
   robo.acionarServoGarra1(50); //BRAÇO
   robo.acionarServoGarra2(100); //GARRA
-  
+
+  movimento.re();
+  delay(400);
   movimento.parar();
   delay(1000);
   
@@ -319,15 +322,19 @@ void Sala3:: procurar()
 {
    garraAbaixada();
    movimento.fren();
-   delay(2600);
+   delay(2500);
    garraFechada();
    movimento.parar();
    delay(200);
    movimento.re();
    delay(3500);
 
+   movimento.parar();
+   delay(200);
    sensorLateralDir = robo.lerSensorSonarDir();
-   if (sensorLateralDir < 50)
+   movimento.parar();
+   delay(200);
+   if (sensorLateralDir < 35)
 {
    resgatar();
 }
@@ -602,10 +609,12 @@ void Sala3:: resgatar()
     robo.acionarPassoAngDir(120, -50);
     movimento.parar();
     delay(1000);
-    robo.acionarServoGarra1(20);
+    robo.acionarServoGarra1(10);
     movimento.parar();
     delay(500);
     robo.acionarServoGarra1(50);
+    movimento.re();
+    delay(500);
     robo.acionarPassoAngDir(180, 50);
 
     movimento.stopp();   
@@ -661,6 +670,8 @@ void Sala3:: resgatar()
     movimento.parar();
     delay(500);
     robo.acionarServoGarra1(50);
+    movimento.re();
+    delay(500);
     robo.acionarPassoAngDir(180, 50);
 
     movimento.stopp(); 
