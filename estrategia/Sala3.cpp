@@ -26,7 +26,7 @@ void Sala3::executar()
   robo.acionarServoGarra2(100); //GARRA
 
   movimento.re();
-  delay(400);
+  delay(200);
   movimento.parar();
   delay(1000);
   
@@ -92,9 +92,20 @@ void Sala3::procurarAreaResgate1()
     garraAbaixada();
     
     movimento.fren();
-    delay(2300);
+    delay(1800);
 
     garraFechada();
+    bolinhaIdentificada();
+
+    garraAbaixada();
+    
+    movimento.fren();
+    delay(700);
+
+    garraFechada();
+    
+    movimento.re();
+    delay(300);  
     
     movimento.parar();
     delay(500);
@@ -116,7 +127,7 @@ void Sala3::procurarAreaResgate1()
     movimento.re();
     delay(2500);
     movimento.fren();
-    delay(600);
+    delay(400);
     
     movimento.girarEsq90();
     
@@ -140,7 +151,7 @@ void Sala3::procurarAreaResgate1()
     bolinhaIdentificada();
     
     movimento.re();
-    delay(1600);
+    delay(1500);
     
     movimento.girarEsq90();
     
@@ -151,15 +162,8 @@ void Sala3::procurarAreaResgate1()
     
    tipoArea = tipoArea + 1;
     
-    if (quantidadeDeBolas > 0)
-   {
-     resgatar();
-   }
-    
     procurar();  
 }
-
-
     movimento.girarDir90();
    
     
@@ -377,19 +381,13 @@ void Sala3:: alinhar()
 {
   if (tipoArea == 1)
 {
-     if (quantidadeDeBolas > 0)
-  {
-     resgatar();
-     quantidadeDeBolas = quantidadeDeBolas - quantidadeDeBolas;
-  }
-   
   movimento.fren();
   delay(400);
     
   movimento.girarDir90();
     
   movimento.fren();
-  delay(600);
+  delay(800);
     
   movimento.girarEsq90();
     
@@ -401,7 +399,13 @@ void Sala3:: alinhar()
 {
     procurar();
 }
-    else if (sensorLateralDir < 30 && sensorLateralDir < 25)
+    movimento.parar();
+    delay(200);
+    sensorLateralDir = robo.lerSensorSonarDir();
+    movimento.parar();
+    delay(200);
+    
+     if (sensorLateralDir < 40 && sensorLateralDir < 15)
 {
     procurarMenor();
 }
@@ -424,7 +428,7 @@ void Sala3:: alinhar()
     while(1);
 }
     sensorLateralDir = robo.lerSensorSonarDir();
-    if (sensorLateralDir < 40)
+    if (sensorLateralDir < 40 && sensorLateralDir > 20)
 {
     resgatar();
 }
@@ -468,11 +472,23 @@ void Sala3:: procurarMenor()
 {
    if (tipoArea == 1 || tipoArea == 2)
 {
+   garraAbaixada();
+   
    movimento.fren();
-   delay(500);
+   delay(1800);
+   
+   garraFechada();
+   bolinhaIdentificada();
+   
    movimento.re();
    delay(3000);
-   alinharMenor();
+
+     if (quantidadeDeBolas > 0)
+{
+   resgatar();
+   quantidadeDeBolas = quantidadeDeBolas - quantidadeDeBolas;
+}
+    alinharMenor(); 
 }
 }
 
@@ -572,32 +588,44 @@ void Sala3:: resgatar()
 {
     movimento.re();
     delay(500);
+
     movimento.fren();
-    delay(1700);  
-    movimento.parar();
-    delay(500);
+    delay(400);
     
+    movimento.girarEsq90();
+    
+    movimento.re();
+    delay(1300);
+    
+    movimento.fren();
+    delay(500);
     movimento.girarDir90();
     movimento.re();
-    delay(1500);
+    delay(1000);
+    
+    garraAbaixada();
     movimento.fren();
-    delay(2200);
+    delay(1500);
+    
+    garraFechada();
+    bolinhaIdentificada();
 
+    movimento.fren();
+    delay(300);
     
-    movimento.parar();
-    delay(500);
+    movimento.girarEsq90();
+    movimento.re();
+    delay(1000);
+
+    movimento.fren();
+    delay(1800);
     
-    //movimento.fren();
-    //delay(600);
-    
-    movimento.girarDir90();
-    movimento.girarDir45();
+    movimento.girarEsq45();
     movimento.re();
     delay(3500);
     movimento.fren();
     delay(70);
 
-    
     robo.acionarServoGarra2(150);
     movimento.parar();
     delay(500);
@@ -638,7 +666,7 @@ void Sala3:: resgatar()
     delay(1500);
     
     movimento.fren();
-    delay(2200);
+    delay(2000);
 
     
     movimento.parar();
