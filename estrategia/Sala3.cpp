@@ -6,7 +6,7 @@ void Sala3::executar()
   robo.desligarTodosLeds();
 
   movimento.fren();
-  delay(400);
+  delay(600);
   garraAbaixada();
   
   movimento.parar();
@@ -21,9 +21,8 @@ void Sala3::executar()
   
   bolinhaIdentificada();
 
-  
   robo.acionarServoGarra1(50); //BRAÇO
-  robo.acionarServoGarra2(100); //GARRA
+  robo.acionarServoGarra2(90); //GARRA
 
   movimento.re();
   delay(200);
@@ -73,7 +72,7 @@ void Sala3::procurarAreaResgate1()
     garraAbaixada();
     
     movimento.fren();
-    delay(2400);
+    delay(2500);
     
     garraFechada();
     
@@ -95,8 +94,15 @@ void Sala3::procurarAreaResgate1()
     delay(1800);
 
     garraFechada();
+    
+    movimento.parar();
+    delay(500);
+    
     bolinhaIdentificada();
-
+    
+    movimento.parar();
+    delay(500);
+    
     garraAbaixada();
     
     movimento.fren();
@@ -112,6 +118,19 @@ void Sala3::procurarAreaResgate1()
     bolinhaIdentificada(); //PERGUNTA SE A BOLA FOI ENCONTRADA
     
     movimento.girarEsq45();
+    
+    garraAbaixada();
+    
+    movimento.fren();
+    delay(150);
+    
+    garraFechada(); 
+    movimento.parar();
+    delay(500);
+    bolinhaIdentificada();
+    
+    movimento.re();
+    delay(200);
     
     sensorFrontal = robo.lerSensorSonarFrontal(); //TIPO SALA 1
     if (sensorFrontal < 30)
@@ -165,7 +184,20 @@ void Sala3::procurarAreaResgate1()
     procurar();  
 }
     movimento.girarDir90();
-   
+    garraAbaixada();
+    
+    movimento.fren();
+    delay(150);
+    
+    garraFechada(); 
+    movimento.parar();
+    delay(500);
+    
+    bolinhaIdentificada();
+    
+    movimento.re();
+    delay(200);
+    
     
     sensorFrontal = robo.lerSensorSonarFrontal(); // TIPO SALA 2
     if (sensorFrontal < 30)
@@ -177,9 +209,9 @@ void Sala3::procurarAreaResgate1()
     movimento.girarEsq45();
 
     movimento.re();
-    delay(2500);
+    delay(3000);
     movimento.fren();
-    delay(400);
+    delay(550);
     
     movimento.girarEsq90();
     
@@ -220,25 +252,25 @@ void Sala3::procurarAreaResgate1()
     delay(300);
     
     movimento.fren();
-    delay(2500);
+    delay(2400);
 
     garraFechada(); 
     
     movimento.parar();
     delay(500);
-    bolinhaIdentificada(); //
+    bolinhaIdentificada(); 
 
     movimento.fren();
-    delay(750);
+    delay(500);
     movimento.girarDir90();
     
     movimento.re();
-    delay(2000);
+    delay(2500);
 
     garraAbaixada();
    
     movimento.fren();
-    delay(2500);
+    delay(2300);
 
     garraFechada();
     movimento.parar();
@@ -247,9 +279,7 @@ void Sala3::procurarAreaResgate1()
     
     movimento.re();
     delay(3000);
-    movimento.parar();
-    delay(1000);
-    //movimento.stopp();
+
     alinhar();
 }
 
@@ -305,6 +335,8 @@ void Sala3:: procurar()
 {
    if (tipoArea == 1)
 {
+   contadorTipoArea1 = contadorTipoArea1 + 1;
+   
    garraAbaixada();
    movimento.fren();
    delay(2400);
@@ -324,6 +356,8 @@ void Sala3:: procurar()
 }
    else if (tipoArea == 2)
 {
+   contadorTipoArea2 = contadorTipoArea2 + 1;
+   
    garraAbaixada();
    movimento.fren();
    delay(2500);
@@ -338,12 +372,15 @@ void Sala3:: procurar()
    sensorLateralDir = robo.lerSensorSonarDir();
    movimento.parar();
    delay(200);
-   if (sensorLateralDir < 35)
+   
+   if (contadorTipoArea2 == 4)
 {
    resgatar();
 }
    alinhar();
 }
+
+
    else if (tipoArea == 0)
 {
    if (contadorAuxiliarTipoArea3 < 1)
@@ -387,31 +424,19 @@ void Sala3:: alinhar()
   movimento.girarDir90();
     
   movimento.fren();
-  delay(800);
+  delay(600);
     
   movimento.girarEsq90();
     
   movimento.re();
   delay(1200);
     
-    sensorLateralDir = robo.lerSensorSonarDir();
-    if (sensorLateralDir < 30 && sensorLateralDir > 25)
-{
-    procurar();
-}
-    movimento.parar();
-    delay(200);
-    sensorLateralDir = robo.lerSensorSonarDir();
-    movimento.parar();
-    delay(200);
-    
-     if (sensorLateralDir < 40 && sensorLateralDir < 15)
+    if (contadorTipoArea1 == 2)
 {
     procurarMenor();
 }
     procurar();
 }
-
 
   else if (tipoArea == 2)
 {
@@ -475,7 +500,7 @@ void Sala3:: procurarMenor()
    garraAbaixada();
    
    movimento.fren();
-   delay(1800);
+   delay(1600);
    
    garraFechada();
    bolinhaIdentificada();
@@ -483,12 +508,7 @@ void Sala3:: procurarMenor()
    movimento.re();
    delay(3000);
 
-     if (quantidadeDeBolas > 0)
-{
    resgatar();
-   quantidadeDeBolas = quantidadeDeBolas - quantidadeDeBolas;
-}
-    alinharMenor(); 
 }
 }
 
@@ -595,7 +615,7 @@ void Sala3:: resgatar()
     movimento.girarEsq90();
     
     movimento.re();
-    delay(1300);
+    delay(2300);
     
     movimento.fren();
     delay(500);
@@ -650,7 +670,7 @@ void Sala3:: resgatar()
    if (tipoArea == 2)
 {
     movimento.fren();
-    delay(400);  
+    delay(500);  
     
     movimento.girarEsq90();
     movimento.re();
@@ -757,20 +777,20 @@ void Sala3:: resgatar()
 void Sala3:: guardar()
 {
   quantidadeDeBolas = quantidadeDeBolas + 1;
-  robo.acionarServoGarra2(150);
+  robo.acionarServoGarra2(90);
   movimento.parar();
   delay(500);
 }
 void Sala3:: guardarComCautela()
 {
   quantidadeDeBolas = quantidadeDeBolas + 1;
-  robo.acionarServoGarra2(80, 150, 15); //GARRA
+  robo.acionarServoGarra2(50, 90, 15); //GARRA
   movimento.parar();
   delay(1000);
 }
 void Sala3:: garraAbaixada()
 {
-  robo.acionarServoGarra2(180);
+  robo.acionarServoGarra2(90);
   movimento.parar();
   delay(400);
   robo.acionarServoGarra1(177); 
@@ -785,7 +805,7 @@ void Sala3:: garraLevantada()
 void Sala3:: garraFechada()
 { 
   movimento.parar();
-  robo.acionarServoGarra2(80); //GARRA
+  robo.acionarServoGarra2(0); //GARRA
   movimento.parar();
   delay(500);
   robo.acionarServoGarra1(50); //BRAÇO
@@ -795,7 +815,7 @@ void Sala3:: garraAbaixadaBola()
   robo.acionarServoGarra1(120);
   movimento.parar();
   delay(1000);
-  robo.acionarServoGarra2(170);
+  robo.acionarServoGarra2(160);
 }
 void Sala3:: repeticaoBolaEncontrada()
 {
@@ -844,7 +864,7 @@ void Sala3::bolinhaIdentificada()
  {
     if (quantidadeDeBolas == 0)
    {
-    guardar();
+    guardarComCautela();
    }
     else if (quantidadeDeBolas == 1 || quantidadeDeBolas == 2 || quantidadeDeBolas == 3)
   {

@@ -6,63 +6,44 @@
 #include "Calibrador.h"
 #include "Sala3.h"
 
-class Estrategia{
 
-  private:
-  
-    #define VERMELHO 1
-    #define AMARELO 2
-    #define VERDE 3
+class Estrategia
+{
+ private:
    
     Sensores sensores;
     Movimento movimento;
     Sala3 sala3;
-   
+    
+    const int pinoChave = 50; 
+    const int pinoChave2 = 21;
     int contador = 0; 
     int calibrador = 0;
-    const int pinoChave = 50; //PODE SER 50 (Quando nao estiver utilizando S.C).
-    const int pinoChave2 = 21;
-
+    int verdes = 0;
+    int beco = 0;
+    int delayObs = 0;
+    
+    float sensorFrontal;
     float sensorLateralDir;
     float sensorLateralEsq;
-    float sensorFrontal;
-
-    float valorSensorEsq;
-    float valorSensorDir;
+    
     float valorSensorMaisEsq;
-    float valorSensorMaisDir;
+    float valorSensorEsq;
     float meio;
-
-    float corPreto;
-    float corBranco;
-    float corVerde;
+    float valorSensorDir;
+    float valorSensorMaisDir;
     
     bool parar;
-    
-    RGB corEsq;
-    RGB corDir;
 
-  public:
+ public:
     
-    void obs1();
-    void obs2();
-
+    void desviarObs();
+    void desviarObs2();
     void executa();
     void seguirLinha();
-    void verde1();
-    void verde2();
     void desviarObstaculo();
-    void redutor();
-    void voltarParaALinha();
     void rampa();
     void Sala3();
-    void led();
-    void redutoresq();
-    void redutordir();
-    void reconhecerRampa();
-    
     inline void setValoresCalibracao(Calibrador c){sensores.setValoresCalibracao(c);}
-
 };
-
 #endif

@@ -11,39 +11,33 @@
     while(1);
 }
  void Movimento:: re(){
-    robo.acionarMotores(-57, -50);
+    robo.acionarMotores(-50, -50);
 }
 void Movimento:: girarEsq45()
 {
   robo.acionarMotores(60, -60);
-  delay(530);
+  delay(550);
 }
 void Movimento:: girarEsq90()
 {
-    robo.acionarServoGarra1(50); //BRAÇO
-    robo.acionarServoGarra2(100); //GARRA
-    
-    //robo.acionarMotores(0, 0);
-    //delay(500);
+    robo.acionarServoGarra1(40); //BRAÇO
+    robo.acionarServoGarra2(20); //GARRA
   
     robo.acionarMotores(60, -60);
-    delay(1130);
+    delay(1030);
 }
 void Movimento:: girarDir90()
 {
-    robo.acionarServoGarra1(50); //BRAÇO
-    robo.acionarServoGarra2(100); //GARRA
-    
-    //robo.acionarMotores(0, 0);
-    //delay(500);
+    robo.acionarServoGarra1(40); //BRAÇO
+    robo.acionarServoGarra2(20); //GARRA
     
     robo.acionarMotores(-60, 60);
-    delay(1140);
+    delay(1030);
 }
 void Movimento:: girarDir45()
 {
     robo.acionarMotores(-60, 60);
-    delay(570);
+    delay(550);
 }
 void Movimento:: frenmed(){
     robo.acionarMotores(50,50);
@@ -52,16 +46,16 @@ void Movimento:: superfrent(){
     robo.acionarMotores(70, 70);
 }
  void Movimento:: esq(){
-    robo.acionarMotores(45,-45);
+    robo.acionarMotores(65,-55);
 }
  void Movimento:: dir(){
-    robo.acionarMotores(-45, 45);
+    robo.acionarMotores(-55, 65);
 }
  void Movimento:: exesq(){
-    robo.acionarMotores(70, -50);
+    robo.acionarMotores(60, -60);
 }
  void Movimento:: exdir(){
-    robo.acionarMotores(-50, 70);
+    robo.acionarMotores(-60, 60);
 }
  void Movimento:: parar(){
     robo.acionarMotores(0, 0);

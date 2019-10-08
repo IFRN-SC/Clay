@@ -10,8 +10,8 @@
 {  
     robo.configurar(true);
     Serial.begin(9600);
-    robo.acionarServoGarra1(30); //BRAÇO
-    robo.acionarServoGarra2(100); //GARRA
+    robo.acionarServoGarra1(40); //BRAÇO
+    robo.acionarServoGarra2(20); //GARRA
     //robo.habilitaTCS34();
     menu.menuLon(); 
     estrategia.setValoresCalibracao(menu.getValoresCalibracao());
