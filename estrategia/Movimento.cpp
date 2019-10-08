@@ -43,7 +43,7 @@ void Movimento:: frenmed(){
     robo.acionarMotores(50,50);
 }
 void Movimento:: superfrent(){
-    robo.acionarMotores(66, 60);
+    robo.acionarMotores(76, 70);
 }
  void Movimento:: esq(){
     robo.acionarMotores(61,-65);

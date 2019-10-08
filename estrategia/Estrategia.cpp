@@ -185,6 +185,9 @@ void Estrategia::seguirLinha()
  }
 void Estrategia::rampa() 
 {
+   robo.acionarServoGarra1(140); //BRAÇO
+   robo.acionarServoGarra2(75); //GARRA
+   
    robo.ligarTodosLeds();
    
    sensorLateralDir = robo.lerSensorSonarDir();

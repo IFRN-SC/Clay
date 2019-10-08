@@ -59,38 +59,49 @@ void Sala3::procurarAreaResgate1()
     movimento.girarEsq90();
     
     movimento.re();
-    delay(1000);
+    delay(1000);         //ROBO PRONTO PARA FAZER SUA PRIMEIRA TENTATIVA DE RESGATE
     garraAbaixada();
     
     garraFechada();
     
     movimento.parar();
     delay(500);
-    bolinhaIdentificada(); //PERGUNTA SE A BOLA FOI ENCONTRADA
+    bolinhaIdentificada(); 
     
     garraAbaixada();
     
     movimento.fren();
-    delay(2400);
+    delay(1200);
     
     garraFechada();
     
     movimento.parar();
     delay(500);
-    bolinhaIdentificada(); //PERGUNTA SE A BOLA FOI ENCONTRADA
-    
-    movimento.re();
-    delay(600);
-    
-    movimento.girarDir90();
-    
-    movimento.re();
-    delay(1300);
+    bolinhaIdentificada(); 
 
     garraAbaixada();
     
     movimento.fren();
-    delay(1800);
+    delay(1200);
+    
+    garraFechada();
+    
+    movimento.parar();
+    delay(500);
+    bolinhaIdentificada();   //FIM DA PRIMEIRA TENTATIVA
+    
+    movimento.re();
+    delay(600);
+    
+    movimento.girarDir90(); 
+    
+    movimento.re();
+    delay(1300);
+
+    garraAbaixada();  //ROBO IRA IDENTIFICAR A AREA DE RESGATE
+    
+    movimento.fren();
+    delay(1200);      //PRIMEIRA LIMPA
 
     garraFechada();
     
@@ -104,8 +115,8 @@ void Sala3::procurarAreaResgate1()
     
     garraAbaixada();
     
-    movimento.fren();
-    delay(600);
+    movimento.fren();   //SEGUNDA LIMPA
+    delay(1300);    
 
     garraFechada();
     
@@ -114,9 +125,9 @@ void Sala3::procurarAreaResgate1()
     
     movimento.parar();
     delay(500);
-    bolinhaIdentificada(); //PERGUNTA SE A BOLA FOI ENCONTRADA
+    bolinhaIdentificada(); 
     
-    movimento.girarEsq45();
+    movimento.girarEsq45();  //VAI OLHAR PARA A ESQUERDA
     
     movimento.re();
     delay(200);
@@ -511,9 +522,11 @@ void Sala3:: procurarMenor()
    garraAbaixada();
    
    movimento.fren();
-   delay(1600);
+   delay(1900);
    
    garraFechada();
+   movimento.parar();
+   delay(500);
    bolinhaIdentificada();
    
    movimento.re();
