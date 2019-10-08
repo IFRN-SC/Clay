@@ -101,26 +101,25 @@ void Estrategia::seguirLinha()
     if (sensores.BBBBB())
 {
     movimento.dir();
-    delay(150);
+    delay(50);
     
     if (!sensores.BBBBB())
 {
     verdes = verdes + 1;
 }
     movimento.esq();
-    delay(300);
+    delay(100);
     
     if (!sensores.BBBBB())
 {   
     verdes = verdes + 1;
-    //movimento.stopp();
 }
     movimento.dir();
     delay(150);
     movimento.exesq();
-    delay(1750);
+    delay(1850);
     movimento.re();
-    delay(100);
+    delay(300);
 }
   
 } else if (sensores.PPBB() || sensores.PPPE() || sensores.PPPBB() || sensores.PPBBB()){
@@ -212,25 +211,6 @@ void Estrategia::rampa()
  }
      sala3.executar();
 }
-void Estrategia::desviarObstaculo() 
-{ 
-    movimento.re();
-    delay(100);
-
-    while (sensores.brancoMesq()){
-        movimento.dir();    
-    }
-    while (sensores.pretoMesq()){
-        movimento.dir();    
-    }
-    while (sensores.brancoMdir()){
-        movimento.dir();    
-    }
-
-    robo.acionarMotores (0,0);
-    delay (5000);
- 
-}
 void Estrategia:: desviarObs()
 {
     movimento.re();
@@ -245,7 +225,7 @@ void Estrategia:: desviarObs()
     movimento.dir();    
 }
     movimento.exdir();    
-    delay (700);
+    delay (600);
     
     while (robo.lerSensorSonarEsq() < 40)
 {
