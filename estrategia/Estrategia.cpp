@@ -64,34 +64,61 @@ void Estrategia::seguirLinha()
 
   else if (sensores.PPPP()) 
 {   
-    verdes = verdes + 1;
     movimento.fren();
     delay(200);
 
     if (!sensores.BBBBB())
 {
-    movimento.stopp();
+    verdes = verdes + 1;
+    movimento.parar();
+    delay(500);
+
+    if (verdes == 2)
+  {
+    movimento.fren();
+    delay(300);
+    movimento.girarEsq90();
+    movimento.fren();
+    delay(400);
+    movimento.re();
+    delay(200);
+    seguirLinha();
+  }
+    else if (verdes == 3)
+  {
+    movimento.fren();
+    delay(200);
+    movimento.girarDir90();
+    movimento.fren();
+    delay(400);
+    movimento.re();
+    delay(200);
+    seguirLinha();
+  }
+    seguirLinha();
 }
+
+    if (sensores.BBBBB())
+{
     movimento.dir();
     delay(150);
-
+    
     if (!sensores.BBBBB())
 {
-    movimento.stopp();
+    verdes = verdes + 1;
 }
     movimento.esq();
     delay(300);
     
     if (!sensores.BBBBB())
 {   
-    movimento.stopp();
+    verdes = verdes + 1;
+    //movimento.stopp();
 }
-    if (sensores.BBBBB())
-{
     movimento.dir();
     delay(150);
     movimento.exesq();
-    delay(1650);
+    delay(1750);
     movimento.re();
     delay(100);
 }
@@ -103,7 +130,19 @@ void Estrategia::seguirLinha()
     robo.ligarLed(3);
     movimento.fren();
     delay(300);
+
+    if (!sensores.BBBBB())
+  {
+    movimento.fren();
+    delay(600);
     
+    while (sensores.BBBBB())
+   {
+     movimento.re();
+   }
+    movimento.exdir();
+    delay(200);
+  }
     while (sensores.MB()){
     movimento.exesq();  
 }    
@@ -120,7 +159,19 @@ void Estrategia::seguirLinha()
     robo.ligarLed(2);
     movimento.fren();
     delay(300);
+
+     if (!sensores.BBBBB())
+  {
+    movimento.fren();
+    delay(600);
     
+    while (sensores.BBBBB())
+   {
+     movimento.re();
+   }
+    movimento.exesq();
+    delay(200);
+  }
     while (sensores.MB()){
     movimento.exdir();
 }   
