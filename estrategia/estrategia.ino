@@ -10,7 +10,7 @@
 {  
     robo.configurar(true);
     Serial.begin(9600);
-    robo.acionarServoGarra1(30); //BRAÇO
+    robo.acionarServoGarra1(50); //BRAÇO
     robo.acionarServoGarra2(75); //GARRA
     robo.habilitaTCS34();
     menu.menuLon(); 

@@ -13,7 +13,7 @@ void Sala3::executar()
   delay(500);
   
   movimento.fren();
-  delay(1000);
+  delay(450);
   garraFechada();
   movimento.parar();
   delay(400);
@@ -474,7 +474,7 @@ void Sala3:: alinhar()
   movimento.re();
   delay(1200);
     
-    if (contadorTipoArea1 == 4)
+    if (contadorTipoArea1 == 3)
 {
     procurarMenor();
 }

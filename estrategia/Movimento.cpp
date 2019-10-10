@@ -3,7 +3,7 @@
 
  void Movimento:: fren()
 {
-    robo.acionarMotores(56, 50);
+    robo.acionarMotores(50, 55);
 }
  void Movimento:: stopp()
 {
@@ -15,35 +15,39 @@
 }
 void Movimento:: girarEsq45()
 {
-  robo.acionarMotores(66, -60);
-  delay(550);
+  robo.acionarMotores(60, -65);
+  delay(450);
 }
 void Movimento:: girarEsq90()
 {
-    robo.acionarServoGarra1(30); //BRAÇO
+    robo.acionarServoGarra1(50); //BRAÇO
     robo.acionarServoGarra2(75); //GARRA
+    robo.acionarMotores(0, 0);
+    delay(500);
   
-    robo.acionarMotores(66, -60);
-    delay(910);
+    robo.acionarMotores(60, -65);
+    delay(1050);
 }
 void Movimento:: girarDir90()
 {
-    robo.acionarServoGarra1(30); //BRAÇO
+    robo.acionarServoGarra1(50); //BRAÇO
     robo.acionarServoGarra2(75); //GARRA
-    
-    robo.acionarMotores(-66, 60);
-    delay(910);
+
+     robo.acionarMotores(0, 0);
+    delay(500);
+    robo.acionarMotores(-60, 65);
+    delay(1100);
 }
 void Movimento:: girarDir45()
 {
-    robo.acionarMotores(-66, 60);
+    robo.acionarMotores(-60, 65);
     delay(550);
 }
 void Movimento:: frenmed(){
     robo.acionarMotores(50,50);
 }
 void Movimento:: superfrent(){
-    robo.acionarMotores(76, 70);
+    robo.acionarMotores(70, 75);
 }
  void Movimento:: esq(){
     robo.acionarMotores(61,-65);
