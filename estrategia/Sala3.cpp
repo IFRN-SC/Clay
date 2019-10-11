@@ -4,13 +4,9 @@
 void Sala3::executar() 
 {
   robo.desligarTodosLeds();
-
+  garraAbaixada(); 
   movimento.fren();
   delay(600);
-  garraAbaixada();
-  
-  movimento.parar();
-  delay(500);
   
   movimento.fren();
   delay(450);
@@ -51,6 +47,9 @@ void Sala3::executar()
 
 void Sala3::procurarAreaResgate1()
 {
+    movimento.fren();
+    delay(700);
+    
     movimento.girarEsq90();
     
     movimento.re();
@@ -65,7 +64,7 @@ void Sala3::procurarAreaResgate1()
     bolinhaIdentificada(); 
     garraAbaixada();
     
-    movimento.fren();
+    movimento.fren();  //PRIMEIRA LIMPA
     delay(1200);
     
     garraFechada();
@@ -76,7 +75,7 @@ void Sala3::procurarAreaResgate1()
     bolinhaIdentificada(); 
     garraAbaixada();
     
-    movimento.fren();
+    movimento.fren();    //SEGUNDA LIMPA
     delay(1200);
     
     garraFechada();
@@ -85,6 +84,37 @@ void Sala3::procurarAreaResgate1()
     delay(500);
     
     bolinhaIdentificada();   //FIM DA PRIMEIRA TENTATIVA
+
+    movimento.re();
+    delay(3000);
+    movimento.fren();
+    delay(500);
+    movimento.girarDir90();
+    movimento.re();
+    delay(800);
+    movimento.girarEsq90();
+    movimento.re();
+    delay(1500);
+
+    garraAbaixada();
+    
+    movimento.fren();  //PRIMEIRA LIMPA
+    delay(1200);
+    
+    garraFechada();
+    
+    movimento.parar();
+    delay(500);
+    
+    bolinhaIdentificada(); 
+    garraAbaixada();
+    
+    movimento.fren();    //SEGUNDA LIMPA
+    delay(1200);
+
+    garraFechada();
+    movimento.parar();
+    delay(500);
     
     movimento.re();
     delay(600);
@@ -141,7 +171,7 @@ void Sala3::procurarAreaResgate1()
     movimento.re();
     delay(2500);
     movimento.fren();
-    delay(400);
+    delay(600);
     
     movimento.girarEsq90();
     
@@ -150,7 +180,7 @@ void Sala3::procurarAreaResgate1()
     movimento.parar();
     delay(1000);
     movimento.fren();
-    delay(500);
+    delay(400);
     
     movimento.girarDir90();  // SE PREPARA PARA FAZER A LIMPA DA PARTE DA FRENTE DA SALA3
 
@@ -169,7 +199,7 @@ void Sala3::procurarAreaResgate1()
     garraAbaixada();
     
     movimento.fren();  //LIMPA 2
-    delay(1000);
+    delay(700);
     
     garraFechada();
      
@@ -210,7 +240,7 @@ void Sala3::procurarAreaResgate1()
     movimento.re();
     delay(2500);
     movimento.fren();
-    delay(700);
+    delay(900);
     
     movimento.girarEsq90();
     
@@ -219,7 +249,7 @@ void Sala3::procurarAreaResgate1()
     
    tipoArea = tipoArea + 1;
     
-    procurar();  
+    alinhar(); 
 }
     movimento.girarDir90();
     garraAbaixada();
@@ -372,7 +402,7 @@ void Sala3:: procurar()
    
    garraAbaixada();
    movimento.fren();
-   delay(2400);
+   delay(1900);
    
    garraFechada();
    
@@ -474,7 +504,7 @@ void Sala3:: alinhar()
   movimento.re();
   delay(1200);
     
-    if (contadorTipoArea1 == 3)
+    if (contadorTipoArea1 == 2)
 {
     procurarMenor();
 }
@@ -658,7 +688,7 @@ void Sala3:: resgatar()
     delay(2300);
     
     movimento.fren();
-    delay(500);
+    delay(400);
     movimento.girarDir90();
     movimento.re();
     delay(1000);
@@ -828,7 +858,7 @@ void Sala3:: guardarComCautela()
 }
 void Sala3:: garraAbaixada()
 {
-  robo.acionarServoGarra2(167);
+  robo.acionarServoGarra2(150);
   movimento.parar();
   delay(400);
   robo.acionarServoGarra1(175); 
