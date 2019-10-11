@@ -1,6 +1,42 @@
 #include "Estrategia.h"
 #include "robo_hardware2.h"
 
+void Estrategia::calibrarVerdes()
+{
+  movimento.parar();
+  delay(1000);
+  while (!robo.botao1Pressionado())
+  {
+    movimento.parar();
+
+   if (robo.botao2Pressionado()) //DIR
+   {
+    movimento.parar();
+    delay(500);
+    verdes = verdes + 10;
+   }
+   else if (robo.botao3Pressionado()) //ESQ
+   {
+    movimento.parar();
+    delay(500);
+    verdes = verdes + 4;
+   }
+  }
+}
+void Estrategia::defineObs()
+{
+   while (!robo.botao3Pressionado())
+{
+    
+   if (robo.botao1Pressionado()) 
+{ 
+    movimento.parar();
+    delay(1000);
+
+    contador = contador + 1;
+}
+}
+}
 void Estrategia::executa() 
 { 
   sensorLateralDir = robo.lerSensorSonarDir();
@@ -17,20 +53,6 @@ void Estrategia::executa()
 {
     rampa();
 }  
-   else if (robo.botao1Pressionado())
-{
-    movimento.parar();
-    delay(1000);
-    
-    delayObs = delayObs + 200;
-}
-   else if (robo.botao3Pressionado()) 
-{ 
-    movimento.parar();
-    delay(1000);
-
-    contador = contador + 1;
-}
 
    else if (sensorFrontal < 4) 
 {
@@ -64,62 +86,66 @@ void Estrategia::seguirLinha()
 
   else if (sensores.PPPP()) 
 {   
+    verdes = verdes + 1;
     movimento.fren();
     delay(200);
-
-    if (!sensores.BBBBB())
+    
+    if (verdes == 2)
 {
-    verdes = verdes + 1;
+    movimento.exesq();
+    delay(1750);
+    movimento.re();
+    delay(200);
+}
+    else if (!sensores.BBBBB())
+{
     movimento.parar();
     delay(500);
 
-    if (verdes == 2)
+    if (verdes >= 4 && verdes < 7)
   {
-    movimento.fren();
-    delay(300);
-    movimento.girarEsq90();
-    movimento.fren();
-    delay(400);
-    movimento.re();
-    delay(200);
-    seguirLinha();
-  }
-    else if (verdes == 3)
+     while (sensores.PB())
   {
-    movimento.fren();
-    delay(200);
-    movimento.girarDir90();
-    movimento.fren();
-    delay(400);
-    movimento.re();
-    delay(200);
-    seguirLinha();
-  }
-    seguirLinha();
-}
-
-    if (sensores.BBBBB())
-{
-    movimento.dir();
-    delay(50);
-    
-    if (!sensores.BBBBB())
-{
-    verdes = verdes + 1;
-}
-    movimento.esq();
-    delay(100);
-    
-    if (!sensores.BBBBB())
-{   
-    verdes = verdes + 1;
-}
-    movimento.dir();
-    delay(150);
     movimento.exesq();
-    delay(1850);
+  }
+    while (sensores.MB())
+  {
+    movimento.exesq();
+  }
+    while (sensores.PB())
+  {
+    movimento.exesq();
+  }
+    movimento.fren();
+    delay(400);
     movimento.re();
-    delay(300);
+    delay(200);
+    seguirLinha();
+  }
+
+  
+    else if (verdes > 8)
+  {
+
+    while (sensores.PB())
+  {
+    movimento.exdir();
+  }
+    while (sensores.MB())
+  {
+    movimento.exdir();
+  }
+    while (sensores.PB())
+  {
+    movimento.exdir();
+  }
+    movimento.fren();
+    delay(400);
+    movimento.re();
+    delay(200);
+    seguirLinha();
+  }
+    seguirLinha();
 }
   
 } else if (sensores.PPBB() || sensores.PPPE() || sensores.PPPBB() || sensores.PPBBB()){
@@ -214,98 +240,116 @@ void Estrategia::rampa()
 void Estrategia:: desviarObs()
 {
     movimento.re();
-    delay(100);
+    delay(150);
   
-    while (sensores.brancoMesq())
-{
-    movimento.dir();    
-}
-    while (sensores.pretoMesq())
-{
-    movimento.dir();    
-}
-    movimento.exdir();    
-    delay (600);
-    
-    while (robo.lerSensorSonarEsq() < 40)
-{
-    movimento.fren();      
-}
-    movimento.parar();
-    delay(500);
-    
-    movimento.fren();      
-    delay(1000);
-    movimento.girarEsq90();
+    movimento.girarDir90();
+    while (sensores.BBBBB())
+    {
+      movimento.re();
+    }
+
+    while (!sensores.BBBBB())
+    {
+      movimento.fren();
+    }
+
+    while (!sensores.MB())
+    {
+      robo.acionarMotores(-50, 0);
+    }
     movimento.fren();
-    delay(1600 + delayObs);
-    movimento.girarEsq90();
+    delay(1250);
+    robo.acionarMotores(60, -65);
+    delay(900);
     movimento.fren();
-    delay(200);
+    delay(1700);
+    robo.acionarMotores(60, -65);
+    delay(900);
 
     while(sensores.BBBBB())
-{
+    {
+      movimento.fren();
+    }
     movimento.fren();
-}
-    movimento.fren();
-    delay(300);
+    delay(250);
 
-    movimento.girarDir90();
+    
+    robo.acionarMotores(-60, 65);
+    delay(1000);
+
     movimento.re();
     delay(200);
-    
-    if (sensores.BBBBB())
-{
-    movimento.girarEsq45();
-}
+
+    while (sensores.MB())
+    {
+      movimento.exesq();
+    }
+
+    while (sensores.PB())
+    {
+      movimento.exesq();
+    }
+
+    movimento.re();
+    delay(100);
+ 
     seguirLinha();
 }
 void Estrategia:: desviarObs2()
 {
-    movimento.re();
-    delay(100);
+     movimento.re();
+    delay(150);
   
-    while (sensores.brancoMesq())
-{
-    movimento.dir();    
-}
-    while (sensores.pretoMesq())
-{
-    movimento.dir();    
-}
-    movimento.exdir();    
-    delay (700);
-    
-    while (robo.lerSensorSonarEsq() < 40)
-{
-    movimento.fren();      
-}
-    movimento.parar();
-    delay(500);
-    
-    movimento.fren();      
-    delay(1000);
-    movimento.girarEsq90();
+    movimento.girarDir90();
+    while (sensores.BBBBB())
+    {
+      movimento.re();
+    }
+
+    while (!sensores.BBBBB())
+    {
+      movimento.fren();
+    }
+
+    while (!sensores.MB())
+    {
+      robo.acionarMotores(-50, 0);
+    }
     movimento.fren();
-    delay(1600 + delayObs);
-    movimento.girarEsq90();
+    delay(1250);
+    robo.acionarMotores(60, -65);
+    delay(900);
     movimento.fren();
-    delay(200);
+    delay(1700);
+    robo.acionarMotores(60, -65);
+    delay(900);
 
     while(sensores.BBBBB())
-{
+    {
+      movimento.fren();
+    }
     movimento.fren();
-}
-    movimento.fren();
-    delay(300);
+    delay(250);
 
-    movimento.girarDir90();
+    
+    robo.acionarMotores(-60, 65);
+    delay(1000);
+
     movimento.re();
     delay(200);
-    
-    if (sensores.BBBBB())
-{
-    movimento.girarDir45();
-}
+
+    while (sensores.MB())
+    {
+      movimento.exdir();
+    }
+
+    while (sensores.PB())
+    {
+      movimento.exdir();
+    }
+
+    movimento.re();
+    delay(100);
+ 
     seguirLinha();
 }

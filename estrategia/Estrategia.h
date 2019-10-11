@@ -22,6 +22,7 @@ class Estrategia
     int verdes = 0;
     int beco = 0;
     int delayObs = 0;
+    int delayObs2 = 0;
     
     float sensorFrontal;
     float sensorLateralDir;
@@ -36,7 +37,8 @@ class Estrategia
     bool parar;
 
  public:
-    
+
+    void regularDelays();
     void desviarObs();
     void desviarObs2();
     void executa();
@@ -44,6 +46,9 @@ class Estrategia
     void desviarObstaculo();
     void rampa();
     void Sala3();
+    void defineObs();
+
+    void calibrarVerdes();
     inline void setValoresCalibracao(Calibrador c){sensores.setValoresCalibracao(c);}
 };
 #endif
