@@ -152,16 +152,16 @@ void Estrategia::seguirLinha()
   
 } else if (sensores.PPBB() || sensores.PPPE() || sensores.PPPBB() || sensores.PPBBB()){
       
-    movimento.parar();
-    delay(300);
+    //movimento.parar();
+    //delay(300);
     robo.ligarLed(3);
     movimento.fren();
-    delay(300);
+    delay(270);
 
     if (!sensores.BBBBB())
   {
     movimento.fren();
-    delay(600);
+    delay(500);
     
     while (sensores.BBBBB())
    {
@@ -181,16 +181,16 @@ void Estrategia::seguirLinha()
 
 } else if (sensores.BBPP() || sensores.PPPD() || sensores.BBPPP() || sensores.BBBPP()){ 
     
-    movimento.parar();
-    delay(300);
+    //movimento.parar();
+    //delay(300);
     robo.ligarLed(2);
     movimento.fren();
-    delay(300);
+    delay(270);
 
      if (!sensores.BBBBB())
   {
     movimento.fren();
-    delay(600);
+    delay(500);
     
     while (sensores.BBBBB())
    {
