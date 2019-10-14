@@ -26,17 +26,17 @@ void Movimento:: girarEsq90()
     delay(500);
   
     robo.acionarMotores(60, -65);
-    delay(900);
+    delay(910);
 }
 void Movimento:: girarDir90()
 {
     robo.acionarServoGarra1(40); //BRAÇO
     robo.acionarServoGarra2(75); //GARRA
 
-     robo.acionarMotores(0, 0);
+    robo.acionarMotores(0, 0);
     delay(500);
     robo.acionarMotores(-60, 65);
-    delay(1100);
+    delay(1040);
 }
 void Movimento:: girarDir45()
 {

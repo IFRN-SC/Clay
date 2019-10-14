@@ -5,14 +5,13 @@ void Sala3::executar()
 {
   robo.desligarTodosLeds();
   garraAbaixada(); 
+
   movimento.fren();
-  delay(600);
+  robo.acionarServoGarra2(160, 60, 17);
   
-  movimento.fren();
-  delay(450);
   garraFechada();
   movimento.parar();
-  delay(400);
+  delay(300);
   
   bolinhaIdentificada();
 
@@ -46,37 +45,20 @@ void Sala3::executar()
 
 
 void Sala3::procurarAreaResgate1()
-{
-    movimento.fren();
-    delay(700);
+{ 
     
     movimento.girarEsq90();
     
     movimento.re();
     delay(1000);         //ROBO PRONTO PARA FAZER SUA PRIMEIRA TENTATIVA DE RESGATE
+    
     garraAbaixada();
     
-    garraFechada();
+    robo.acionarMotores(50, 55);//
+    robo.acionarServoGarra2(160, 60, 26);//
     
-    movimento.parar();
+    movimento.re();
     delay(500);
-    
-    bolinhaIdentificada(); 
-    garraAbaixada();
-    
-    movimento.fren();  //PRIMEIRA LIMPA
-    delay(1200);
-    
-    garraFechada();
-    
-    movimento.parar();
-    delay(500);
-    
-    bolinhaIdentificada(); 
-    garraAbaixada();
-    
-    movimento.fren();    //SEGUNDA LIMPA
-    delay(1200);
     
     garraFechada();
     
@@ -98,26 +80,25 @@ void Sala3::procurarAreaResgate1()
 
     garraAbaixada();
     
-    movimento.fren();  //PRIMEIRA LIMPA
-    delay(1200);
+    robo.acionarMotores(50, 55);//
+    robo.acionarServoGarra2(160, 60, 13);//LIMPA 1
     
     garraFechada();
-    
-    movimento.parar();
-    delay(500);
     
     bolinhaIdentificada(); 
+
     garraAbaixada();
     
-    movimento.fren();    //SEGUNDA LIMPA
+    movimento.fren();
     delay(1200);
-
+    
     garraFechada();
-    movimento.parar();
-    delay(500);
     
     movimento.re();
-    delay(600);
+    delay(850);
+    
+    bolinhaIdentificada(); 
+    
     
     movimento.girarDir90(); 
     
@@ -154,9 +135,26 @@ void Sala3::procurarAreaResgate1()
     bolinhaIdentificada(); 
     
     movimento.girarEsq45();  //VAI OLHAR PARA A ESQUERDA
+
+    robo.acionarServoGarra2(170);
+    movimento.parar();
+    delay(400);
+    robo.acionarServoGarra1(170); 
+    movimento.parar();
+    delay(500);
+    
+    movimento.fren();
+    delay(200);
+    
+    garraFechada(); 
+    
+    movimento.parar();
+    delay(500);
+    
+    bolinhaIdentificada();
     
     movimento.re();
-    delay(200);
+    delay(400);
     
     sensorFrontal = robo.lerSensorSonarFrontal(); //TIPO SALA 1
     if (sensorFrontal < 30)
@@ -186,8 +184,8 @@ void Sala3::procurarAreaResgate1()
 
     garraAbaixada();
     
-    movimento.fren();  //LIMPA 1
-    delay(1000);
+    robo.acionarMotores(50, 55);//
+    robo.acionarServoGarra2(160, 60, 13);//
     
     garraFechada(); 
     
@@ -435,7 +433,7 @@ void Sala3:: procurar()
    garraAbaixada();
    
    movimento.fren();
-   delay(1250);
+   delay(1150);
    
    garraFechada();
    
@@ -737,10 +735,11 @@ void Sala3:: resgatar()
     movimento.parar();
     delay(500);
     robo.acionarPassoAngDir(120, 50);
+    
 
     movimento.parar();
     delay(500);
-    
+    robo.acionarServoGarra1(50);
     robo.acionarPassoAngDir(120, -50);
     movimento.parar();
     delay(1000);
@@ -812,45 +811,6 @@ void Sala3:: resgatar()
     movimento.stopp(); 
 }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

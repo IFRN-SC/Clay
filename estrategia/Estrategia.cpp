@@ -90,7 +90,7 @@ void Estrategia::seguirLinha()
     movimento.fren();
     delay(200);
     
-    if (verdes == 2)
+    if (verdes > 1 && verdes <= 2)
 {
     movimento.exesq();
     delay(1750);
@@ -143,6 +143,8 @@ void Estrategia::seguirLinha()
     delay(400);
     movimento.re();
     delay(200);
+    verdes = verdes - verdes;
+    verdes = verdes + 5;
     seguirLinha();
   }
     seguirLinha();
