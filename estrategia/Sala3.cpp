@@ -55,7 +55,19 @@ void Sala3::procurarAreaResgate1()
     garraAbaixada();
     
     robo.acionarMotores(50, 55);//
-    robo.acionarServoGarra2(160, 60, 26);//
+    robo.acionarServoGarra2(160, 60, 13);//LIMPA 1
+    
+    garraFechada();
+    
+    movimento.parar();
+    delay(500);
+    
+    bolinhaIdentificada();   //FIM DA PRIMEIRA TENTATIVA
+
+    garraAbaixada();
+    
+    robo.acionarMotores(50, 55);//
+    robo.acionarServoGarra2(160, 60, 13);//LIMPA 2
     
     movimento.re();
     delay(500);
@@ -81,21 +93,14 @@ void Sala3::procurarAreaResgate1()
     garraAbaixada();
     
     robo.acionarMotores(50, 55);//
-    robo.acionarServoGarra2(160, 60, 13);//LIMPA 1
+    robo.acionarServoGarra2(160, 60, 20);//LIMPA 1
     
     garraFechada();
     
     bolinhaIdentificada(); 
 
-    garraAbaixada();
-    
-    movimento.fren();
-    delay(1200);
-    
-    garraFechada();
-    
     movimento.re();
-    delay(850);
+    delay(400);
     
     bolinhaIdentificada(); 
     
@@ -216,7 +221,7 @@ void Sala3::procurarAreaResgate1()
     movimento.parar();
     delay(500);
     movimento.fren();    //LIMPA NA PARTE ESQ DA SALA3
-    delay(3200);
+    delay(3000);       
     
     movimento.girarDir90();
     
@@ -241,6 +246,9 @@ void Sala3::procurarAreaResgate1()
     delay(900);
     
     movimento.girarEsq90();
+
+    movimento.fren();
+    delay(700);
     
     movimento.re();
     delay(3500);     //SE ALINHA NOVAMENTE PROX A ENTRADA 
@@ -357,18 +365,35 @@ void Sala3::procurarAreaResgate1()
     
     movimento.re();
     delay(2500);
-    movimento.parar();
-    delay(1000);
 
     movimento.fren();
-    delay(300);
+    delay(500);
     
     movimento.girarDir90();
     
-    movimento.fren();
-    delay(2500);
+    garraAbaixada();
+    
+    robo.acionarMotores(50, 55);
+    robo.acionarServoGarra2(160, 60, 13);//LIMPA 1
+
+    garraFechada();
+
+    bolinhaIdentificada();
+
+    garraAbaixada();
+    
+    movimento.fren();  //LIMPA 2
+    delay(700);
+    
+    garraFechada();
+     
+    movimento.parar();
+    delay(500);
+    
+    bolinhaIdentificada();
+    
     movimento.re();
-    delay(2400);
+    delay(1900);
     
     movimento.girarEsq90();
     
@@ -453,25 +478,48 @@ void Sala3:: procurar()
    if (contadorAuxiliarTipoArea3 < 1)
 {
    contadorAuxiliarTipoArea3 = contadorAuxiliarTipoArea3 + 1;
+   garraAbaixada();
+   
    movimento.fren();
-   delay(2000);
+   delay(1500);
+
+   garraFechada();
+   movimento.parar();
+   bolinhaIdentificada();
+   
    movimento.re();
    delay(2500);
    alinhar();
 }
   else if (contadorAuxiliarTipoArea3 == 1)
 {
+   contadorAuxiliarTipoArea3 = contadorAuxiliarTipoArea3 + 1;
+   garraAbaixada();
+   
    movimento.fren();
-   delay(3000);
+   delay(1800);
+
+   garraFechada();
+   movimento.parar();
+   bolinhaIdentificada();
+   
+   movimento.re();
+   delay(2500);
+   alinhar();
+}
+  else if (contadorAuxiliarTipoArea3 == 2)
+{
+   contadorAuxiliarTipoArea4 = contadorAuxiliarTipoArea4 + 1;
+   garraAbaixada();
+   movimento.fren();
+   delay(2300);
+   garraFechada();
+   movimento.parar();
+   delay(500);
+   bolinhaIdentificada();
    movimento.re();
    delay(3500);
    
-    sensorLateralDir = robo.lerSensorSonarDir();
-   if (sensorLateralDir < 10)
-{
-   movimento.parar();
-   while(1);
-}
    alinhar();
 }
 }
@@ -539,6 +587,10 @@ void Sala3:: alinhar()
 }
   else if (tipoArea == 0)
 {
+     if (contadorAuxiliarTipoArea4 == 2)
+{
+    resgatar();
+}
     movimento.fren();
     delay(400);
     
@@ -809,6 +861,41 @@ void Sala3:: resgatar()
     robo.acionarPassoAngDir(180, 50);
 
     movimento.stopp(); 
+
+    if (tipoArea == 3)
+{
+    movimento.fren();
+    delay(1300);
+    movimento.girarEsq45();
+    movimento.fren();
+    delay(3500);
+    movimento.re();
+    delay(300);
+
+    movimento.girarEsq90();
+    movimento.girarEsq45();
+    movimento.re();
+    delay(1000);
+    movimento.fren();
+    delay(30);
+    movimento.parar();
+
+    robo.acionarPassoAngDir(120, 50);
+    movimento.parar();
+    delay(500);
+    
+    robo.acionarPassoAngDir(120, -50);
+    movimento.parar();
+    delay(1000);
+    robo.acionarServoGarra1(20);
+    movimento.parar();
+    delay(500);
+    robo.acionarServoGarra1(50);
+    movimento.re();
+    delay(500);
+    robo.acionarPassoAngDir(180, 50);
+    movimento.stopp(); 
+}
 }
 }
 
